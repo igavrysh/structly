@@ -8,6 +8,7 @@
 ///
 /// - Complexity: O(√n) where n is the input value.
 /// - Note: Numbers less than or equal to 1 are not considered prime.
+///
 func isPrime(_ n: Int) -> Bool {
     if n <= 1 { return false }
     if n <= 3 { return true }
