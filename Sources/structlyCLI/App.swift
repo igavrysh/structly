@@ -7,10 +7,12 @@
 
 import structly
 
-@main
+//@main
 struct App {
     static func main() {
-        let app = Calculator()
-        app.sayHello()
+//        let app = Calculator()
+//        app.sayHello()
+        callCpp()
+
     }
 }
