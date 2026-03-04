@@ -29,7 +29,10 @@ let package = Package(
         .executableTarget(
             name: "structlyCLI",
             dependencies: ["structly"],
-            swiftSettings: [.interoperabilityMode(.Cxx)]
+            swiftSettings: [.interoperabilityMode(.Cxx)],
+            linkerSettings: [
+                .linkedLibrary("m", .when(platforms: [.linux])) 
+            ]
         ),
 
         .testTarget(

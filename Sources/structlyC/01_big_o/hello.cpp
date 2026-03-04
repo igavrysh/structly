@@ -6,7 +6,10 @@
 //
 
 #include <iostream>
-
+#include <vector>        
+#include <unordered_map>
+#include <string>
+#include <algorithm>
 #include "structlyC.hpp"
 #include "hello.hpp"
 

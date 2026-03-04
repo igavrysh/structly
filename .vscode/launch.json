@@ -19,6 +19,26 @@
             "target": "structly-cli",
             "configuration": "release",
             "preLaunchTask": "swift: Build Release structly-cli"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:structly}",
+            "name": "Debug structlyCLI",
+            "target": "structlyCLI",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug structlyCLI"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:structly}",
+            "name": "Release structlyCLI",
+            "target": "structlyCLI",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release structlyCLI"
         }
     ]
 }
