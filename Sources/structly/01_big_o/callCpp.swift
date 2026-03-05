@@ -18,12 +18,12 @@ public func callCpp() {
 
     function1(100);
 
-    let vec = StructlyBridge.function2(100);
-    for i in 0..<vec.size() {
-        print(vec[i])
-    }
-    let swiftArray = Array(vec)
-    print("returned swiftArray: \(swiftArray)")
+//    let vec = StructlyBridge.function2(100);
+//    for i in 0..<vec.size() {
+//        print(vec[i])
+//    }
+//    let swiftArray = Array(vec)
+//    print("returned swiftArray: \(swiftArray)")
 
 //    StructlyBridge.function3(100);
     //function4({"q", "r", "s"});

@@ -37,7 +37,9 @@ let package = Package(
 
         .testTarget(
             name: "structlyTests",
-            dependencies: ["structly"]
+            dependencies: ["structly"],
+            swiftSettings: [.interoperabilityMode(.Cxx)]
+
         )
     ],
     cxxLanguageStandard: .cxx17 // Explicitly set the C++ version
