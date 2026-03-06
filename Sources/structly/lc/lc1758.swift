@@ -28,6 +28,7 @@
 /// s[i] is either '0' or '1'.
 
 import Testing
+
 class lc1758 {
     func minOperations(_ s: String) -> Int {
         var res0 = 0
@@ -51,17 +52,17 @@ class lc1758 {
         return min(res0, res1)
     }
 
-    @Test func test1() {
+    @Test func lc1758_test1() {
         let s = "0100"
         #expect(minOperations(s) == 1)
     }
 
-    @Test func test2() {
+    @Test func lc1758_test2() {
         let s = "10"
         #expect(minOperations(s) == 0)
     }
 
-    @Test func test3() {
+    @Test func lc1758_test3() {
         let s = "1111"
         #expect(minOperations(s) == 2)
     }
