@@ -38,6 +38,7 @@ let package = Package(
         .testTarget(
             name: "structlyTests",
             dependencies: ["structly"],
+            path: "Tests/structlyTests",
             swiftSettings: [.interoperabilityMode(.Cxx)]
 
         )

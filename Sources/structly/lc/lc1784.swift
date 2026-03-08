@@ -26,10 +26,10 @@ s[i]​​​​ is either '0' or '1'.
 s[0] is '1'.
 */
 
-import Testing
+//import Testing
 
 class lc1784 {
-    func checkOnesSegment_firstIteration(_ s: String) -> Bool {
+    static func checkOnesSegment_firstIteration(_ s: String) -> Bool {
         let chrs: [Character] = Array(s)
         var firstChunkSeen = false
         for (i, ch) in chrs.enumerated() {
@@ -42,25 +42,25 @@ class lc1784 {
         return true
     }
 
-    func checkOnesSegment(_ s: String) -> Bool {
+    static func checkOnesSegment(_ s: String) -> Bool {
         return !s.contains("01")
     }
-
-    @Test 
-    func lc1784_test1() async throws {
-        let s = "1001"
-        #expect(checkOnesSegment(s) == false)
-    }
-
-    @Test 
-    func lc1784_test2() async throws {
-        let s = "110"
-        #expect(checkOnesSegment(s) == true)
-    }
-
-    @Test 
-    func lc1784_test3() async throws {
-        let s = "1011"
-        #expect(checkOnesSegment(s) == false)
-    }
+//
+//    @Test 
+//    func lc1784_test1() async throws {
+//        let s = "1001"
+//        #expect(checkOnesSegment(s) == false)
+//    }
+//
+//    @Test 
+//    func lc1784_test2() async throws {
+//        let s = "110"
+//        #expect(checkOnesSegment(s) == true)
+//    }
+//
+//    @Test 
+//    func lc1784_test3() async throws {
+//        let s = "1011"
+//        #expect(checkOnesSegment(s) == false)
+//    }
 }

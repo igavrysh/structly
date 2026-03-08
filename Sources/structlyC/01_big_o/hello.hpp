@@ -8,3 +8,5 @@
 void run_cpp_logic();
 void run1();
 void run2();
+
+void fizzbuzz_test1();
