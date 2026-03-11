@@ -25,8 +25,6 @@ Constraints:
 s[i] is either '0' or '1'.
 */
 
-//import Testing
-
 class lc1758 {
     static func minOperations(_ s: String) -> Int {
         var res0 = 0
@@ -49,6 +47,4 @@ class lc1758 {
 
         return min(res0, res1)
     }
-
-   
 }
