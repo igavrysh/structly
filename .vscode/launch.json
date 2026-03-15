@@ -39,6 +39,15 @@
             "target": "structlyCLI",
             "configuration": "release",
             "preLaunchTask": "swift: Build Release structlyCLI"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug Unit Tests",
+            "program": "${executable:test}", 
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
+    
     ]
 }
