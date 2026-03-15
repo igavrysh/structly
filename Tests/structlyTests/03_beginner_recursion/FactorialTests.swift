@@ -8,6 +8,7 @@
 import Testing
 @testable import structly
 
+@Suite("03_FactorialTests")
 struct FactorialTests {
     @Test("test_00")
     func test00() async throws {

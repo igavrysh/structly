@@ -8,7 +8,7 @@
 import Testing
 @testable import structly
 
-@Suite
+@Suite("02_AnagramsTests")
 final class AnagramsTests {
     @Test("test_00")
     func test00() async throws {

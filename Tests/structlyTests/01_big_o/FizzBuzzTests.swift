@@ -8,8 +8,8 @@
 import Testing
 @testable import structly
 
-@Suite
-final class fizzBuzzTests {
+@Suite("01_FizzBuzzTests")
+final class FizzBuzzTests {
     @Test
     func test1() async throws {
         let res = fizzBuzz(11)

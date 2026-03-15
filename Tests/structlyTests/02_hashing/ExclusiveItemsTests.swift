@@ -8,6 +8,7 @@
 import Testing
 @testable import structly
 
+@Suite("02_ExclusiveItemsTests")
 struct ExclusiveItemsTests {
     @Test("test_00")
     func test00() async throws {
