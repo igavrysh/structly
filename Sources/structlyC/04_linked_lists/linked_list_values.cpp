@@ -29,7 +29,3 @@ std::vector<std::string> linkedListValues(Node *head) {
     return vals;
 }
 
-void run() {
-    // this function behaves as `main()` for the 'run' command
-    // you may sandbox in this function, but should not remove it
-}

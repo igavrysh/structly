@@ -35,7 +35,7 @@ void printList(Node* head) {
     printList(head->next);
 }
 
-void run() {
+void runPrintList() {
     Node a("A");
     Node b("B");
     Node c("C");

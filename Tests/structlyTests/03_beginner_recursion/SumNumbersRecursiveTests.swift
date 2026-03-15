@@ -8,6 +8,7 @@
 import Testing
 @testable import structly
 
+@Suite("03_SumNumbersRecursiveTests")
 struct SumNumbersRecursiveTests {
     @Test("test_00")
     func test00() async throws {

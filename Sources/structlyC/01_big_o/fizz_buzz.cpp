@@ -37,7 +37,7 @@ void fizzbuzz_test1() {
 //    assert(assert_vectors_equal(exp_output, output)==true);
 }
 
-void run() {
+void runFizzBuzz() {
   // this function behaves as `main()` for the 'run' command
   // you may sandbox in this function, but should not remove it
 }
