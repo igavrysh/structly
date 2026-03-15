@@ -6,20 +6,15 @@
 //
 
 func palindrome(_ s: String) -> Bool {
-    func is_p(l: String.Index, r: String.Index, res: Bool, s: String) -> Bool {
-        print("\(l) =?= \(r) res: \(s[l]==s[r])")
-        if res == false {
-            return false
-        }
+    func is_p(l: String.Index, r: String.Index) -> Bool {
         if l >= r {
             return true
         }
-        return is_p(
-            l: s.index(after: l),
-            r: s.index(before: r),
-            res: s[l] == s[r] && res,
-            s: s)
+        if s[l] != s[r] {
+            return false
+        }
+        return is_p(l: s.index(after: l), r: s.index(before: r))
     }
-    return s.count == 0
-        || is_p(l: s.startIndex, r: s.index(before: s.endIndex), res: true, s: s)
+    return s.isEmpty
+        || is_p(l: s.startIndex, r: s.index(before: s.endIndex))
 }

@@ -65,4 +65,20 @@ struct PalindromeTests {
         }
         #expect(result == true)
     }
+
+    @Test("test_ololo")
+    func test_ololo() async throws {
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            palindrome("👨‍👩‍👧‍👦􀫊👨‍👩‍👧‍👦")
+        }
+        #expect(result == true)
+    }
+
+    @Test("test_ololo2")
+    func test_ololo2() async throws {
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            palindrome("􀥺􀪯􁎖")
+        }
+        #expect(result == false)
+    }
 }

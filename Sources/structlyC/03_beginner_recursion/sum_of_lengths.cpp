@@ -12,7 +12,7 @@ int sumOfLengths_helper(int i, int acc, std::vector<std::string> strings) {
     if (i == strings.size()) {
         return acc;
     }
-    return sumOfLengths_helper(i+1, acc + strings[i].size(), strings);
+    return sumOfLengths_helper(i+1, acc + (int)strings[i].size(), strings);
 }
 
 int sumOfLengths(std::vector<std::string> strings) {
