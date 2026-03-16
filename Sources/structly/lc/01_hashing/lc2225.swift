@@ -7,21 +7,39 @@
 
 class lc2225 {
     func findWinners(_ matches: [[Int]]) -> [[Int]] {
-        var losses: [Int: Int] = [:]
+        var numberOfPlayers = 0
         for match in matches {
-            losses[match[1], default: 0] += 1
+            let winner = match.first!
+            let looser = match.last!
+            numberOfPlayers = max(numberOfPlayers, max(winner, looser))
         }
-        var zeroLosses: [Int] = []
-        var oneLoss: [Int] = []
-        for (loser_id, loses) in losses {
-            if loses == 0 {
-                zeroLosses.append(loser_id)
-            } else if loses == 1 {
-                oneLoss.append(loser_id)
+
+        var players: [Int] = Array(repeating: -1, count: numberOfPlayers + 1)
+        for match in matches {
+            let winner = match.first!
+            let looser = match.last!
+
+            if players[winner] == -1 {
+                players[winner] = 0
+            }
+
+            if players[looser] == -1 {
+                players[looser] = 1
+            } else {
+                players[looser] += 1
             }
         }
-        zeroLosses.sort()
-        oneLoss.sort()
-        return [zeroLosses, oneLoss]
+
+        var result: [[Int]] = [[], []]
+
+        for player in 1...numberOfPlayers where players[player] != -1 {
+            if players[player] == 0 {
+                result[0].append(player)
+            } else if players[player] == 1 {
+                result[1].append(player)
+            }
+        }
+
+        return result
     }
 }
