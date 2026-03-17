@@ -8,7 +8,6 @@
 class Solution {
 
     func missingNumber(_ nums: [Int]) -> Int {
-        var target = (nums.count + 1) * nums.count / 2
         var xor = 0
         for num in nums {
             xor ^= num
@@ -20,7 +19,7 @@ class Solution {
     }
 
     func missingNumber2(_ nums: [Int]) -> Int {
-        var target = (nums.count + 1) * nums.count / 2
+        let target = (nums.count + 1) * nums.count / 2
         var sum = 0
         for num in nums {
             sum += num
@@ -37,7 +36,6 @@ class Solution {
             if num == nums.count {
                 topFilled = true
             }
-            var j = i
             while num != -1 {
                 if num == nums.count {
                     topFilled = true
