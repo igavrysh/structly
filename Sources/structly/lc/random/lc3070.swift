@@ -23,7 +23,7 @@ class lc3070 {
                 } else {
                     return res
                 }
-                var tmp = dp_prev
+                let tmp = dp_prev
                 dp_prev = dp
                 dp = tmp
             }

@@ -9,8 +9,6 @@ class lc1878 {
     func getBiggestThree(_ grid: [[Int]]) -> [Int] {
         func rhombusSum(i cI: Int, j cJ: Int, r: Int) -> Int {
             var res = 0
-            var gridI = -1
-            var gridJ = -1
             for j in -r...r {
                 if j < 0 {
                     res = res + grid[cI-(r+j)][cJ+j]
