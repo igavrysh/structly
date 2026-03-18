@@ -10,10 +10,11 @@ func reverseList(_ head: Node<String>?) -> Node<String>? {
         guard let node else {
             return prevNode
         }
-        let next = node.next
+
+        let newHead = rev(node: node.next, prevNode: node)
         node.next = prevNode
 
-        return rev(node: next, prevNode: node)
+        return newHead
     }
 
     return rev(node: head, prevNode: nil)

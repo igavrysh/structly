@@ -23,10 +23,10 @@ Node* rev_helper(Node* node, Node* prev) {
         return prev;
     }
 
-    Node* tmp = node->next;
+    Node* newHead = rev_helper(node->next, node);
     node->next = prev;
 
-    return rev_helper(tmp, node);
+    return newHead;
 }
 
 Node* reverseList(Node* head) {
