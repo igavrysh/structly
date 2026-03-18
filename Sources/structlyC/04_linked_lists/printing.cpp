@@ -9,7 +9,7 @@
 #include <string>
 
 class Node {
-    public:
+public:
     std::string val;
     Node *next;
 

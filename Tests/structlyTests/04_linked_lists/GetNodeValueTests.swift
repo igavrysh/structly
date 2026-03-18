@@ -1,15 +1,15 @@
 //
-//  LinkedListFindTests.swift
+//  GetNodeValueTests.swift
 //  MyCLI
 //
-//  Created by new on 3/16/26.
+//  Created by new on 3/18/26.
 //
 
 import Testing
 @testable import structly
 
-@Suite("04_LinkedListFindTests")
-struct LinkedListFindTests {
+@Suite("04_GetNodeValueTests")
+struct GetNodeValueTests {
     @Test("test_00")
     func test00() async throws {
         let a = Node("a")
@@ -22,9 +22,9 @@ struct LinkedListFindTests {
         c.next = d
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            linkedListFind(a, "c")
+            getNodeValue(a, 2)
         }
-        #expect(result == true)
+        #expect(result == "c")
     }
 
     @Test("test_01")
@@ -39,9 +39,9 @@ struct LinkedListFindTests {
         c.next = d
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            linkedListFind(a, "d")
+            getNodeValue(a, 3)
         }
-        #expect(result == true)
+        #expect(result == "d")
     }
 
     @Test("test_02")
@@ -56,41 +56,34 @@ struct LinkedListFindTests {
         c.next = d
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            linkedListFind(a, "q")
+            getNodeValue(a, 7)
         }
-        #expect(result == false)
+        #expect(result == "")
     }
 
     @Test("test_03")
     func test03() async throws {
-        let node1 = Node("jason")
-        let node2 = Node("leneli")
+        let node1 = Node("banana")
+        let node2 = Node("mango")
 
         node1.next = node2
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            linkedListFind(node1, "jason")
+            getNodeValue(node1, 0)
         }
-        #expect(result == true)
+        #expect(result == "banana")
     }
 
     @Test("test_04")
     func test04() async throws {
-        let node1 = Node(42)
+        let node1 = Node("banana")
+        let node2 = Node("mango")
+
+        node1.next = node2
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            linkedListFind(node1, 42)
+            getNodeValue(node1, 1)
         }
-        #expect(result == true)
-    }
-
-    @Test("test_05")
-    func test05() async throws {
-        let node1 = Node(42)
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            linkedListFind(node1, 100)
-        }
-        #expect(result == false)
+        #expect(result == "mango")
     }
 }
