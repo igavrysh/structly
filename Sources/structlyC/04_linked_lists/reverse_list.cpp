@@ -42,7 +42,6 @@ Node* reverseList1(Node* head) {
         node_prev = node;
         node = tmp;
     }
-    head->next = nullptr;
 
     return node_prev;
 }
