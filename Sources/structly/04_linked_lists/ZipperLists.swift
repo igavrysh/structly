@@ -1,0 +1,52 @@
+//
+//  ZipperLists.swift
+//  MyCLI
+//]\\\\\\\\\\\
+
+//  Created by new on 3/19/26.
+//
+
+func zipperLists<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
+    guard let head1 else {
+        return head2
+    }
+    guard let head2 else {
+        return head1
+    }
+
+    var head1Next = head1.next
+    head1.next = head2
+    head2.next = zipperLists(head1Next, head2.next)
+
+    return head1
+}
+
+func zipperLists1<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
+    func zip(_ node1: Node<T>?, _ node2: Node<T>?, _ tail: Node<T>, _ counter: Int) {
+        guard let node1 else {
+            tail.next = node2
+            return
+        }
+
+        guard let node2 else {
+            tail.next = node1
+            return
+        }
+
+        if counter % 2 == 0 {
+            tail.next = node1
+            zip(node1.next, node2, node1, counter + 1)
+        } else {
+            tail.next = node2
+            zip(node1, node2.next, node2, counter + 1)
+        }
+    }
+
+    guard let head1 else {
+        return head2;
+    }
+
+    zip(head1.next, head2, head1, 1)
+
+    return head1
+}
