@@ -5,7 +5,7 @@
 //  Created by new on 3/16/26.
 //
 
-class Solution {
+class lc0268 {
 
     func missingNumber(_ nums: [Int]) -> Int {
         var xor = 0
