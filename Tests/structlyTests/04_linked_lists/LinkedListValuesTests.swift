@@ -52,7 +52,7 @@ struct LinkedListValuesTests {
 
     @Test("test_03")
     func test03() async throws {
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+        let result: [String] = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             linkedListValues(nil)
         }
         #expect(result == [])

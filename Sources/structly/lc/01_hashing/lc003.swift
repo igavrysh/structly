@@ -8,7 +8,6 @@
 class lc003 {
     func lengthOfLongestSubstring(_ s: String) -> Int {
         var set: Set<Character> = []
-        var size = s.count
         var l_index = s.startIndex;
         var res = 0
         for (r, ch) in s.enumerated() {

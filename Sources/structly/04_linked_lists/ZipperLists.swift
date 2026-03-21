@@ -14,7 +14,7 @@ func zipperLists<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
         return head1
     }
 
-    var head1Next = head1.next
+    let head1Next = head1.next
     head1.next = head2
     head2.next = zipperLists(head1Next, head2.next)
 

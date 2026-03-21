@@ -1,3 +1,28 @@
+
+class lc1758 {
+    static func minOperations(_ s: String) -> Int {
+        var res0 = 0
+        var res1 = 0
+        for (i, char) in s.enumerated() {
+            if i % 2 == 0 {
+                if char == "1" {
+                    res0 += 1
+                } else {
+                    res1 += 1
+                }
+            } else {
+                if char == "1" {
+                    res1 += 1
+                } else {
+                    res0 += 1
+                }
+            }
+        }
+
+        return min(res0, res1)
+    }
+}
+
 /**
 1784. Check if Binary String Has at Most One Segment of Ones
 
@@ -24,27 +49,3 @@ Constraints:
 1 <= s.length <= 10**4
 s[i] is either '0' or '1'.
 */
-
-class lc1758 {
-    static func minOperations(_ s: String) -> Int {
-        var res0 = 0
-        var res1 = 0
-        for (i, char) in s.enumerated() {
-            if i % 2 == 0 {
-                if char == "1" {
-                    res0 += 1
-                } else {
-                    res1 += 1
-                }
-            } else {
-                if char == "1" {
-                    res1 += 1
-                } else {
-                    res0 += 1
-                }
-            }
-        }
-
-        return min(res0, res1)
-    }
-}
