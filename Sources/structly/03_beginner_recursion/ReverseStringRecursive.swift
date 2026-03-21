@@ -16,3 +16,23 @@ func reverseString(_ s: String) -> String {
     }
     return rev(sub: s[...])
 }
+
+func reverseStringOlolo(_ s: inout String) -> String {
+    var l = s.startIndex
+    var r = s.index(before: s.endIndex)
+
+    while l < r {
+        let charL = s[l]
+        let charR = s[r]
+
+        s.replaceSubrange(l...l, with: String(charR))
+        s.replaceSubrange(r...r, with: String(charL))
+
+        s.formIndex(after: &l)
+        s.formIndex(before: &r)
+    }
+
+    return s
+}
+
+

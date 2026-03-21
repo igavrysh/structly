@@ -41,4 +41,41 @@ struct ReverseStringTests {
         }
         #expect(result == "")
     }
+
+
+    @Test("test_10")
+    func test10() async throws {
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            var s = "hello"
+            return reverseStringOlolo(&s)
+        }
+        #expect(result == "olleh")
+    }
+
+    @Test("test_11")
+    func test11() async throws {
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            var s = "abcdefg"
+            return reverseStringOlolo(&s)
+        }
+        #expect(result == "gfedcba")
+    }
+
+    @Test("test_12")
+    func test12() async throws {
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            var s = "stopwatch"
+            return reverseStringOlolo(&s)
+        }
+        #expect(result == "hctawpots")
+    }
+
+    @Test("test_13")
+    func test13() async throws {
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            var s = ""
+            return reverseString(s)
+        }
+        #expect(result == "")
+    }
 }
