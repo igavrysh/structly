@@ -22,6 +22,14 @@ Node* zipperLists(Node* head1, Node* head2) {
     if (head1 == nullptr) {
         return head2;
     }
+    head1->next = zipperLists(head2, head1->next);
+    return head1;
+}
+
+Node* zipperLists6(Node* head1, Node* head2) {
+    if (head1 == nullptr) {
+        return head2;
+    }
 
     if (head2 == nullptr) {
         return head1;
@@ -29,7 +37,7 @@ Node* zipperLists(Node* head1, Node* head2) {
 
     Node* head1Next = head1->next;
     head1->next = head2;
-    head2->next = zipperLists(head1Next, head2->next);
+    head2->next = zipperLists6(head1Next, head2->next);
 
     return head1;
 }
