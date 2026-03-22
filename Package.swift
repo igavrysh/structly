@@ -5,9 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "MyCLI",
-    platforms: [.macOS(.v13)],
+    platforms: [.macOS(.v14)],
     products: [
-        .library(name: "structly", targets: ["structly", "structlyC"]),
+        .library(name: "structly", targets: ["structly"]),
         .library(name: "structlyC", targets: ["structlyC"]),
         .executable(name: "structlyCLI", targets: ["structlyCLI"])
     ],

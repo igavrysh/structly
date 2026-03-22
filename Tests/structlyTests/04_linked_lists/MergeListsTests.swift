@@ -108,4 +108,40 @@ struct MergeListsTests {
         let values = linkedListValues(result)
         #expect(values == [15, 67])
     }
+
+    @Test("test_05")
+    func test05() async throws {
+        let one: Node<Int>? = nil
+        let two = Node(2)
+
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            mergeLists(one, two)
+        }
+        let values = linkedListValues(result)
+        #expect(values == [2])
+    }
+
+    @Test("test_06")
+    func test06() async throws {
+        let one = Node(1)
+        let two: Node<Int>? = nil
+
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            mergeLists(one, two)
+        }
+        let values = linkedListValues(result)
+        #expect(values == [1])
+    }
+
+    @Test("test_07")
+    func test07() async throws {
+        let one: Node<Int>? = nil
+        let two: Node<Int>? = nil
+
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            mergeLists(one, two)
+        }
+        let values = linkedListValues(result)
+        #expect(values == [])
+    }
 }

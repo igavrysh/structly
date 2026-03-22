@@ -6,25 +6,12 @@
 //  Created by new on 3/19/26.
 //
 
-
-func zipperLists5<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
-    guard let head1 else {
-        return head2
-    }
-    head1.next = zipperLists5(head2, head1.next)
-    return head1
-}
-
-protocol Defaultable {
-    static var defaultValue: Self { get }
-}
-
-func zipperLists6<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? where T: Defaultable {
+func zipperLists<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? where T: Defaultable {
     var tail = Node<T>(T.defaultValue)
     tail.next = head1 ?? head2
 
     let senti = tail
-    
+
     var (p1, p2) = (head1, head2)
     while let current = p1 {
         tail.next = current
@@ -44,6 +31,18 @@ extension Int: Defaultable {
 
 extension String: Defaultable {
     static var defaultValue: String { "" }
+}
+
+func zipperLists5<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
+    guard let head1 else {
+        return head2
+    }
+    head1.next = zipperLists5(head2, head1.next)
+    return head1
+}
+
+protocol Defaultable {
+    static var defaultValue: Self { get }
 }
 
 func zipperLists4<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {

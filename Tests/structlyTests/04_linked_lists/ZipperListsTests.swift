@@ -136,4 +136,16 @@ struct ZipperListsTests {
         let values = linkedListValues(result)
         #expect(values == ["1"])
     }
+
+    @Test("test_07")
+    func test07() async throws {
+        let one: Node<String>? = nil
+        let two: Node<String>? = nil
+
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            zipperLists(one, two)
+        }
+        let values = linkedListValues(result)
+        #expect(values == [])
+    }
 }
