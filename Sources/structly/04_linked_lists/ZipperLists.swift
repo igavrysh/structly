@@ -6,7 +6,47 @@
 //  Created by new on 3/19/26.
 //
 
-func zipperLists<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
+
+func zipperLists5<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
+    guard let head1 else {
+        return head2
+    }
+    head1.next = zipperLists5(head2, head1.next)
+    return head1
+}
+
+protocol Defaultable {
+    static var defaultValue: Self { get }
+}
+
+func zipperLists6<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? where T: Defaultable {
+    var tail = Node<T>(T.defaultValue)
+    tail.next = head1 ?? head2
+
+    let senti = tail
+    
+    var (p1, p2) = (head1, head2)
+    while let current = p1 {
+        tail.next = current
+        tail = tail.next!
+        p1 = current.next
+        (p1, p2) = (p2, p1)
+    }
+
+    tail.next = p2
+
+    return senti.next
+}
+
+extension Int: Defaultable {
+    static var defaultValue: Int { 0 }
+}
+
+extension String: Defaultable {
+    static var defaultValue: String { "" }
+}
+
+func zipperLists4<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
     if head1 == nil {
         return head2
     }
@@ -29,20 +69,9 @@ func zipperLists<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
         }
         counter += 1
     }
-    if node1 == nil {
-        tail.next = node2
-    } else {
-        tail.next = node1
-    }
 
-    return head1
-}
+    tail.next = node1 ?? node2
 
-func zipperLists3<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
-    guard let head1 else {
-        return head2
-    }
-    head1.next = zipperLists(head2, head1.next)
     return head1
 }
 
@@ -56,7 +85,7 @@ func zipperLists2<T>(_ head1: Node<T>?, _ head2: Node<T>?) -> Node<T>? {
 
     let head1Next = head1.next
     head1.next = head2
-    head2.next = zipperLists(head1Next, head2.next)
+    head2.next = zipperLists2(head1Next, head2.next)
 
     return head1
 }
