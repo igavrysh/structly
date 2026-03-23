@@ -162,8 +162,3 @@ Node* zipperLists1(Node* head1, Node* head2) {
 
     return sent->next;
 }
-
-void run() {
-    // this function behaves as `main()` for the 'run' command
-    // you may sandbox in this function, but should not remove it
-}
