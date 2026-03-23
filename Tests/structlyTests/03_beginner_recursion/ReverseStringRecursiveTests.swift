@@ -73,7 +73,7 @@ struct ReverseStringTests {
     @Test("test_13")
     func test13() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            var s = ""
+            let s = ""
             return reverseString(s)
         }
         #expect(result == "")
