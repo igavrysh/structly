@@ -5,7 +5,7 @@
 //  Created by new on 3/23/26.
 //
 
-func depthFirstValues(_ root: TreeNode<String>?) -> [String] {
+func depthFirstValues2(_ root: TreeNode<String>?) -> [String] {
     var res: [String] = []
 
     guard let root else {
@@ -26,13 +26,18 @@ func depthFirstValues(_ root: TreeNode<String>?) -> [String] {
     return res
 }
 
-func depthFirstValues1(_ root: TreeNode<String>?) -> [String] {
-    guard let root else {
-        return []
+func cache_depth(node: TreeNode<String>?, cache: inout [String]) {
+    guard let node else {
+        return
     }
+    cache.append(node.val)
+    cache_depth(node: node.left, cache: &cache)
+    cache_depth(node: node.right, cache: &cache)
+}
 
-    var left = depthFirstValues(root.left)
-    left.insert(root.val, at: 0)
-    let right = depthFirstValues(root.right)
-    return left + right
+func depthFirstValues(_ root: TreeNode<String>?) -> [String] {
+    var acc: [String] = []
+    cache_depth(node: root, cache: &acc)
+
+    return acc
 }
