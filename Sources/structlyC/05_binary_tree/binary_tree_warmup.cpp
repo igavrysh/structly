@@ -41,6 +41,5 @@ void run() {
  B  C
  / \   \
  D   E    F
-
  */
 

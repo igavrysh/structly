@@ -46,7 +46,6 @@ std::vector<std::string> depthFirstValues(Node* root) {
     return res;
 }
 
-
 std::vector<std::string> depthFirstValues1(Node* root) {
     if (root == nullptr) {
         return std::vector<std::string>();
@@ -61,4 +60,3 @@ std::vector<std::string> depthFirstValues1(Node* root) {
 
     return left;
 }
-

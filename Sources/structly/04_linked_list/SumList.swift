@@ -19,5 +19,3 @@ func sumList1(_ head: Node<Int>?) -> Int {
     }
     return res
 }
-
-
