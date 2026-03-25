@@ -6,7 +6,7 @@
 //
 
 func removeNode(_ head: Node<String>?, _ target: String) -> Node<String>? {
-    var dummy = Node("foobar")
+    let dummy = Node("foobar")
     dummy.next = head
     var node: Node<String>? = head
     var prevNode = dummy
