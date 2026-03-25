@@ -54,7 +54,6 @@ final class Queue<T: Sendable>: @unchecked Sendable {
     private let queueLock = NSLock()
     private var size: Int = 0
 
-
     var isEmpty: Bool {
         queueLock.withLock {
             head == nil

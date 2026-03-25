@@ -5,18 +5,16 @@
 //  Created by new on 3/24/26.
 //
 
-
-func treeSum(_ node: TreeNode<Int>?) -> Int {
+func treeSum(_ root: TreeNode<Int>?) -> Int {
     let q = Queue<TreeNode<Int>>()
-    if let node {
-        q.enqueue(node)
+    if let root {
+        q.enqueue(root)
     }
-
     var res = 0
     while q.peek() != nil, let cnode = q.dequeue() {
         res += cnode.val
         if let left = cnode.left {
-            q.enqueue(left )
+            q.enqueue(left)
         }
         if let right = cnode.right {
             q.enqueue(right)
