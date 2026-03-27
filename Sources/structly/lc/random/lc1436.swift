@@ -20,6 +20,6 @@ class lc1436 {
                 dest_cities.remove(src)
             }
         }
-        return dest_cities.first! ?? ""
+        return dest_cities.first ?? ""
     }
 }
