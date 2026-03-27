@@ -9,6 +9,7 @@
 #include <string>
 #include <queue>
 #include <tuple>
+#include <algorithm>
 
 using namespace std;
 
@@ -75,12 +76,11 @@ std::vector<std::string>* pathFinder1(Node* root, std::string targetVal) {
     if (!path_finder(root, acc, targetVal)) {
         return nullptr;
     }
-
+    std::reverse(acc->begin(), acc->end());
     return acc;
 }
 
 bool path_finder(Node* node, std::vector<std::string> *acc, std::string targetVal) {
-
     if (node == nullptr) {
         return false;
     }
@@ -90,18 +90,17 @@ bool path_finder(Node* node, std::vector<std::string> *acc, std::string targetVa
         return true;
     }
 
-    acc->push_back(node->val);
-
     bool res = path_finder(node->left, acc, targetVal);
     if (res == true) {
+        acc->push_back(node->val);
         return true;
     }
 
     res = path_finder(node->right, acc, targetVal);
     if (res == true) {
+        acc->push_back(node->val);
         return true;
     }
-    acc->pop_back();
 
     return false;
 }
@@ -154,10 +153,9 @@ void tree_path_finder_test_07() {
     int t = 1;
 }
 
-//int main(int argc, char const *argv[]) {
-//
+// int main(int argc, char const *argv[]) {
 //    tree_path_finder_test_07();
-//    
+   
 //    return 0;
-//}
+// }
 
