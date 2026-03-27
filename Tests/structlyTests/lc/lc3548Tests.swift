@@ -109,4 +109,12 @@ final class lc3548Tests {
         #expect(res == true)
     }
 
+    @Test
+    func lc358_test941_random() async throws {
+        let grid = [[1,1],[2,1],[4,3]]
+        let sol = lc3548()
+        let res = sol.canPartitionGrid(grid)
+        #expect(res == false)
+    }
+
 }
