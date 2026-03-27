@@ -8,7 +8,7 @@
 import Testing
 @testable import structly
 
-@Suite
+@Suite("lc3477Tests")
 final class lc3477Tests {
 
     @Test

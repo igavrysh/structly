@@ -154,10 +154,10 @@ void tree_path_finder_test_07() {
     int t = 1;
 }
 
-int main(int argc, char const *argv[]) {
-
-    tree_path_finder_test_07();
-    
-    return 0;
-}
+//int main(int argc, char const *argv[]) {
+//
+//    tree_path_finder_test_07();
+//    
+//    return 0;
+//}
 

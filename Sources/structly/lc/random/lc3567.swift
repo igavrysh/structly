@@ -5,7 +5,7 @@
 //  Created by new on 3/20/26.
 //
 
-// BF solution
+// BF approach
 
 class lc3567 {
     func minAbsDiff(_ grid: [[Int]], _ k: Int) -> [[Int]] {

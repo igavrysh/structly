@@ -5,7 +5,7 @@
 //  Created by new on 3/23/26.
 //
 
-class Solution {
+class lc2906 {
     func constructProductMatrix(_ grid: [[Int]]) -> [[Int]] {
         let MOD = 12345
         let rows = grid.count
