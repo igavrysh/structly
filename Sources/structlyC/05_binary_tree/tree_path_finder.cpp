@@ -26,7 +26,6 @@ public:
     }
 };
 
-bool path_finder(Node* node, std::vector<std::string> *acc, std::string targetVal);
 
 vector<string>* pathFinder(Node* root, string targetVal) {
     if (root == nullptr) {
@@ -71,7 +70,9 @@ vector<string>* pathFinder(Node* root, string targetVal) {
     return res;
 }
 
-std::vector<std::string>* pathFinder1(Node* root, std::string targetVal) {
+bool path_finder(Node* node, std::vector<std::string> *acc, std::string targetVal);
+
+std::vector<std::string>* pathFinder(Node* root, std::string targetVal) {
     std::vector<std::string> *acc = new std::vector<std::string>();
     if (!path_finder(root, acc, targetVal)) {
         return nullptr;
