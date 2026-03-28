@@ -25,6 +25,18 @@ final class Node<T: Sendable>: @unchecked Sendable {
     }
 }
 
+final class TreeNodeSimple<T> {
+    var val: T
+    var left: TreeNodeSimple<T>?
+    var right: TreeNodeSimple<T>?
+
+    init(_ value: T) {
+        self.val = value
+        self.left = nil
+        self.right = nil
+    }
+}
+
 final class TreeNode<T: Sendable>: @unchecked Sendable {
     private let lock = NSLock()
     private var _val: T
