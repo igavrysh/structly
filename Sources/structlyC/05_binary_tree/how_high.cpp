@@ -13,7 +13,6 @@ public:
     Node* left;
     Node* right;
 
-
     Node(std::string initialVal) {
         val = initialVal;
         left = nullptr;

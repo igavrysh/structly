@@ -14,6 +14,7 @@ public:
     int val;
     Node* left;
     Node* right;
+    
     Node(int initialVal) {
         val = initialVal;
         left = nullptr;

@@ -26,7 +26,6 @@ public:
     }
 };
 
-
 vector<string>* pathFinder(Node* root, string targetVal) {
     if (root == nullptr) {
         return nullptr;
