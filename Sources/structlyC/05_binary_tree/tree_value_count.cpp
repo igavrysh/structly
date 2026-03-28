@@ -21,7 +21,17 @@ public:
     }
 };
 
-int treeValueCount(Node* root, int targetVal) {
+int treeValueCount(Node* node, int targetVal) {
+    if (node == nullptr) {
+        return 0;
+    }
+
+    return (node->val == targetVal ? 1 : 0)
+        + treeValueCount(node->left, targetVal)
+        + treeValueCount(node->right, targetVal);
+}
+
+int treeValueCount1(Node* root, int targetVal) {
     int fq = 0;
     std::queue<Node*> q{};
     if (root != nullptr) {
