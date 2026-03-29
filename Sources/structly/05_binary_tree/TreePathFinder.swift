@@ -6,11 +6,11 @@
 //
 
 /// DFS - push into stack:
-/// * in case both left and right children are available for current node, push  nil, node.right, node.left into the stack
-/// * in case only left child is available: nil, node.left
+/// * in case both left and right children are available for current node: push .leave, .enter(node.right), .enter(node.left) onto the stack
+/// * in case only left child is available: push .leave and .enter(node.left) onto the stack
 /// * in case only right child ...
-/// * in case leaf node, e.g. no left or right nodes for current node: just push nil into the stack
-/// pop from the stack - and if the value is nil, means last path element should also be poped, e.g. we completed
+/// * in case leaf node, e.g. no left or right nodes for current node: just push .leave onto the stack
+/// pop from the stack - and if the value is .leave, means last path element should also be poped, e.g. completed
 /// traversal of all current node children and have not found anything, meaning current path is exhausted and we need to return
 /// to previous level to check all options there too
 fileprivate enum Step<T> {
