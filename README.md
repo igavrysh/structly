@@ -5,7 +5,7 @@ swift package init --name MyCLI --type executable
 
 ### To Run CLI app
 ```
-swift run structlyCLI
+swift run structyCLI
 ```
 
 ### Test

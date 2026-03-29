@@ -1,6 +1,5 @@
 {
     "configurations": [
-        
         {
             "type": "swift",
             "request": "launch",
@@ -45,10 +44,29 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug Unit Tests",
-            "program": "${executable:test}", 
+            "program": "${executable:test}",
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:structy}",
+            "name": "Debug structyCLI",
+            "target": "structyCLI",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug structyCLI"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:structy}",
+            "name": "Release structyCLI",
+            "target": "structyCLI",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release structyCLI"
         }
-    
     ]
 }

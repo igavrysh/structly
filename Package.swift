@@ -7,15 +7,15 @@ let package = Package(
     name: "MyCLI",
     platforms: [.macOS(.v14)],
     products: [
-        .library(name: "structly", targets: ["structly"]),
-        .library(name: "structlyC", targets: ["structlyC"]),
-        .executable(name: "structlyCLI", targets: ["structlyCLI"])
+        .library(name: "structy", targets: ["structy"]),
+        .library(name: "structyC", targets: ["structyC"]),
+        .executable(name: "structyCLI", targets: ["structyCLI"])
     ],
     targets: [
         .target(
-            name: "structly",
-            dependencies: ["structlyC"],
-            path: "Sources/structly",
+            name: "structy",
+            dependencies: ["structyC"],
+            path: "Sources/structy",
             swiftSettings: [
                 .interoperabilityMode(.Cxx),
                 .enableUpcomingFeature("StrictConcurrency"),
@@ -23,16 +23,16 @@ let package = Package(
             ]
         ),
         .target(
-            name: "structlyC",
+            name: "structyC",
             dependencies: [],
-            path: "Sources/structlyC",
+            path: "Sources/structyC",
             publicHeadersPath: "include",
             swiftSettings: [.interoperabilityMode(.Cxx)]
         ),
 
         .executableTarget(
-            name: "structlyCLI",
-            dependencies: ["structly"],
+            name: "structyCLI",
+            dependencies: ["structy"],
             swiftSettings: [
                 .interoperabilityMode(.Cxx),
                 .enableUpcomingFeature("StrictConcurrency"),
@@ -44,9 +44,9 @@ let package = Package(
         ),
 
         .testTarget(
-            name: "structlyTests",
-            dependencies: ["structly"],
-            path: "Tests/structlyTests",
+            name: "structyTests",
+            dependencies: ["structy"],
+            path: "Tests/structyTests",
             swiftSettings: [.interoperabilityMode(.Cxx)]
 
         )
