@@ -8,7 +8,7 @@
 import Testing
 @testable import structly
 
-@Suite("05_TreeSumTests")
+@Suite("05 TreeSumTests")
 struct TreeSumTests {
     @Test("test_00")
     func test00() async throws {
