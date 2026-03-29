@@ -1,14 +1,15 @@
 //
-//  DepthFirstValuesTests.swift
+//  HowHighTests.swift
 //  MyCLI
 //
-//  Created by new on 3/23/26.
+//  Created by new on 3/29/26.
 //
+
 import Testing
 @testable import structly
 
-@Suite("05 DepthFirstValuesTests")
-struct DepthFirstValuesTests {
+@Suite("05 HowHighTests")
+struct HowHighTests {
     @Test("test_00")
     func test00() async throws {
         let a = TreeNode("a")
@@ -25,9 +26,16 @@ struct DepthFirstValuesTests {
         c.right = f
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            depthFirstValues(a)
+            howHigh(a)
         }
-        #expect(result == ["a", "b", "d", "e", "c", "f"])
+
+        //      a
+        //    /   \
+        //   b     c
+        //  / \     \
+        // d   e     f
+
+        #expect(result == 2)
     }
 
     @Test("test_01")
@@ -48,46 +56,73 @@ struct DepthFirstValuesTests {
         e.left = g
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            depthFirstValues(a)
+            howHigh(a)
         }
-        #expect(result == ["a", "b", "d", "e", "g", "c", "f"])
+
+        //      a
+        //    /   \
+        //   b     c
+        //  / \     \
+        // d   e     f
+        //    /
+        //   g
+
+        #expect(result == 3)
     }
 
     @Test("test_02")
     func test02() async throws {
         let a = TreeNode("a")
+        let c = TreeNode("c")
+
+        a.right = c
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            depthFirstValues(a)
+            howHigh(a)
         }
-        #expect(result == ["a"])
+
+        //      a
+        //       \
+        //        c
+
+        #expect(result == 1)
     }
 
     @Test("test_03")
     func test03() async throws {
         let a = TreeNode("a")
-        let b = TreeNode("b")
-        let c = TreeNode("c")
-        let d = TreeNode("d")
-        let e = TreeNode("e")
-
-        a.right = b
-        b.left = c
-        c.right = d
-        d.right = e
 
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            depthFirstValues(a)
+            howHigh(a)
         }
-        #expect(result == ["a", "b", "c", "d", "e"])
+
+        //      a
+
+        #expect(result == 0)
     }
 
     @Test("test_04")
     func test04() async throws {
-        let a: TreeNode<String>? = nil
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            depthFirstValues(a)
+            howHigh(nil)
         }
-        #expect(result == [])
+        #expect(result == -1)
+    }
+
+    @Test("test_05")
+    func test05() async throws {
+        let height_nodes = 32000
+        let root = TreeNode(String(0))
+        var current = root
+        for i in 1..<height_nodes {
+            let next = TreeNode(String(i))
+            current.right = next
+            current = next
+        }
+        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
+            howHigh(root)
+        }
+        let expected = height_nodes - 1
+        #expect(result == expected)
     }
 }

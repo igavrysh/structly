@@ -7,7 +7,6 @@
 
 /// also can store a path to parent, and root eventually
 /*
-
 final class PathNode<T> {
     let val: T
     let prev: PathNode<T>?
@@ -18,10 +17,11 @@ final class PathNode<T> {
 }
 // Queue stores: (Current Tree Node, Path to reach it)
 var q: [(node: TreeNode<T>, path: PathNode<T>)] = [(root, PathNode(root.val))]
-
 */
 
-func pathFinder<T>(_ root: TreeNode<T>?, _ target: T) -> [T] {
+// Why Equitable - cos there is equality test below e.g. node.val == target
+// Why Sendable - otherwise cannot send node with it in async closure
+func pathFinder<T: Equatable & Sendable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
     var acc: [T] = []
     guard let root else {
         return acc
@@ -61,7 +61,7 @@ func pathFinder<T>(_ root: TreeNode<T>?, _ target: T) -> [T] {
     return acc.reversed()
 }
 
-func pathFinder1<T: Equatable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
+func pathFinderRecursive<T: Equatable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
     func path_finder(_ node: TreeNode<T>?, _ acc: inout [T]) -> Bool {
         guard let node else {
             return false
@@ -92,3 +92,4 @@ func pathFinder1<T: Equatable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
 
     return acc.reversed()
 }
+

@@ -47,7 +47,7 @@ final class Managed<T>: @unchecked Sendable {
     func write(_ newValue: T) { lock.withLock { value = newValue } }
 }
 
-final class TreeNode<T: Hashable & Sendable>: Hashable, Sendable  {
+final class TreeNode<T>: Sendable {
     let id = UUID()
     private let _val: Managed<T>
     private let _left: Managed<TreeNode?>
@@ -74,8 +74,9 @@ final class TreeNode<T: Hashable & Sendable>: Hashable, Sendable  {
         set { _right.write(newValue) }
     }
 
-    func hash(into hasher: inout Hasher) { hasher.combine(id) }
-    static func == (lhs: TreeNode, rhs: TreeNode) -> Bool { lhs.id == rhs.id }
+
+//    func hash(into hasher: inout Hasher) { hasher.combine(id) }
+//    static func == (lhs: TreeNode, rhs: TreeNode) -> Bool { lhs.id == rhs.id }
 
     deinit {
         // We use a local array as a manual stack to avoid
@@ -109,6 +110,19 @@ final class TreeNode<T: Hashable & Sendable>: Hashable, Sendable  {
             // it is deallocated. Since its children are already nil,
             // the deallocation is now shallow (non-recursive).
         }
+    }
+}
+
+// Conform to Hashable based on Object Identity
+extension TreeNode: Hashable {
+    func hash(into hasher: inout Hasher) {
+        // This hashes the memory address of the specific instance
+        hasher.combine(ObjectIdentifier(self))
+    }
+
+    static func == (lhs: TreeNode, rhs: TreeNode) -> Bool {
+        // This checks if both variables point to the exact same memory address
+        return lhs === rhs
     }
 }
 

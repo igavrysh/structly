@@ -111,7 +111,7 @@ struct TreeValueCountTests {
     }
 
     @Test("test_05")
-    func test06() async throws {
+    func test05() async throws {
         let root = TreeNode(0)
         var current = root
         for i in 1..<32000 {
