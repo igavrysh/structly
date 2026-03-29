@@ -37,26 +37,81 @@ final class TreeNodeSimple<T> {
     }
 }
 
-final class TreeNode<T: Sendable>: @unchecked Sendable {
-    private let lock = NSLock()
-    private var _val: T
-    private var _left: TreeNode<T>?
-    private var _right: TreeNode<T>?
+final class Managed<T>: @unchecked Sendable {
+    private var value: T
+    private let lock = NSRecursiveLock()
 
-    var left: TreeNode<T>?
-    var right: TreeNode<T>?
+    init(_ value: T) { self.value = value }
+
+    func read() -> T { lock.withLock { value } }
+    func write(_ newValue: T) { lock.withLock { value = newValue } }
+}
+
+final class TreeNode<T: Hashable & Sendable>: Hashable, Sendable  {
+    let id = UUID()
+    private let _val: Managed<T>
+    private let _left: Managed<TreeNode?>
+    private let _right: Managed<TreeNode?>
+
+    init(_ val: T) {
+        self._val = Managed(val)
+        self._left = Managed(nil)
+        self._right = Managed(nil)
+    }
 
     var val: T {
-        get { lock.withLock { _val } }
-        set { lock.withLock { _val = newValue } }
+        get { _val.read() }
+        set { _val.write(newValue) }
     }
 
-    init(_ value: T) {
-        self._val = value
-        self._left = nil
-        self._right = nil
+    var left: TreeNode? {
+        get { _left.read() }
+        set { _left.write(newValue) }
+    }
+
+    var right: TreeNode? {
+        get { _right.read() }
+        set { _right.write(newValue) }
+    }
+
+    func hash(into hasher: inout Hasher) { hasher.combine(id) }
+    static func == (lhs: TreeNode, rhs: TreeNode) -> Bool { lhs.id == rhs.id }
+
+    deinit {
+        // We use a local array as a manual stack to avoid
+        // the CPU call stack limit.
+        var stack: [TreeNode<T>] = []
+
+        // Safely move children to our stack and nil them out
+        // to break the recursive chain.
+        if let l = _left.read() {
+            stack.append(l)
+            _left.write(nil)
+        }
+        if let r = _right.read() {
+            stack.append(r)
+            _right.write(nil)
+        }
+
+        while !stack.isEmpty {
+            let node = stack.removeLast()
+
+            // Push children of the current node onto our manual stack
+            if let l = node._left.read() {
+                stack.append(l)
+                node._left.write(nil)
+            }
+            if let r = node._right.read() {
+                stack.append(r)
+                node._right.write(nil)
+            }
+            // As the 'node' variable goes out of scope here,
+            // it is deallocated. Since its children are already nil,
+            // the deallocation is now shallow (non-recursive).
+        }
     }
 }
+
 /*
  | head | -> ... -> | node k | -> ... -> | tail | -> null
  */

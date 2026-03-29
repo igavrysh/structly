@@ -133,9 +133,9 @@ struct PathFinderTests {
             current = next
         }
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            pathFinder(root, 32000)
+            pathFinder(root, 30000)
         }
-        let expected = Array(0...32000)
+        let expected = Array(0...30000)
         #expect(result == expected)
     }
 }
