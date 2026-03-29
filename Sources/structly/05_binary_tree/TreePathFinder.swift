@@ -5,7 +5,53 @@
 //  Created by new on 3/27/26.
 //
 
-/// also can store a path to parent, and root eventually
+/// DFS - push into stack:
+/// * in case both left and right children are available for current node, push  nil, node.right, node.left into the stack
+/// * in case only left child is available: nil, node.left
+/// * in case only right child ...
+/// * in case leaf node, e.g. no left or right nodes for current node: just push nil into the stack
+/// pop from the stack - and if the value is nil, means last path element should also be poped, e.g. we completed
+/// traversal of all current node children and have not found anything, meaning current path is exhausted and we need to return
+/// to previous level to check all options there too
+fileprivate enum Step<T> {
+    case enter(TreeNode<T>)
+    case leave
+}
+
+func pathFinder<T: Equatable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
+    guard let root else { return [] }
+
+    var stack: [Step<T>] = [.enter(root)]
+    var path: [T] = []
+
+    while let step = stack.popLast() {
+        switch step {
+        case .enter(let node):
+            path.append(node.val)
+            if node.val == target {
+                return path
+            }
+
+            stack.append(.leave)
+            if let right = node.right {
+                stack.append(.enter(right))
+            }
+
+            if let left = node.left {
+                stack.append(.enter(left))
+            }
+
+        case .leave:
+            path.removeLast()
+        }
+    }
+
+    return path
+}
+
+/// BFS implementation with child to parent Dictionary mapping under the hood to reconstruct the path
+/// * Why Equitable? - cos there is equality test below e.g. node.val == target
+///also can store a path to parent, and root eventually, duplicating last list node on branching left and right
 /*
 final class PathNode<T> {
     let val: T
@@ -18,10 +64,7 @@ final class PathNode<T> {
 // Queue stores: (Current Tree Node, Path to reach it)
 var q: [(node: TreeNode<T>, path: PathNode<T>)] = [(root, PathNode(root.val))]
 */
-
-// Why Equitable - cos there is equality test below e.g. node.val == target
-// Why Sendable - otherwise cannot send node with it in async closure
-func pathFinder<T: Equatable & Sendable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
+func pathFinderBFS<T: Equatable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
     var acc: [T] = []
     guard let root else {
         return acc
@@ -61,6 +104,8 @@ func pathFinder<T: Equatable & Sendable>(_ root: TreeNode<T>?, _ target: T) -> [
     return acc.reversed()
 }
 
+/// Recursive - StackOverflow for large enough Tree
+/// To demo, change name of function to pathFinder
 func pathFinderRecursive<T: Equatable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
     func path_finder(_ node: TreeNode<T>?, _ acc: inout [T]) -> Bool {
         guard let node else {

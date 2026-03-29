@@ -31,6 +31,13 @@ struct PathFinderTests {
 
             return res
         }
+
+        //      a
+        //    /   \
+        //   b     c
+        //  / \     \
+        // d   e     f
+
         #expect(result == ["a", "b", "e"])
     }
 
@@ -52,6 +59,13 @@ struct PathFinderTests {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pathFinder(a, "p")
         }
+
+        //      a
+        //    /   \
+        //   b     c
+        //  / \     \
+        // d   e     f
+
         #expect(result == [])
     }
 
@@ -77,6 +91,15 @@ struct PathFinderTests {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pathFinder(a, "c")
         }
+
+        //      a
+        //    /   \
+        //   b     c
+        //  / \     \
+        // d   e     f
+        //    /       \
+        //   g         h
+
         #expect(result == ["a", "c"])
     }
 
@@ -102,6 +125,15 @@ struct PathFinderTests {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pathFinder(a, "h")
         }
+
+        //      a
+        //    /   \
+        //   b     c
+        //  / \     \
+        // d   e     f
+        //    /       \
+        //   g         h
+
         #expect(result == ["a", "c", "f", "h"])
     }
 
@@ -112,6 +144,9 @@ struct PathFinderTests {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pathFinder(x, "x")
         }
+
+        //      x
+
         #expect(result == ["x"])
     }
 

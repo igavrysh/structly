@@ -74,7 +74,6 @@ final class TreeNode<T>: Sendable {
         set { _right.write(newValue) }
     }
 
-
 //    func hash(into hasher: inout Hasher) { hasher.combine(id) }
 //    static func == (lhs: TreeNode, rhs: TreeNode) -> Bool { lhs.id == rhs.id }
 

@@ -16,7 +16,11 @@ let package = Package(
             name: "structly",
             dependencies: ["structlyC"],
             path: "Sources/structly",
-            swiftSettings: [.interoperabilityMode(.Cxx)]
+            swiftSettings: [
+                .interoperabilityMode(.Cxx),
+                .enableUpcomingFeature("StrictConcurrency"),
+                .swiftLanguageMode(.v6)
+            ]
         ),
         .target(
             name: "structlyC",
@@ -29,7 +33,11 @@ let package = Package(
         .executableTarget(
             name: "structlyCLI",
             dependencies: ["structly"],
-            swiftSettings: [.interoperabilityMode(.Cxx)],
+            swiftSettings: [
+                .interoperabilityMode(.Cxx),
+                .enableUpcomingFeature("StrictConcurrency"),
+                .swiftLanguageMode(.v6)
+            ],
             linkerSettings: [
                 .linkedLibrary("m", .when(platforms: [.linux])) 
             ]
