@@ -8,7 +8,7 @@
 import Testing
 @testable import structy
 
-@Suite("05_BreadthFirstValuesTests")
+@Suite("05 BreadthFirstValuesTests")
 struct BreadthFirstValuesTests {
     @Test("test_00")
     func test00() async throws {
