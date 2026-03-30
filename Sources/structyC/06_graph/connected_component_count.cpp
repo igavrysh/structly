@@ -9,17 +9,23 @@
 #include <unordered_set>
 #include <vector>
 #include <iostream>
+#include <queue>
 
-void connected_components_r(std::unordered_map<int, std::vector<int>> G,
-                            int v,
-                            std::unordered_set<int>& visited
-) {
-    for (int next_v : G[v]) {
-        if (visited.find(next_v) != visited.end()) {
-            return;
+void conn_comps_i_bfs(std::unordered_map<int, std::vector<int>> G,
+                      int v,
+                      std::unordered_set<int>& visited) {
+    std::queue<int> q{};
+    q.push(v);
+    while (!q.empty()) {
+        int v = q.front();
+        q.pop();
+        for (int next_v : G[v]) {
+            if (visited.find(next_v) != visited.end()) {
+                continue;
+            }
+            visited.insert(next_v);
+            q.push(next_v);
         }
-        visited.insert(next_v);
-        connected_components_r(G, next_v, visited);
     }
 }
 
@@ -32,7 +38,35 @@ int connectedComponentsCount(std::unordered_map<int, std::vector<int>> G) {
             continue;
         }
         visited.insert(v);
-        connected_components_r(G, v, visited);
+        conn_comps_i_bfs(G, v, visited);
+        counter++;
+    }
+    return counter;
+}
+
+void conn_comps_r_dfs(std::unordered_map<int, std::vector<int>> G,
+                      int v,
+                      std::unordered_set<int>& visited
+                      ) {
+    for (int next_v : G[v]) {
+        if (visited.find(next_v) != visited.end()) {
+            continue;
+        }
+        visited.insert(next_v);
+        conn_comps_r_dfs(G, next_v, visited);
+    }
+}
+
+int connectedComponentsCount1(std::unordered_map<int, std::vector<int>> G) {
+    std::unordered_set<int> visited{};
+    int counter = 0;
+    for (const auto& pair : G) {
+        int v = pair.first;
+        if (visited.find(v) != visited.end()) {
+            continue;
+        }
+        visited.insert(v);
+        conn_comps_r_dfs(G, v, visited);
         counter++;
     }
 
@@ -66,8 +100,3 @@ void run_connectedComponentsCount_test_01() {
     std::cout << "count: " << res << std::endl;
 }
 
-int main(int argc, char const *argv[]) {
-    //run_connectedComponentsCount_test_00();
-    run_connectedComponentsCount_test_01();
-    return 0;
-}

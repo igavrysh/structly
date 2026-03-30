@@ -21,7 +21,7 @@ bool undirected_path(std::unordered_map<std::string, std::vector<std::string>> G
 
     for (std::string next_v : G[v]) {
         if (visited.find(next_v) != visited.end()) {
-            continue;;
+            continue;
         }
 
         visited.insert(next_v);
