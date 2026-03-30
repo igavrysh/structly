@@ -13,18 +13,19 @@
 #include <iostream>
 
 int component_size_bfs(std::unordered_map<int, std::vector<int>>& G,
-                       std::unordered_set<int>& visited, int start_v) {
+                       std::unordered_set<int>& visited, const int start_v) {
     int size = 0;
     std::queue<int> q{};
     if (visited.find(start_v) == visited.end()) {
         q.push(start_v);
+        visited.insert(start_v);
     }
     while (!q.empty()) {
         int v = q.front();
         q.pop();
         size++;
         for (int next_v : G[v]) {
-            if (visited.find(v) != visited.end()) {
+            if (visited.find(next_v) != visited.end()) {
                 continue;
             }
             visited.insert(next_v);
@@ -62,5 +63,7 @@ void largest_component_test_00() {
     };
 
     int res = largestComponent(graph); // -> 4
-    std::cout << res << std::endl;
+    int exp_res = 4;
+    bool passed = res == exp_res;
+    std::cout<<res<<" passed? :"<<passed<<std::endl;;
 }
