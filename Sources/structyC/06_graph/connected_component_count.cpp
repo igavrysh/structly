@@ -17,7 +17,6 @@ void connected_components_r(std::unordered_map<int, std::vector<int>> G,
         if (visited.find(next_v) != visited.end()) {
             return;
         }
-        std::cout<<"visiting v:"<<next_v<<std::endl;
         visited.insert(next_v);
         connected_components_r(G, next_v, visited);
     }
@@ -26,13 +25,11 @@ void connected_components_r(std::unordered_map<int, std::vector<int>> G,
 int connectedComponentsCount(std::unordered_map<int, std::vector<int>> G) {
     std::unordered_set<int> visited{};
     int counter = 0;
-    for (auto [v, value] : G) {
-        std::cout<<"newww"<<std::endl;
+    for (const auto& pair : G) {
+        int v = pair.first;
         if (visited.find(v) != visited.end()) {
             continue;
         }
-        std::cout<<"visiting v:"<<v<<std::endl;
-
         visited.insert(v);
         connected_components_r(G, v, visited);
         counter++;
@@ -41,7 +38,7 @@ int connectedComponentsCount(std::unordered_map<int, std::vector<int>> G) {
     return counter;
 }
 
-void run_connectedComponentsCount() {
+void run_connectedComponentsCount_test_00() {
     std::unordered_map<int, std::vector<int>> graph {
         { 0, { 8, 1, 5 } },
         { 1, { 0 } },
@@ -52,5 +49,24 @@ void run_connectedComponentsCount() {
         { 4, { 3, 2 } }
     };
     int res = connectedComponentsCount(graph); // -> 2
-    std::cout << "count: " << res;
+    std::cout << "count: " << res << std::endl;
+}
+
+void run_connectedComponentsCount_test_01() {
+    std::unordered_map<int, std::vector<int>> graph {
+        { 1, { 2 } },
+        { 2, { 1, 8 } },
+        { 6, { 7 } },
+        { 9, { 8 } },
+        { 7, { 6, 8 } },
+        { 8, { 9, 7, 2 } }
+    };
+    int res = connectedComponentsCount(graph); // -> 2
+    std::cout << "count: " << res << std::endl;
+}
+
+int main(int argc, char const *argv[]) {
+    run_connectedComponentsCount_test_00();
+    run_connectedComponentsCount_test_01();
+    return 0;
 }
