@@ -12,7 +12,8 @@
 
 void connected_components_r(std::unordered_map<int, std::vector<int>> G,
                             int v,
-                            std::unordered_set<int>& visited) {
+                            std::unordered_set<int>& visited
+) {
     for (int next_v : G[v]) {
         if (visited.find(next_v) != visited.end()) {
             return;
@@ -66,7 +67,7 @@ void run_connectedComponentsCount_test_01() {
 }
 
 int main(int argc, char const *argv[]) {
-    run_connectedComponentsCount_test_00();
+    //run_connectedComponentsCount_test_00();
     run_connectedComponentsCount_test_01();
     return 0;
 }
