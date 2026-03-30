@@ -9,7 +9,6 @@ import Testing
 @testable import structy
 
 @Suite("05 BottomRightValueTests")
-
 struct BottomRightValueTests {
     @Test("test_00")
     func test00() async throws {
