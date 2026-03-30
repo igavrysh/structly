@@ -7,4 +7,33 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 
-.swiftpm
+# Swift Package Manager (SPM)
+# ---------------------------
+.build/
+Packages/
+Package.resolved
+
+# Xcode (if you open the package in Xcode)
+# ----------------------------------------
+.swiftpm/
+.xcodeproj/
+.xcworkspace/
+DerivedData/
+
+# Binaries & Object Files
+# -----------------------
+# Ignore your specific CLI if it's built to the root
+structlyCLI
+*.o
+*.out
+*.exe
+*.dSYM/
+
+# IDE / Editor
+# ------------
+.vscode/
+.idea/
+
+# OS Specific
+# -----------
+.DS_Store
