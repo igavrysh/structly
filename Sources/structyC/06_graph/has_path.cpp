@@ -10,6 +10,57 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <stack>
+#include <queue>
+
+bool hasPathBfsIter(std::unordered_map<std::string, std::vector<std::string>> graph,
+             std::string src,
+             std::string dst) {
+    std::unordered_set<std::string> visited{};
+    std::queue<std::string> to_visit{};
+    to_visit.push(src);
+    visited.insert(src);
+    while (!to_visit.empty()) {
+        std::string v = to_visit.front();
+        to_visit.pop();
+        if (v == dst) {
+            return true;
+        }
+        for (std::string neighbor : graph[v]) {
+            if (visited.find(neighbor) != visited.end()) {
+                continue;
+            }
+            visited.insert(neighbor);
+            to_visit.push(neighbor);
+        }
+    }
+    
+    return false;
+}
+
+bool hasPathDfsIter(std::unordered_map<std::string, std::vector<std::string>> graph,
+             std::string src,
+             std::string dst) {
+    std::unordered_set<std::string> visited{};
+    std::stack<std::string> to_visit{};
+    to_visit.push(src);
+    visited.insert(src);
+    while (!to_visit.empty()) {
+        std::string v = to_visit.top();
+        to_visit.pop();
+        if (v == dst) {
+            return true;
+        }
+        for (std::string neighbor : graph[v]) {
+            if (visited.find(neighbor) != visited.end()) {
+                continue;
+            }
+            visited.insert(neighbor);
+            to_visit.push(neighbor);
+        }
+    }
+    return false;
+}
 
 bool has_path(std::unordered_map<std::string, std::vector<std::string>> graph,
               std::string src,
@@ -33,8 +84,7 @@ bool has_path(std::unordered_map<std::string, std::vector<std::string>> graph,
     return false;
 }
 
-// what about cycles?
-bool hasPath(std::unordered_map<std::string, std::vector<std::string>> graph,
+bool hasPathR(std::unordered_map<std::string, std::vector<std::string>> graph,
              std::string src,
              std::string dst
              ) {
@@ -48,8 +98,10 @@ void run_has_path_in_graph_with_cycle() {
         { "g", {"f"} }
     };
 
-    bool res = hasPath(graph, "f", "i"); // 1 (true)
+    bool res = hasPathR(graph, "f", "i"); // 1 (true)
     std::cout << "path from f to i exists? " << res << std::endl;
     // this function behaves as `main()` for the 'run' command
     // you may sandbox in this function, but should not remove it
 }
+
+
