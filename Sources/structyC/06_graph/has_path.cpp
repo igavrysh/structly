@@ -13,9 +13,11 @@
 #include <stack>
 #include <queue>
 
-bool hasPathBfsIter(std::unordered_map<std::string, std::vector<std::string>> graph,
-             std::string src,
-             std::string dst) {
+bool hasPathBfsIter(
+    std::unordered_map<std::string, std::vector<std::string> > graph,
+    std::string src,
+    std::string dst
+) {
     std::unordered_set<std::string> visited{};
     std::queue<std::string> to_visit{};
     to_visit.push(src);
@@ -26,7 +28,7 @@ bool hasPathBfsIter(std::unordered_map<std::string, std::vector<std::string>> gr
         if (v == dst) {
             return true;
         }
-        for (std::string neighbor : graph[v]) {
+        for (std::string neighbor: graph[v]) {
             if (visited.find(neighbor) != visited.end()) {
                 continue;
             }
@@ -34,13 +36,14 @@ bool hasPathBfsIter(std::unordered_map<std::string, std::vector<std::string>> gr
             to_visit.push(neighbor);
         }
     }
-    
+
     return false;
 }
 
-bool hasPathDfsIter(std::unordered_map<std::string, std::vector<std::string>> graph,
-             std::string src,
-             std::string dst) {
+bool hasPathDfsIter(std::unordered_map<std::string, std::vector<std::string> > graph,
+                    std::string src,
+                    std::string dst
+) {
     std::unordered_set<std::string> visited{};
     std::stack<std::string> to_visit{};
     to_visit.push(src);
@@ -51,7 +54,7 @@ bool hasPathDfsIter(std::unordered_map<std::string, std::vector<std::string>> gr
         if (v == dst) {
             return true;
         }
-        for (std::string neighbor : graph[v]) {
+        for (std::string neighbor: graph[v]) {
             if (visited.find(neighbor) != visited.end()) {
                 continue;
             }
@@ -62,16 +65,16 @@ bool hasPathDfsIter(std::unordered_map<std::string, std::vector<std::string>> gr
     return false;
 }
 
-bool has_path(std::unordered_map<std::string, std::vector<std::string>> graph,
-              std::string src,
-              std::string dst,
-              std::unordered_set<std::string>& visited
+bool has_path(std::unordered_map<std::string, std::vector<std::string>>& graph,
+              std::string& src,
+              std::string& dst,
+              std::unordered_set<std::string> &visited
 ) {
     if (src == dst) {
         return true;
     }
 
-    for (std::string neighbor : graph[src]) {
+    for (std::string neighbor: graph[src]) {
         if (visited.find(neighbor) != visited.end()) {
             continue;
         }
@@ -84,18 +87,18 @@ bool has_path(std::unordered_map<std::string, std::vector<std::string>> graph,
     return false;
 }
 
-bool hasPathR(std::unordered_map<std::string, std::vector<std::string>> graph,
-             std::string src,
-             std::string dst
-             ) {
+bool hasPathR(std::unordered_map<std::string, std::vector<std::string>> &graph,
+              std::string src,
+              std::string dst
+) {
     std::unordered_set<std::string> visited{};
     return has_path(graph, src, dst, visited);
 }
 
 void run_has_path_in_graph_with_cycle() {
-    std::unordered_map<std::string, std::vector<std::string>> graph {
-        { "f", {"g", "i"} },
-        { "g", {"f"} }
+    std::unordered_map<std::string, std::vector<std::string> > graph{
+        {"f", {"g", "i"}},
+        {"g", {"f"}}
     };
 
     bool res = hasPathR(graph, "f", "i"); // 1 (true)
@@ -103,5 +106,3 @@ void run_has_path_in_graph_with_cycle() {
     // this function behaves as `main()` for the 'run' command
     // you may sandbox in this function, but should not remove it
 }
-
-
