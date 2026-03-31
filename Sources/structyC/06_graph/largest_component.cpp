@@ -11,6 +11,7 @@
 #include <unordered_set>
 #include <algorithm>
 #include <iostream>
+#include <stack>
 
 int component_size_bfs(std::unordered_map<int, std::vector<int>>& G,
                        std::unordered_set<int>& visited, const int start_v) {
@@ -22,6 +23,30 @@ int component_size_bfs(std::unordered_map<int, std::vector<int>>& G,
     }
     while (!q.empty()) {
         int v = q.front();
+        q.pop();
+        size++;
+        for (int next_v : G[v]) {
+            if (visited.find(next_v) != visited.end()) {
+                continue;
+            }
+            visited.insert(next_v);
+            q.push(next_v);
+        }
+    }
+
+    return size;
+}
+
+int component_size_dfs(std::unordered_map<int, std::vector<int>>& G,
+                       std::unordered_set<int>& visited, const int start_v) {
+    int size = 0;
+    std::stack<int> q{};
+    if (visited.find(start_v) == visited.end()) {
+        q.push(start_v);
+        visited.insert(start_v);
+    }
+    while (!q.empty()) {
+        int v = q.top();
         q.pop();
         size++;
         for (int next_v : G[v]) {
