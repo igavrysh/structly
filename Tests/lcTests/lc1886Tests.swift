@@ -1,5 +1,5 @@
 import Testing
-@testable import structy
+@testable import lc
 
 @Suite("lc1886_Tests")
 final class lc1886Tests {

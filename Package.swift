@@ -23,6 +23,16 @@ let package = Package(
             ]
         ),
         .target(
+            name: "lc",
+            dependencies: [],
+            path: "Sources/lc",
+            swiftSettings: [
+                .interoperabilityMode(.Cxx),
+                .enableUpcomingFeature("StrictConcurrency"),
+                .swiftLanguageMode(.v6)
+            ]
+        ),
+        .target(
             name: "structyC",
             dependencies: [],
             path: "Sources/structyC",
@@ -44,9 +54,9 @@ let package = Package(
         ),
 
         .testTarget(
-            name: "structyTests",
-            dependencies: ["structy"],
-            path: "Tests/structyTests",
+            name: "lcTests",
+            dependencies: ["lc"],
+            path: "Tests/lcTests",
             swiftSettings: [.interoperabilityMode(.Cxx)]
 
         )

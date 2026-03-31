@@ -5,7 +5,7 @@
 //  Created by new on 3/27/26.
 //
 
-class Solution {
+class lc2946 {
     func areSimilar(_ mat: [[Int]], _ k: Int) -> Bool {
         let rows = mat.count
         let cols = mat[0].count

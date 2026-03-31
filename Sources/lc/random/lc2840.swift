@@ -5,7 +5,7 @@
 //  Created by new on 3/30/26.
 //
 
-class Solution {
+class lc2840 {
     func checkStrings(_ s1: String, _ s2: String) -> Bool {
         var oddFqs: Dictionary<Character, Int> = [:]
         var evenFqs: Dictionary<Character, Int> = [:]

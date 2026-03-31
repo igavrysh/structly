@@ -6,7 +6,7 @@
 //
 
 import Testing
-@testable import structy
+@testable import lc
 
 @Suite("lc3548Tests")
 final class lc3548Tests {

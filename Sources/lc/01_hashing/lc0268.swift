@@ -6,7 +6,6 @@
 //
 
 class lc0268 {
-
     func missingNumber(_ nums: [Int]) -> Int {
         var xor = 0
         for num in nums {
