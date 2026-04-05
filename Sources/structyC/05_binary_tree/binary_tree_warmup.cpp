@@ -20,7 +20,7 @@ public:
     }
 };
 
-void run() {
+void run_simple_nodes_population() {
     Node a("A");
     Node b("B");
     Node c("C");

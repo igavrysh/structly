@@ -63,7 +63,7 @@ enum TimeoutSupport {
                 operation()
             }
             group.addTask {
-                let secs = Task.isDebuggerAttached ? Duration.seconds(3600) : Duration.seconds(seconds)
+                let secs = Task.isDebuggerAttached ? Duration.seconds(5) : Duration.seconds(seconds)
                 try await Task.sleep(for: secs)
                 throw TimeoutError()
             }

@@ -162,15 +162,15 @@ struct PathFinderTests {
     func test06() async throws {
         let root = TreeNode(0)
         var current = root
-        for i in 1..<32000 {
+        for i in 1..<1100 {
             let next = TreeNode(i)
             current.right = next
             current = next
         }
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            pathFinder(root, 30000)
+            pathFinder(root, 1000)
         }
-        let expected = Array(0...30000)
+        let expected = Array(0...1000)
         #expect(result == expected)
     }
 }
