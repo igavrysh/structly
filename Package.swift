@@ -52,7 +52,13 @@ let package = Package(
                 .linkedLibrary("m", .when(platforms: [.linux])) 
             ]
         ),
+        .testTarget(
+            name: "structyTests",
+            dependencies: ["structy"],
+            path: "Tests/structyTests",
+            swiftSettings: [.interoperabilityMode(.Cxx)]
 
+        ),
         .testTarget(
             name: "lcTests",
             dependencies: ["lc"],

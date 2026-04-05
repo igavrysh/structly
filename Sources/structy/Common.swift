@@ -78,12 +78,11 @@ final class TreeNode<T>: Sendable {
 //    static func == (lhs: TreeNode, rhs: TreeNode) -> Bool { lhs.id == rhs.id }
 
     deinit {
-        // We use a local array as a manual stack to avoid
+        // use a local array as a manual stack to avoid
         // the CPU call stack limit.
         var stack: [TreeNode<T>] = []
 
-        // Safely move children to our stack and nil them out
-        // to break the recursive chain.
+        // move children to our stack and nil them out o break the recursive chain.
         if let l = _left.read() {
             stack.append(l)
             _left.write(nil)
@@ -96,7 +95,7 @@ final class TreeNode<T>: Sendable {
         while !stack.isEmpty {
             let node = stack.removeLast()
 
-            // Push children of the current node onto our manual stack
+            // push children of the current node onto our manual stack
             if let l = node._left.read() {
                 stack.append(l)
                 node._left.write(nil)
@@ -105,9 +104,9 @@ final class TreeNode<T>: Sendable {
                 stack.append(r)
                 node._right.write(nil)
             }
-            // As the 'node' variable goes out of scope here,
-            // it is deallocated. Since its children are already nil,
-            // the deallocation is now shallow (non-recursive).
+            // as the 'node' variable goes out of scope here,
+            // it is deallocated -> since its children are already nil,
+            // the deallocation is now shallow (non-recursive)
         }
     }
 }
