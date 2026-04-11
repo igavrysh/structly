@@ -7,64 +7,70 @@
 
 #include <string>
 #include <unordered_map>
+#include <iostream>
 using namespace std;
 
 int countSubstringAnagrams(std::string s, std::string anagram) {
-    unordered_map<char, int> fqs{};
-    int size = 0;
-    int non_zero_fqs = 0;
+    unordered_map<char, int> anagram_fq;
     for (int i = 0; i < anagram.length(); i++) {
         char ch = anagram[i];
-        if (fqs.count(ch) == 0) {
-            fqs[ch] = 0;
+        if (anagram_fq.find(ch) == anagram_fq.end()) {
+            anagram_fq[ch] = 0;
         }
-        if (fqs[ch] == 0) {
-            non_zero_fqs++;
-        }
-        fqs[ch]--;
-        size--;
+        anagram_fq[ch]++;
     }
 
-    for (int i = 0; i < anagram.length(); i++) {
+    int curr_matching = 0;
+    unordered_map<char, int> curr_fq;
+    for (int i = 0; i < anagram.size(); i++) {
         char ch = s[i];
-        if (fqs.count(ch) == 0) {
-            fqs[ch] = 0;
-            non_zero_fqs++;
-
+        if (curr_fq.find(ch) == curr_fq.end()) {
+            curr_fq[ch] = 0;
         }
-
-        fqs[ch]++;
-        if (fqs[ch] == 0) {
-            non_zero_fqs--;
+        curr_fq[ch]++;
+        if (curr_fq[ch] > 0 && anagram_fq[ch] > 0 && curr_fq[ch] <= anagram_fq[ch]) {
+            curr_matching++;
         }
     }
-    int count = 0;
-    if (non_zero_fqs == 0) {
-        count  = 1;
+
+    int res = 0;
+    if (curr_matching == anagram.length()) {
+        res++;
     }
 
-    for (int i = (int)anagram.length(); i < s.length(); i++) {
+    for (int i = (int)anagram.size(); i < s.length(); i++) {
         char ch = s[i];
-        if (fqs.count(ch) == 0) {
-            fqs[ch] = 0;
-            non_zero_fqs++;
+        if (curr_fq.find(ch) == curr_fq.end()) {
+            curr_fq[ch] = 0;
+        }
+        curr_fq[ch]++;
+
+        if (curr_fq[ch] > 0 && anagram_fq[ch] > 0 && curr_fq[ch] <= anagram_fq[ch]) {
+            curr_matching++;
         }
 
-        fqs[ch]++;
-        if (fqs[ch] == 0) {
-            non_zero_fqs--;
+        char r_ch = s[i-anagram.size()];
+
+        if (anagram_fq[r_ch] > 0 && curr_fq[r_ch] <= anagram_fq[r_ch]) {
+            curr_matching--;
         }
 
-        char ch_to_remove = s[i-anagram.length()];
-        fqs[ch]--;
-        if (fqs[ch] == 0) {
-            non_zero_fqs--;
-        }
+        curr_fq[r_ch]--;
 
-        if (non_zero_fqs == 0) {
-            count++;
+        if (curr_matching == anagram.length()) {
+            res++;
         }
     }
 
-    return count;
+    return res;
+}
+
+void test_00() {
+    int res = countSubstringAnagrams("tacoctacabcatt", "cat"); ;
+    bool passed = res == 4;
+    cout << "test_00: " << passed << "; res: "<< res << endl;
+}
+
+int main(int argc, char *argv[]) {
+    test_00();
 }

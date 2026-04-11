@@ -55,4 +55,3 @@ bool hasSubstringAnagram(std::string s, std::string anagram) {
     }
     return false;
 }
-
