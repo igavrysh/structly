@@ -9,13 +9,18 @@
 using namespace std;
 
 int maxOnesWithSingleFlip(std::string s) {
-    int last_zero = -1;
     int l = 0;
     int longest = 0;
+    int zeros = 0;
     for (int r = 0; r < s.size(); r++) {
         if (s[r] == '0') {
-            l = last_zero + 1;
-            last_zero = r;
+            zeros++;
+        }
+        while (zeros > 1) {
+            if (s[l] == '0') {
+                zeros--;
+            }
+            l++;
         }
         longest = max(longest, r-l+1);
     }
