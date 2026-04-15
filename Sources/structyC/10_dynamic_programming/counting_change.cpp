@@ -5,11 +5,13 @@
 #include <vector>
 #include <unordered_map>
 #include <iostream>
+#include <string>
 using namespace std;
 
-int counting_сhange_helper(int amount, int start, vector<int>& coins, unordered_map<int, int>& mem) {
-    if (mem.count(amount) > 0) {
-        return mem[amount];
+int counting_сhange_helper(int amount, int start, vector<int>& coins, unordered_map<string, int>& mem) {
+    string id = to_string(amount) + ',' + to_string(start);
+    if (mem.count(id) > 0) {
+        return mem[id];
     }
     if (amount == 0) {
         return 1;
@@ -24,13 +26,13 @@ int counting_сhange_helper(int amount, int start, vector<int>& coins, unordered
         counter += counting_сhange_helper(amount - coins[i], i, coins, mem);
     }
 
-    mem[amount] = counter;
+    mem[id] = counter;
 
-    return mem[amount];
+    return mem[id];
 }
 
 int countingChange(int amount, vector<int> coins) {
-    unordered_map<int, int> mem{};
+    unordered_map<string, int> mem{};
     int res = counting_сhange_helper(amount, 0, coins, mem);
     return res;
 }
