@@ -3,24 +3,26 @@
 //
 
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 
-int fib(int n) {
+int fib_helper(int n, unordered_map<int, int>& mem) {
+    if (mem.count(n) > 0) {
+        return mem[n];
+    }
+
     if (n <= 1) {
         return n;
     }
 
-    int i = 1;
-    int prev = 1;
-    int prev_prev = 0;
-    while (i++ < n) {
-        int tmp = prev;
+    mem[n] = fib_helper(n-1, mem) + fib_helper(n-2, mem);
 
-        prev = prev + prev_prev;
-        prev_prev = tmp;
-    }
+    return mem[n];
+}
 
-    return prev;
+int fib(int n) {
+    unordered_map<int, int> mem;
+    return fib_helper(n, mem);
 }
 
 void test_02() {
