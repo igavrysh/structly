@@ -13,11 +13,11 @@
 /// pop from the stack - and if the value is .leave, means last path element should also be poped, e.g. completed
 /// traversal of all current node children and have not found anything, meaning current path is exhausted and we need to return
 /// to previous level to check all options there too
+
 fileprivate enum Step<T> {
     case enter(TreeNode<T>)
     case leave
 }
-
 func pathFinder<T: Equatable>(_ root: TreeNode<T>?, _ target: T) -> [T] {
     guard let root else { return [] }
 

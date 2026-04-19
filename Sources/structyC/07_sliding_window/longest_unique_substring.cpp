@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <algorithm>
 using namespace std;
+
 int longestUniqueSubstring(std::string s) {
     unordered_set<char> set{};
     int res = 0;

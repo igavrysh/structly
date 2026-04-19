@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 using namespace  std;
+
 int longestSubarraySum(std::vector<int> nums, int targetSum) {
     int sum = 0;
     int l = 0;

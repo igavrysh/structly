@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 using namespace std;
+
 int findPeak(vector<int> nums) {
     const int n = nums.size();
     int lo = 0;

@@ -9,7 +9,6 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <iostream>
-
 using namespace std;
 
 bool dfs_has_cycle(unordered_map<char, vector<char>>& graph, unordered_set<char>& visited,

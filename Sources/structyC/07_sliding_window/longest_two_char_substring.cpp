@@ -9,7 +9,6 @@
 #include <unordered_set>
 #include <algorithm>
 #include <iostream>
-
 using namespace std;
 
 int longestTwoCharSubstring(std::string s) {

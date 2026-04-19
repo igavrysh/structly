@@ -8,6 +8,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
+
 double maxSubarrayProductSizeK(std::vector<double> nums, int k) {
     double product = 1.0;
     for (int i = 0; i < k; i++) {

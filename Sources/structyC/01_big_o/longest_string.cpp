@@ -8,16 +8,18 @@
 #include <string>
 #include <limits>
 #include <sstream>
+using namespace std;
 
-std::string longestWord(std::string sentence) {
-    std::stringstream ss(sentence);
+string longestWord(string sentence) {
+    stringstream ss(sentence);
     int max_len = -1;
-    std::string res = "";
-    std::string word;
+    string res = "";
+    string word;
     while (ss >> word) {
         if (word.length() >= res.length()) {
             res = word;
         }
     }
+
     return res;
 }
