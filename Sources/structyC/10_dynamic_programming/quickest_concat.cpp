@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 
 bool match_word(const int st, const string& s, const string& word) {
@@ -44,12 +45,12 @@ int quickestConcat_1(string str, vector<string> words) {
 }
 
 
-int quickest_concat(int i, int str_sz, string& str, vector<string>& words, vector<int>& memo) {
+int quickest_concat(int i, int str_sz, string& str, vector<string>& words, unordered_map<int, int>& memo) {
     if ((int)str.size() == 0) {
         return 0;
     }
 
-    if (memo[i] != -2) {
+    if (memo.count(i) > 0) {
         return memo[i];
     }
 
@@ -59,16 +60,16 @@ int quickest_concat(int i, int str_sz, string& str, vector<string>& words, vecto
             continue;
         }
 
-        if (i + w.length() <= str_sz && memo[i] != -1) {
+        if (i + w.length() <= str_sz && quickest != -1) {
             int possible_new_quickest = -1;
 
             if (i + w.length() == str_sz) {
                 possible_new_quickest = 1;
-            } else if (i + w.length() < str_sz && memo[i + w.length()] != -1) {
+            } else if (i + w.length() < str_sz && memo[i + w.length()] != -1 && memo[i + w.length()] != -2) {
                 possible_new_quickest = 1 + memo[i+w.length()];
             }
 
-            if (possible_new_quickest != -1 && memo[i] <= possible_new_quickest) {
+            if (possible_new_quickest != -1 && quickest <= possible_new_quickest) {
                 continue;
             }
         }
@@ -80,19 +81,21 @@ int quickest_concat(int i, int str_sz, string& str, vector<string>& words, vecto
         string suffix = str.substr(w.size());
         int quickest_sub = quickest_concat(i + (int)w.length(), str_sz, suffix, words, memo);
         if (quickest_sub != -1) {
-            if (memo[i] == -1) {
-                memo[i] = 1 + quickest_sub;
+            if (quickest == -1) {
+                quickest = 1 + quickest_sub;
             }
-            memo[i] = min(memo[i], 1 + quickest_sub);
+            quickest = min(quickest, 1 + quickest_sub);
         }
     }
+
+    memo[i] = quickest;
 
     return memo[i];
 }
 
 int quickestConcat(string str, vector<string> words) {
     const int str_sz = (int)str.size();
-    vector<int> memo(str_sz, -2);
+    unordered_map<int, int> memo{};
     quickest_concat(0, str_sz, str, words, memo);
     return memo[0];
 }
