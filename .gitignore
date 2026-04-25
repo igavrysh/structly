@@ -1,76 +1,37 @@
-.DS_Store
-/.build
-/Packages
-xcuserdata/
-DerivedData/
-.swiftpm/configuration/registries.json
-.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
-.netrc
+# ... (your other rules) ...
 
-# Swift Package Manager (SPM)
-# ---------------------------
+# 1. Ignore everything
+*
+
+# 2. Un-ignore directories so git can walk into them
+!*/
+
+# 3. Un-ignore files with dots (source code)
+!*.*
+
+# 4. CRITICAL: Re-ignore dSYM (even though they have dots)
+*.dSYM/
+**/*.dSYM/
+
+
+# 1. Folders & Bundles
+.idea/
+.vscode/
+DerivedData/
 .build/
 Packages/
-Package.resolved
 
-# Xcode (if you open the package in Xcode)
-# ----------------------------------------
-.swiftpm/
-.xcodeproj/
-.xcworkspace/
-DerivedData/
-
-# Binaries & Object Files
-# -----------------------
-# Ignore your specific CLI if it's built to the root
-structlyCLI
-*.o
-*.out
-*.exe
-*.dSYM/
-
-# IDE / Editor
-# ------------
-.vscode/
-.idea/
-
-# OS Specific
-# -----------
-.DS_Store
-
-
-# Debug symbols
-*.dSYM/*
-
-# Compiled binaries and executables
-*.exe
+# 2. Specific Binary Extensions
 *.o
 *.obj
-*.bin
+*.exe
 *.out
+*.bin
 *.app
-
-# Dynamic libraries
 *.dll
 *.so
 *.dylib
 
-# Build directories
-build/
-bin/
-obj/
-DerivedData/
+# 3. OS Files
+.DS_Store
 
-# Ignore the entire bin and build folders
-bin/
-build/
-out/
-
-# Ignore all files that don't have a dot in the name (likely binaries)
-*
-!*.*
-
-# But make sure to keep directories and specific important files
-!*/
-!Makefile
-!README
