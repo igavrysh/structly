@@ -3,33 +3,29 @@
 #include <iostream>
 using namespace std;
 
+/*
+[]
+stck:
+i:0 stck:[0]
+i:1 
+*/
 int nestingScore(string str) {
-    stack<string> stck{};
-    str = "[" + str + "]";
+    stack<int> stck{};
+    stck.push(0);
     for (char ch : str) {
         if (ch == '[') {
-            stck.push(string(1, ch));
+            stck.push(0);
             continue;
         }
-
-        if (stck.top() == "[") {
-            stck.pop();
-            stck.push("1");
-            continue;
-        }
-
-        int res = 0;
-        while (stck.top() != "[") {
-            res += stoi(stck.top());
-            stck.pop();
-        }
-       
-        res = res * 2;
+        int top = stck.top();
         stck.pop();
-        stck.push(to_string(res));
+        if (top == 0) {
+            stck.top() += 1;
+        } else {
+            stck.top() += top * 2;
+        }
     }
-
-    return stoi(stck.top()) / 2;
+    return stck.top();
 }
 
 void test_00() {
@@ -68,6 +64,24 @@ void test_05() {
     cout << "test_05: " << (passed ? "passed" : "failed") << "; res: " << res << endl;
 }
 
+void test_06() {
+    int res = nestingScore("[][[][]][[]]");
+    bool passed = res == 7;
+    cout << "test_06: " << (passed ? "passed" : "failed") << "; res: " << res << endl;
+}
+
+void test_07() {
+    int res = nestingScore("[[[[[[[][]]]]]]][]");
+    bool passed = res == 129;
+    cout << "test_07: " << (passed ? "passed" : "failed") << "; res: " << res << endl;
+}
+
+void test_08() {
+    int res = nestingScore("");
+    bool passed = res == 0;
+    cout << "test_08: " << (passed ? "passed" : "failed") << "; res: " << res << endl;
+}
+
 int main(int argc, char const *argv[]) {
     test_00();
     test_01();
@@ -75,5 +89,8 @@ int main(int argc, char const *argv[]) {
     test_03();
     test_04();
     test_05();
+    test_06();
+    test_07();
+    test_08();
     return 0;
 }
