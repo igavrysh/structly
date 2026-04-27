@@ -7,7 +7,7 @@ using namespace std;
 
 class Node {
 public:
-    string val;
+     string val;
     Node* next;
 
     Node(string initialVal) {

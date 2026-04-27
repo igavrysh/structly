@@ -9,6 +9,7 @@
 using namespace std;
 
 bool lexical_order(string& w1, string& w2, unordered_map<char, int>& m) {
+
     for (int i = 0; i < min(w1.length(), w2.length()); i++) {
         int o1 = m[w1[i]];
         int o2 = m[w2[i]];
