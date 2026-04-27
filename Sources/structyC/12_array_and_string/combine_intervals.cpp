@@ -18,26 +18,26 @@ vector<tuple<int, int>> combineIntervals(vector<tuple<int, int>> intervals) {
         return res;
     }
 
-    cout << "sorted: ";
-    for (auto & interval : intervals) {
-        cout << "[" << get<0>(interval) << ", " << get<1>(interval) << "], ";
-    }
+    // cout << "sorted: ";
+    // for (auto & interval : intervals) {
+    //     cout << "[" << get<0>(interval) << ", " << get<1>(interval) << "], ";
+    // }
 
-    int curr_start = get<0>(intervals[0]);
-    int curr_end = get<1>(intervals[0]);
+    int curr_s = get<0>(intervals[0]);
+    int curr_e = get<1>(intervals[0]);
     for (auto & interval : intervals) {
-        const int start = get<0>(interval);
-        const int end = get<1>(interval);
-        if (curr_end < start) {
-            res.push_back(tuple<int, int>(curr_start, curr_end));
-            curr_start = start;
-            curr_end = end;
+        const int s = get<0>(interval);
+        const int e = get<1>(interval);
+        if (curr_e < s) {
+            res.push_back(tuple<int, int>(curr_s, curr_e));
+            curr_s = s;
+            curr_e = e;
         } else {
-            curr_end = max(curr_end, end);
+            curr_e = max(curr_e, e);
         }
     }
 
-    res.push_back(tuple<int, int>(curr_start, curr_end));
+    res.push_back(tuple<int, int>(curr_s, curr_e));
 
     return res;
 }
@@ -52,7 +52,7 @@ void test_00() {
     vector<tuple<int, int>> res = combineIntervals(intervals);
 
     cout << "\nres: ";
-    for (auto & interval : intervals) {
+    for (auto & interval : res) {
         cout << "[" << get<0>(interval) << ", " << get<1>(interval) << "], ";
     }
 }
