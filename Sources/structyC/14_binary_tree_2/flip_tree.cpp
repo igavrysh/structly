@@ -21,27 +21,16 @@ public:
     }
 };
 
-Node* dfs(Node *node, string& val1, string& val2) {
-    if (node == nullptr) {
+Node* flipTree(Node* root) {
+    if (root == nullptr) {
         return nullptr;
     }
-
-    if (node->val == val1 || node->val == val2) {
-        return node;
-    }
-
-    Node* l_res = dfs(node->left, val1, val2);
-    Node* r_res = dfs(node->right, val1, val2);
-
-    if (l_res != nullptr && r_res != nullptr) {
-        return node;
-    }
-
-    return l_res != nullptr ? l_res : r_res;
-}
-
-string lowestCommonAncestor(Node *node, string val1, string val2) {
-    return dfs(node, val1, val2)->val;
+    flipTree(root->left);
+    flipTree(root->right);
+    Node* tmp = root->left;
+    root->left = root->right;
+    root->right = tmp;
+    return root;
 }
 
 Node* sampleTree() {
