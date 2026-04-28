@@ -26,8 +26,7 @@ Node* add_lists(Node* h1, Node* h2, int carry) {
         val += h1->val;
         h1 = h1-> next;
     }
-    if (h2 != nullptr)
-    {
+    if (h2 != nullptr) {
         val += h2->val;
         h2 = h2->next;
     }
