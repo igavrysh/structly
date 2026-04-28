@@ -14,6 +14,21 @@ public:
 };
 
 Node* undupeSortedLinkedList(Node* head) {
+    Node* dummyHead = new Node(-1);
+    Node* tail = dummyHead;
+    Node* current = head;
+    while (current != nullptr) {
+        if (tail->val == current->val) {
+        } else {
+            tail->next = new Node(current->val);
+            tail = tail->next;
+        }
+        current = current->next;
+    }
+    return dummyHead->next;
+}
+
+Node* undupeSortedLinkedList_v1(Node* head) {
     Node* node = head;
     while (node != nullptr) {
         if (node->next != nullptr) {
