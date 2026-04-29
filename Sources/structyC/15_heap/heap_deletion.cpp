@@ -5,6 +5,8 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <iostream>
+#include <limits>
 using namespace std;
 
 class MinHeap {
@@ -69,24 +71,75 @@ public:
         while (i < vec.size()) {
             int ch1 = i*2 + 1;
             int ch2 = i*2 + 2;
-            int minn = min(
-                ch1 < vec.size() ? vec[ch1] : vec[i],
-                ch2 < vec.size() ? vec[ch2] : vec[i]);
+            int ch1Val = ch1 < vec.size() ? vec[ch1] : vec[i];
+            int ch2Val = ch2 < vec.size() ? vec[ch2] : vec[i];
+            int minn = min(ch1Val, ch2Val);
             if (vec[i] <= minn) {
                 return;
-            } else {
-                if (ch1 < vec.size() && minn == vec[ch1]) {
-                    int tmp = vec[i];
-                    vec[i] = vec[ch1];
-                    vec[ch1] = tmp;
-                    i = ch1;
-                } else {
-                    int tmp = vec[i];
-                    vec[i] = vec[ch2];
-                    vec[ch2] = tmp;
-                    i = ch2;
-                }
             }
+
+            int swap_idx = i;
+            if (minn == ch1Val) {
+                swap_idx = ch1;
+            } else if (minn == ch2Val) {
+                swap_idx = ch2;
+            }
+            swap(i, swap_idx);
+            if (swap_idx == i) {
+                break;
+            }
+            i = swap_idx;
         }
     }
 };
+
+void test_00() {
+    bool passed = true;
+    MinHeap heap;
+    heap.insert(12);
+    heap.insert(13);
+    heap.insert(11);
+    heap.insert(4);
+    heap.insert(20);
+    heap.insert(9);
+    heap.insert(22);
+    heap.insert(14);
+    passed &= heap.extractMin() == 4; // -> 4
+    passed &= heap.extractMin() == 9; // -> 9
+    passed &= heap.extractMin() == 11; // -> 11
+    cout << "test_00: " << (passed ? "passed" : "failed") << endl;
+}
+
+void test_01() {
+    bool passed = true;
+    MinHeap heap;
+    heap.insert(12);
+    heap.insert(93);
+    heap.insert(63);
+    heap.insert(16);
+    passed &= heap.extractMin() == 12; // -> 12
+    passed &= heap.extractMin() == 16; // -> 16
+    heap.insert(-500);
+    heap.insert(21);
+    heap.insert(11);
+    heap.insert(43);
+    heap.insert(-6);
+    heap.insert(35);
+    heap.insert(15);
+    passed &= heap.extractMin() == -500; // -> -500
+    passed &= heap.extractMin() == -6; // -> -6
+    passed &= heap.extractMin() == 11; // -> 11
+    passed &= heap.extractMin() == 15; // -> 15
+    passed &= heap.extractMin() == 21; // -> 21
+    passed &= heap.extractMin() == 35; // -> 35
+    passed &= heap.extractMin() == 43; // -> 43
+    passed &= heap.extractMin() == 63; // -> 63
+    passed &= heap.extractMin() == 93; // -> 93
+    cout << "test_01: " << (passed ? "passed" : "failed") << endl;
+}
+
+int main(int argc, char* argv[]) {
+    test_00();
+    test_01();
+}
+
