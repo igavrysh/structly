@@ -7,7 +7,40 @@
 #include <iostream>
 using namespace std;
 
-void bt(int i, vector<string>& elements, vector<string> acc, vector<vector<string>>& result) {
+vector<vector<string>> subsets(vector<string> elements) {
+    if (elements.empty()) {
+        return vector<vector<string>>{{}};
+    }
+
+    vector<vector<string>> elsWo = subsets(vector<string>(elements.begin()+1, elements.end()));
+    vector<vector<string>> res{};
+    for (vector<string> elWo : elsWo) {
+        res.push_back(elWo);
+        elWo.push_back(elements[0]);
+        res.push_back(elWo);
+    }
+
+    return res;
+}
+
+void bt_01(int i, vector<string>& elements, vector<string> acc, vector<vector<string>>& result) {
+    if (i == elements.size()) {
+        result.push_back(acc);
+        return;
+    }
+
+    bt_01(i+1, elements, acc, result);
+    acc.push_back(elements[i]);
+    bt_01(i+1, elements, acc, result);
+}
+
+vector<vector<string>> subsets_01(vector<string> elements) {
+    vector<vector<string>> res{};
+    bt_01(0, elements, vector<string>{}, res);
+    return res;
+}
+
+void bt_1n(int i, vector<string>& elements, vector<string> acc, vector<vector<string>>& result) {
     if (i >= elements.size()) {
         result.push_back(acc);
         return;
@@ -19,16 +52,16 @@ void bt(int i, vector<string>& elements, vector<string> acc, vector<vector<strin
             acc.push_back(elements[j]);
             added = true;
         }
-        bt(j + 1, elements, acc, result);
+        bt_1n(j + 1, elements, acc, result);
         if (added) {
             acc.pop_back();
         }
     }
 }
 
-vector<vector<string>> subsets(vector<string> elements) {
+vector<vector<string>> subsets_1n(vector<string> elements) {
     vector<vector<string>> res{};
-    bt(0, elements, vector<string>{}, res);
+    bt_1n(0, elements, vector<string>{}, res);
     return res;
 }
 
