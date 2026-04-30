@@ -65,6 +65,15 @@ vector<vector<string>> subsets_1n(vector<string> elements) {
     return res;
 }
 
+
+void test_sort(vector<vector<string>>& res) {
+    for (vector<string>& int_res : res) {
+        sort(int_res.begin(), int_res.end());
+    }
+
+    sort(res.begin(), res.end());
+}
+
 void test_00() {
     vector<vector<string>> res = subsets(vector<string> { "a", "b" }); // ->
     vector<vector<string>> exp_res = vector<vector<string>> {
@@ -73,8 +82,18 @@ void test_00() {
         {"a"},
         {"a", "b"}
     };
-    sort(res.begin(), res.end());
-    sort(exp_res.begin(), exp_res.end());
+    test_sort(res);
+    test_sort(exp_res);
+
+    // sort(res.begin(), res.end());
+    // for (vector<string>& int_res : res) {
+    //     sort(int_res.begin(), int_res.end());
+    // }
+    // sort(exp_res.begin(), exp_res.end());
+    // for (vector<string>& int_res : exp_res) {
+    //     sort(int_res.begin(), int_res.end());
+    // }
+
     bool passed = res.size() == exp_res.size() && res == exp_res;
     cout << "test_00: " << (passed ? "passed" : "failed");
 }
