@@ -2,6 +2,10 @@
 // Created by new on 4/30/26.
 //
 
+//
+// Created by new on 4/30/26.
+//
+
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -15,10 +19,10 @@ vector<vector<string>> permutations(vector<string> elements) {
 
     string el = elements[0];
     vector<string> elsWoEl(elements.begin() + 1, elements.end());
-    vector<vector<string>> res = permutations(elsWoEl);
-    for (vector<string>& r : res) {
-        int r_size = r.size();
-        for (int i = 0; i <= r_size; i++) {
+    vector<vector<string>> perms = permutations(elsWoEl);
+    vector<vector<string>> res{};
+    for (vector<string> r : perms) {
+        for (int i = 0; i <= r.size(); i++) {
             vector<string> new_comb(r.begin(), r.end());
             new_comb.insert(new_comb.begin() + i, el);
             res.push_back(new_comb);
@@ -57,12 +61,12 @@ void test_00() {
     vector<vector<string>> res = permutations(vector<string> { "a", "b", "c" });
     sort_2d(res);
     vector<vector<string>> exp_res = {
-        { "a", "b", "c" }, 
+        { "a", "b", "c" },
         { "b", "a", "c" }, 
         { "b", "c", "a" }, 
         { "a", "c", "b" }, 
         { "c", "a", "b" }, 
-        { "c", "b", "a" } 
+        { "c", "b", "a" }
     };
     sort_2d(exp_res);
     bool passed = res == exp_res;
@@ -73,3 +77,4 @@ int main(int argc, char const *argv[]) {
     test_00();
     return 0;
 }
+
