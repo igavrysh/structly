@@ -11,12 +11,12 @@ using namespace std;
 
 vector<vector<string>> liningUp(vector<string> people, int capacity)
 {
-    if (capacity == 0) {
-        return {{}};
+    if (capacity > people.size()) {
+        return {};
     }
 
-    if (people.empty()) {
-        return {};
+    if (capacity == 0) {
+        return {{}};
     }
 
     string person = people[0];
