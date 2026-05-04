@@ -11,6 +11,34 @@
 #include <iostream>
 using namespace std;
 
+bool dfs_valid(const string& v, bool curr_color, unordered_map<string, vector<string>>& G, unordered_map<string, bool> &coloring) {
+    if (coloring.count(v) > 0) {
+        return coloring[v] == curr_color;
+    }
+
+    coloring[v] = curr_color;
+
+    for (const string& next_v : G[v]) {
+        const bool res = dfs_valid(next_v, !curr_color, G, coloring);
+        if (!res) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool canColor(unordered_map<string, vector<string>> G) {
+    unordered_map<string, bool> coloring{};
+    for (tuple<string, vector<string>> t : G) {
+        string v = get<0>(t);
+        if (coloring.count(v) == 0 && !dfs_valid(v, true, G, coloring)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool color_graph_bfs(string start_v, unordered_map<string, vector<string>>& G, unordered_set<string>& visited, unordered_map<string, int>& color) {
     int clr = 0;
     queue<tuple<string, int>> q{};
@@ -59,7 +87,7 @@ void test_00() {
         { "y", {"x","z"} },
         { "z", {"y"} }
     };
-    bool res = canColor_bfs(G);
+    bool res = canColor(G);
     bool exp_res = true;
     bool passed = res == exp_res;
     cout << "test_00: " << (passed ? "passed" : "failed") << endl;
@@ -71,7 +99,7 @@ void test_01() {
         { "r", {"q", "s"} },
         { "s", {"r", "q"} }
     };
-    bool res = canColor_bfs(G);
+    bool res = canColor(G);
     bool exp_res = false;
     bool passed = res == exp_res;
     cout << "test_01: " << (passed ? "passed" : "failed") << endl;
