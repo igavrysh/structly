@@ -10,10 +10,9 @@
 #include <vector>
 #include <iostream>
 #include <queue>
+using namespace std;
 
-void conn_comps_i_bfs(std::unordered_map<int, std::vector<int>> G,
-                      int v,
-                      std::unordered_set<int>& visited) {
+void conn_comps_i_bfs(unordered_map<int, vector<int>> G, int v, unordered_set<int>& visited) {
     std::queue<int> q{};
     q.push(v);
     while (!q.empty()) {
@@ -29,7 +28,7 @@ void conn_comps_i_bfs(std::unordered_map<int, std::vector<int>> G,
     }
 }
 
-int connectedComponentsCount(std::unordered_map<int, std::vector<int>> G) {
+int connectedComponentsCount(unordered_map<int, vector<int>> G) {
     std::unordered_set<int> visited{};
     int counter = 0;
     for (const auto& pair : G) {
@@ -44,10 +43,7 @@ int connectedComponentsCount(std::unordered_map<int, std::vector<int>> G) {
     return counter;
 }
 
-void conn_comps_r_dfs(std::unordered_map<int, std::vector<int>> G,
-                      int v,
-                      std::unordered_set<int>& visited
-                      ) {
+void conn_comps_r_dfs(unordered_map<int, vector<int>> G, int v, unordered_set<int>& visited) {
     for (int next_v : G[v]) {
         if (visited.find(next_v) != visited.end()) {
             continue;
@@ -57,7 +53,7 @@ void conn_comps_r_dfs(std::unordered_map<int, std::vector<int>> G,
     }
 }
 
-int connectedComponentsCount1(std::unordered_map<int, std::vector<int>> G) {
+int connectedComponentsCount1(unordered_map<int, vector<int>> G) {
     std::unordered_set<int> visited{};
     int counter = 0;
     for (const auto& pair : G) {
@@ -74,7 +70,7 @@ int connectedComponentsCount1(std::unordered_map<int, std::vector<int>> G) {
 }
 
 void run_connectedComponentsCount_test_00() {
-    std::unordered_map<int, std::vector<int>> graph {
+    unordered_map<int, vector<int>> graph {
         { 0, { 8, 1, 5 } },
         { 1, { 0 } },
         { 5, { 0, 8 } },
@@ -84,11 +80,11 @@ void run_connectedComponentsCount_test_00() {
         { 4, { 3, 2 } }
     };
     int res = connectedComponentsCount(graph); // -> 2
-    std::cout << "count: " << res << std::endl;
+    cout << "count: " << res << endl;
 }
 
 void run_connectedComponentsCount_test_01() {
-    std::unordered_map<int, std::vector<int>> graph {
+    unordered_map<int, vector<int>> graph {
         { 1, { 2 } },
         { 2, { 1, 8 } },
         { 6, { 7 } },
@@ -97,6 +93,6 @@ void run_connectedComponentsCount_test_01() {
         { 8, { 9, 7, 2 } }
     };
     int res = connectedComponentsCount(graph); // -> 2
-    std::cout << "count: " << res << std::endl;
+    cout << "count: " << res << endl;
 }
 

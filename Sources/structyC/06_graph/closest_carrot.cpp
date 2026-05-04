@@ -11,7 +11,7 @@
 #include <algorithm>
 using namespace std;
 
-int closestCarrot(std::vector<std::vector<char>> grid, int startRow, int startCol) {
+int closestCarrot(vector<vector<char>> grid, int startRow, int startCol) {
     const int rows = (int)grid.size();
     const int cols = (int)grid[0].size();
     vector<vector<int>> dirs = {{-1,0},{1,0},{0,-1},{0,1}};
