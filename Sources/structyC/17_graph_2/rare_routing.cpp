@@ -7,25 +7,22 @@
 #include <iostream>
 using namespace std;
 
-bool dfs_no_cycles(unordered_map<int, vector<int>> &G, vector<bool> &visited, vector<bool>& path, int v, int parent_v) {
-    path[v] = true;
+bool dfs_no_cycles(unordered_map<int, vector<int>> &G, vector<bool> &visited, int v, int parent_v) {
+    if (visited[v]) {
+        return false;
+    }
+
+    visited[v] = true;
+
     for (int neigh : G[v]) {
         if (neigh == parent_v) {
             continue;
         }
-        if (path[neigh]) {
-            return false;
-        }
-        if (visited[neigh]) {
-            continue;
-        }
-        visited[neigh] = true;
-        const bool res = dfs_no_cycles(G, visited, path, neigh, v);
+        const bool res = dfs_no_cycles(G, visited, neigh, v);
         if (!res) {
             return false;
         }
     }
-    path[v] = false;
     return true;
 }
 
@@ -39,7 +36,6 @@ bool rareRouting(int n, vector<vector<int>> roads) {
     }
 
     vector<bool> visited(n, false);
-    vector<bool> path(n, false);
     for (int i = 0; i < n; i++) {
         if (visited[i]) {
             continue;
@@ -47,7 +43,7 @@ bool rareRouting(int n, vector<vector<int>> roads) {
         if (i != 0) {
             return false;
         }
-        const bool res = dfs_no_cycles(G, visited, path, i, -1);
+        const bool res = dfs_no_cycles(G, visited, i, -1);
         if (!res) {
             return false;
         }
