@@ -46,7 +46,6 @@ vector<string> topologicalOrder(unordered_map<string, vector<string>> G) {
             return vector<string>{};
         }
     }
-
     reverse(order.begin(), order.end());
     return order;
 }
