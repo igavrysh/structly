@@ -18,6 +18,9 @@ int uf_find(int i, vector<int>& p) {
 void uf_union(int i1, int i2, vector<int>& p, vector<int>& w) {
     int p1 = uf_find(i1, p);
     int p2 = uf_find(i2, p);
+    if (p1 == p2) {
+        return;
+    }
     if (w[p1] >= w[p2]) {
         p[p2] = p1;
         w[p1] += w[p2];
