@@ -4,11 +4,48 @@
 
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <queue>
 #include <iostream>
+#include <algorithm>
+#include <cmath>
+
 using namespace std;
 
+int dfs(unordered_map<string, unordered_map<string, int>>& G, unordered_set<string>& visited, const string& src,
+    const string& dst)
+{
+    if (src == dst) {
+        return 0;
+    }
+
+    visited.insert(src);
+    int minn = -1;
+    for (pair<string, int> neigh : G[src]) {
+        string to = get<0>(neigh);
+        if (visited.count(to) > 0) {
+            continue;
+        }
+        const int cost = get<1>(neigh);
+        const int res = dfs(G, visited, to, dst);
+        if (res != -1) {
+            if (minn == -1) {
+                minn = cost + res;
+            }
+            minn = std::min(minn, cost + res);
+        }
+    }
+    visited.erase(src);
+
+    return minn;
+}
+
 int weightedGraphMinPath(unordered_map<string, unordered_map<string, int>> G, string src, string dst) {
+    unordered_set<string> visited{};
+    return dfs(G, visited, src, dst);
+}
+
+int weightedGraphMinPath_dijkstra(unordered_map<string, unordered_map<string, int>> G, string src, string dst) {
     priority_queue<tuple<int, string>, vector<tuple<int, string>>, greater<>> pq;
     pq.push(tuple<int, string>(0, src));
     unordered_map<string, int>dist{};
