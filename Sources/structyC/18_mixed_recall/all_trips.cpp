@@ -6,21 +6,16 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
-
 using namespace std;
 
-vector<vector<string>> dfs(unordered_map<string, vector<string>>& G, string parent, string startStation, string endStation) {
+vector<vector<string>> dfs(unordered_map<string, vector<string>>& G, string& startStation, string& endStation) {
     if (startStation == endStation) {
         return {{ startStation }};
     }
 
     vector<vector<string>> res{};
-    for (string neigh : G[startStation]) {
-        if (neigh == parent) {
-            continue;
-        }
-
-        vector<vector<string>> paths = dfs(G, startStation, neigh, endStation);
+    for (string& neigh : G[startStation]) {
+        vector<vector<string>> paths = dfs(G, neigh, endStation);
         for (vector<string> path : paths) {
             path.push_back(startStation);
             res.push_back(path);
@@ -38,7 +33,7 @@ vector<vector<string>> allTrips(vector<tuple<string, string>> routes, string sta
         G[from].push_back(to);
     }
 
-    vector<vector<string>> res = dfs(G, "", startStation, endStation);
+    vector<vector<string>> res = dfs(G, startStation, endStation);
     for (vector<string>& path : res) {
         reverse(path.begin(), path.end());
     }
