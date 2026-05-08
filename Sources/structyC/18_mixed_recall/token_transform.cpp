@@ -7,7 +7,10 @@
 #include <iostream>
 using namespace std;
 
-string tokenTransform(string s, unordered_map<string, string> tokens) {
+string token_transform(string s, unordered_map<string, string> tokens) {
+    if (tokens.count(s) >  0) {
+        return tokens[s];
+    }
     string output;
     int i = 0;
     int j = 1;
@@ -23,12 +26,18 @@ string tokenTransform(string s, unordered_map<string, string> tokens) {
             if (tokens.count(key) == 0) {
                 return "";
             }
-            s.replace(i, j-i+1, tokens[key]);
+            string value = token_transform(tokens[key], tokens);
+            s.replace(i, j-i+1, value);
+            i = j + 1;
             j = i + 1;
         }
     }
 
     return output;
+}
+
+string tokenTransform(string s, unordered_map<string, string> tokens) {
+    return token_transform(s, tokens);
 }
 
 void test_00() {
