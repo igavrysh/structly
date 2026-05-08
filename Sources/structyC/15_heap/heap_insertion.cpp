@@ -29,7 +29,6 @@ public:
         sift_up(vec.size() - 1);
     }
 
-
     int parent(int i) {
         return floor((i-1) / 2);
     }

@@ -10,7 +10,6 @@ using namespace std;
 
 int virusSpread(vector<vector<int>> grid) {
     queue<tuple<int, int, int>> q{};
-
     int rows = grid.size();
     int cols = grid[0].size();
     int count_healthy = 0;
@@ -42,9 +41,7 @@ int virusSpread(vector<vector<int>> grid) {
             count_healthy--;
             q.push({next_i, next_j, t + 1});
         }
-
     }
-
     return count_healthy == 0 ? max_t : -1;
 }
 
