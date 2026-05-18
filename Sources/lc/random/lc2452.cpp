@@ -74,7 +74,8 @@ public:
 };
 
 void test_00() {
-    vector<string> queries = {"word","note","ants","wood"};
+    vect
+    or<string> queries = {"word","note","ants","wood"};
     vector<string> dictionary = {"wood","joke","moat"};
     lc2452 sol = lc2452();
     vector<string> res = sol.twoEditWords(queries, dictionary);
