@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 namespace bt_16_subsets {
@@ -101,5 +102,6 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+    return 0;
 }
 }

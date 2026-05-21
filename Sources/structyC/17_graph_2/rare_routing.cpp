@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_map>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 namespace graph_17_2_rare_routing {

@@ -8,6 +8,7 @@
 #include <string>
 #include <tuple>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 namespace graph_17_2_topological_order {

@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 #include <unordered_set>
-
+#include <algorithm>
 using namespace std;
 
 namespace bt_16_lining_up {

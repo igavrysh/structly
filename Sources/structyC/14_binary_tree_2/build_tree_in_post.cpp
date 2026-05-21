@@ -6,6 +6,7 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 namespace binary_tree_14_2_bitree_in_post {

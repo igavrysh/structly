@@ -5,6 +5,7 @@
 #include <queue>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 namespace graph_17_2_knight_attack {

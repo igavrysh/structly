@@ -6,6 +6,7 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 namespace mixed_recall_18_all_trips {
@@ -69,5 +70,6 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+    return 0;
 }
 }

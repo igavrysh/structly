@@ -10,7 +10,7 @@ swift run structyCLI
 
 ### Test
 ```
-swift test --enable-test-discovery
+PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig swift test
 ```
 
 

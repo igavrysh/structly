@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include <functional>
+#include <algorithm>
 using namespace std;
 
 namespace exh_rec_16_subst_synonyms {
