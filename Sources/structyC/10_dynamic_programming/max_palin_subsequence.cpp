@@ -3,6 +3,7 @@
 #include <algorithm>
 using namespace std;
 
+namespace dp_10_max_plain_subseq {
 int p_length(int l, int r, string s, vector<vector<int>>& cache) {
     if (l >= r) {
         return r-l+1;
@@ -32,4 +33,5 @@ int maxPalinSubsequence(string s) {
 int main(int argc, char const *argv[]) {
     /* code */
     return 0;
+}
 }

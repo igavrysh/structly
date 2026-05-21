@@ -67,6 +67,6 @@ int dfs_logn_space(Node* node, bool is_left, vector<bool>& res) {
 bool isBinarySearchTree_logn_space(Node* root) {
     vector<bool> res{};
     if (root == nullptr) return true;
-    dfs(root, true, res);
+    dfs_logn_space(root, true, res);
     return res.size() == 0;
 }

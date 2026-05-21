@@ -8,6 +8,7 @@
 
 using namespace std;
 
+namespace graph_17_2_extra_cable {
 int uf_find(int i, vector<int>& p) {
     int id = i;
     while (p[id] != id) {
@@ -51,3 +52,5 @@ tuple<int, int> extraCable(int numComputers, vector<tuple<int, int>> cables) {
 
     return tuple<int, int>(-1, -1);
 }
+}
+

@@ -7,6 +7,7 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_17_2_knight_attack {
 int knightAttack(int n, int kr, int kc, int pr, int pc) {
     vector<vector<int>> offsets = {{-2,-1},{-2, 1},{2,-1},{2,1},{-1,-2},{-1,2},{1,-2},{1,2}};
     vector<vector<bool>> visited(n, vector<bool>(n, false));
@@ -46,4 +47,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

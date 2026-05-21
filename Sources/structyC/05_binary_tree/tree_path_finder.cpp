@@ -13,6 +13,7 @@
 
 using namespace std;
 
+namespace binary_tree_05_tree_path_finder {
 class Node {
 public:
     std::string val;
@@ -152,10 +153,10 @@ void tree_path_finder_test_07() {
     vector<string>* res = pathFinder(root, "19000"); // -> [0, 1, 2, ..., 18999, 19000]
     int t = 1;
 }
-
 // int main(int argc, char const *argv[]) {
 //    tree_path_finder_test_07();
-   
+
 //    return 0;
 // }
 
+}

@@ -10,6 +10,7 @@
 #include <functional>
 using namespace std;
 
+namespace exh_rec_16_subst_synonyms {
 typedef vector<reference_wrapper<const string>> v_s;
 typedef vector<vector<reference_wrapper<const string>>> vv_s;
 
@@ -96,4 +97,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

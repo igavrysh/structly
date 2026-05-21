@@ -8,6 +8,7 @@
 
 using namespace std;
 
+namespace mixed_reall_pos_plants {
 int positioningPlants(vector<vector<int>> costs) {
     int types = costs[0].size();
     if (types < 2) {
@@ -37,9 +38,9 @@ int positioningPlants(vector<vector<int>> costs) {
 
 void test_00() {
     int res = positioningPlants(std::vector<std::vector<int>>{
-      {4, 3, 7},
-      {6, 1, 9},
-      {2, 5, 3}
+        {4, 3, 7},
+        {6, 1, 9},
+        {2, 5, 3}
     }); // -> 7, by doing 4 + 1 + 2.
     bool passed = res == 7;
     cout << "test_00: " << (passed ? "passed" : "failed") << endl;
@@ -47,8 +48,8 @@ void test_00() {
 
 void test_01() {
     int res = positioningPlants(std::vector<std::vector<int>>{
-      {12, 14, 5},
-      {6, 3, 2}
+        {12, 14, 5},
+        {6, 3, 2}
     }); // -> 8
     bool passed = res == 8;
     cout << "test_01: " << (passed ? "passed" : "failed") << endl;
@@ -57,5 +58,6 @@ void test_01() {
 int main(int argc, char* argv[]) {
     test_00();
     test_01();
+}
 }
 

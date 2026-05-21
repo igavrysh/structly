@@ -8,6 +8,8 @@
 #include <string>
 using namespace std;
 
+namespace dp_10_counting_change {
+
 int counting_сhange_helper(int amount, int start, vector<int>& coins, unordered_map<string, int>& mem) {
     string id = to_string(amount) + ',' + to_string(start);
     if (mem.count(id) > 0) {
@@ -52,4 +54,5 @@ void test_01() {
 
 int main(int argc, char *argv[]) {
     test_01();
+}
 }

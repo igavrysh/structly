@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_recall_18_knapsack {
 int dp(vector<int>& values, vector<int>& weights, int weightLimit, int i, unordered_map<string, int>& cache) {
     const string key = to_string(weightLimit) + "-" + to_string(i);
     if (cache.count(key) > 0) {
@@ -45,5 +46,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
-
+}
 }

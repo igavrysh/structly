@@ -6,6 +6,7 @@
 #include <unordered_map>
 using namespace std;
 
+namespace dp_10_fib {
 int fib_helper(int n, unordered_map<int, int>& mem) {
     if (mem.count(n) > 0) {
         return mem[n];
@@ -33,4 +34,5 @@ void test_02() {
 
 int main(int argc, char *argv[]) {
     test_02();
+}
 }

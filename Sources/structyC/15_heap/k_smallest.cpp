@@ -8,6 +8,7 @@
 #include <algorithm>
 using namespace std;
 
+namespace heap_15_k_smallest {
 vector<int> kSmallest(vector<int> numbers, int k) {
     vector<int> heap{};
     for (int num : numbers) {
@@ -33,6 +34,4 @@ void test_00() {
 int main(int argc, char* argv[]) {
     test_00();
 }
-
-
-
+}

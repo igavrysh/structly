@@ -8,6 +8,7 @@
 #include <iostream>
 #include <unordered_map>
 
+namespace hashing_02_anagrams {
 bool anagrams(std::string s1, std::string s2) {
     if (s1.size() != s2.size()) {
         return false;
@@ -46,4 +47,6 @@ void test_01() {
 void testAnagrams() {
     test_00();
     test_01();
+}
+
 }

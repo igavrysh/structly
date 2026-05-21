@@ -7,6 +7,8 @@
 #include <queue>
 using namespace std;
 
+namespace dp_10_semesters_req {
+
 int dfs(int v, unordered_map<int, int>& sems_req, unordered_map<int, unordered_set<int>>& G) {
     if (sems_req[v] != -1) {
         return sems_req[v];
@@ -18,9 +20,9 @@ int dfs(int v, unordered_map<int, int>& sems_req, unordered_map<int, unordered_s
     int max_sems = 0;
     for (int next_v : G[v]) {
         if (sems_req[next_v] != -1) {
-            max_sems = max(max_sems, sems_req[next_v]); 
+            max_sems = max(max_sems, sems_req[next_v]);
         } else {
-            max_sems = max(max_sems, dfs(next_v, sems_req, G)); 
+            max_sems = max(max_sems, dfs(next_v, sems_req, G));
         }
     }
 
@@ -98,4 +100,5 @@ int main(int argc, char const *argv[]) {
     test_01();
     test_02();
     return 0;
+}
 }

@@ -11,20 +11,21 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_17_2_can_color {
 bool dfs_valid(const string& v, bool curr_color, unordered_map<string, vector<string>>& G, unordered_map<string, bool> &coloring) {
     if (coloring.count(v) > 0) {
         return coloring[v] == curr_color;
     }
-
+    
     coloring[v] = curr_color;
-
+    
     for (const string& next_v : G[v]) {
         const bool res = dfs_valid(next_v, !curr_color, G, coloring);
         if (!res) {
             return false;
         }
     }
-
+    
     return true;
 }
 
@@ -107,4 +108,5 @@ void test_01() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

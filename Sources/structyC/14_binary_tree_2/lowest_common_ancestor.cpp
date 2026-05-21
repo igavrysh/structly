@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace binary_tree_14_2_lca {
 class Node {
 public:
     std::string val;
@@ -82,4 +83,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

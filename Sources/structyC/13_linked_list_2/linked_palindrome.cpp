@@ -6,6 +6,7 @@
 #include <algorithm>
 using namespace std;
 
+namespace linked_list_13_2_linked_palindrome {
 class Node {
 public:
     int val;
@@ -51,4 +52,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

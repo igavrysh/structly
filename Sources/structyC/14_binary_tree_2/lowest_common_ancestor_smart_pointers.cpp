@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace binary_tree_14_2_lca_smrt_ptrs {
 struct Node {
     string val;
     unique_ptr<Node> left;
@@ -77,4 +78,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

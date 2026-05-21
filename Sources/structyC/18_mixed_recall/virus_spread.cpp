@@ -8,6 +8,7 @@
 #include <tuple>
 using namespace std;
 
+namespace mixed_reall_virus_spread {
 int virusSpread(vector<vector<int>> grid) {
     queue<tuple<int, int, int>> q{};
     int rows = grid.size();
@@ -58,4 +59,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

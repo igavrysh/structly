@@ -7,6 +7,7 @@
 #include <iostream>
 using namespace std;
 
+namespace bt_16_subsets {
 vector<vector<string>> subsets(vector<string> elements) {
     if (elements.empty()) {
         return vector<vector<string>>{{}};
@@ -101,4 +102,4 @@ void test_00() {
 int main(int argc, char* argv[]) {
     test_00();
 }
-
+}

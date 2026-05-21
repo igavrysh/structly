@@ -7,6 +7,7 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_reacall_18_token_transform {
 string token_transform(string s, unordered_map<string, string> tokens) {
     if (tokens.count(s) >  0) {
         return tokens[s];
@@ -42,8 +43,8 @@ string tokenTransform(string s, unordered_map<string, string> tokens) {
 
 void test_00() {
     std::unordered_map<std::string, std::string> tokens {
-      {"$LOCATION$", "$ANIMAL$ park"},
-      {"$ANIMAL$", "dog"},
+        {"$LOCATION$", "$ANIMAL$ park"},
+        {"$ANIMAL$", "dog"},
     };
     bool passed = tokenTransform("Walk the $ANIMAL$ in the $LOCATION$!", tokens) == "Walk the dog in the dog park!";
     // -> "Walk the dog in the dog park!"
@@ -52,11 +53,11 @@ void test_00() {
 
 void test_01() {
     std::unordered_map<std::string, std::string> tokens {
-      {"$ADJECTIVE_1$", "quick"},
-      {"$ADJECTIVE_2$", "eager"},
-      {"$ADVERBS$", "$ADJECTIVE_1$ly and $ADJECTIVE_2$ly"},
-      {"$VERB$", "hopped $DIRECTION$"},
-      {"$DIRECTION$", "North"},
+        {"$ADJECTIVE_1$", "quick"},
+        {"$ADJECTIVE_2$", "eager"},
+        {"$ADVERBS$", "$ADJECTIVE_1$ly and $ADJECTIVE_2$ly"},
+        {"$VERB$", "hopped $DIRECTION$"},
+        {"$DIRECTION$", "North"},
     };
     bool passed = tokenTransform("the $ADJECTIVE_1$ fox $ADVERBS$ $VERB$ward", tokens) == "the quick fox quickly and eagerly hopped Northward";
     // -> "the quick fox quickly and eagerly hopped Northward"
@@ -65,10 +66,10 @@ void test_01() {
 
 void test_02() {
     std::unordered_map<std::string, std::string> tokens {
-      {"$B$", "epicly $C$"},
-      {"$A$", "pretty $B$ problem $D$"},
-      {"$D$", "we have"},
-      {"$C$", "clever"},
+        {"$B$", "epicly $C$"},
+        {"$A$", "pretty $B$ problem $D$"},
+        {"$D$", "we have"},
+        {"$C$", "clever"},
     };
     bool passed = tokenTransform("What a $A$ here!", tokens) == "What a pretty epicly clever problem we have here!";
     // -> "What a pretty epicly clever problem we have here!"
@@ -77,12 +78,12 @@ void test_02() {
 
 void test_03() {
     std::unordered_map<std::string, std::string> tokens {
-      {"$1$", "a$2$"},
-      {"$2$", "b$3$"},
-      {"$3$", "c$4$"},
-      {"$4$", "d$5$"},
-      {"$5$", "e$6$"},
-      {"$6$", "f!"},
+        {"$1$", "a$2$"},
+        {"$2$", "b$3$"},
+        {"$3$", "c$4$"},
+        {"$4$", "d$5$"},
+        {"$5$", "e$6$"},
+        {"$6$", "f!"},
     };
     bool passed = tokenTransform("$1$ $1$ $1$ $1$ $1$ $1$ $4$ $4$", tokens) == "abcdef! abcdef! abcdef! abcdef! abcdef! abcdef! def! def!";
     // -> "abcdef! abcdef! abcdef! abcdef! abcdef! abcdef! def! def!"
@@ -91,15 +92,15 @@ void test_03() {
 
 void test_04() {
     std::unordered_map<std::string, std::string> tokens {
-      {"$0$", "$1$$1$$1$$1$$1$$1$$1$$1$$1$$1$$1$$1$"},
-      {"$1$", "$2$$2$$2$$2$$2$$2$$2$$2$$2$"},
-      {"$2$", "$3$$3$$3$$3$$3$$3$$3$"},
-      {"$3$", "$4$$4$$4$$4$$4$$4$"},
-      {"$4$", "$5$$5$$5$$5$$5$"},
-      {"$5$", "$6$$6$$6$$6$"},
-      {"$6$", "$7$$7$$7$"},
-      {"$7$", "$8$$8$"},
-      {"$8$", ""},
+        {"$0$", "$1$$1$$1$$1$$1$$1$$1$$1$$1$$1$$1$$1$"},
+        {"$1$", "$2$$2$$2$$2$$2$$2$$2$$2$$2$"},
+        {"$2$", "$3$$3$$3$$3$$3$$3$$3$"},
+        {"$3$", "$4$$4$$4$$4$$4$$4$"},
+        {"$4$", "$5$$5$$5$$5$$5$"},
+        {"$5$", "$6$$6$$6$$6$"},
+        {"$6$", "$7$$7$$7$"},
+        {"$7$", "$8$$8$"},
+        {"$8$", ""},
     };
     bool passed = tokenTransform("z$0$z$0$z$0$z$0$z$0$z$0$z", tokens) == "zzzzzzz";
     // -> "zzzzzzz"
@@ -112,4 +113,5 @@ int main(int argc, char* argv[]) {
     test_02();
     test_03();
     test_04();
+}
 }

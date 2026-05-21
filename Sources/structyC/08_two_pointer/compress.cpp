@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+namespace two_pointer_08 {
 string compress(string s) {
     string res = "";
     int i = 0;
@@ -32,4 +33,5 @@ void compress_test_00() {
 
 int main(int argc, char *argv[]) {
     compress_test_00();
+}
 }

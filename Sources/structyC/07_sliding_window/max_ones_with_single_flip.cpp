@@ -7,6 +7,7 @@
 #include <iostream>
 using namespace std;
 
+namespace sliding_window_07 {
 int maxOnesWithSingleFlip(std::string s) {
     int l = 0;
     int longest = 0;
@@ -48,4 +49,5 @@ int main(int argc, char *argv[]) {
     test_00();
     test_01();
     test_02();
+}
 }

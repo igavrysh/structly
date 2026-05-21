@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_recall_18_knightly_number {
 static vector<vector<int>> dirs = {{-1,-2},{-1,2},{1,-2},{1,2},{-2,-1},{-2,1},{2,-1},{2,1}};
 
 int knightly_number(int n, int m, int kr, int kc, int pr, int pc, vector<vector<vector<int>>>& combs) {
@@ -59,4 +60,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

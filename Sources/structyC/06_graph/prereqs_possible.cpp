@@ -13,8 +13,10 @@
 
 using namespace std;
 
+namespace graph_06_prereqs_possible {
+
 bool dfs_has_cycle(unordered_map<int, unordered_set<int>>& G, unordered_set<int>& visited,
-    unordered_set<int>& visiting, int v) {
+                   unordered_set<int>& visiting, int v) {
     if (visiting.count(v) > 0) {
         return true;
     }
@@ -58,11 +60,11 @@ bool prereqsPossible(int numCourses, vector<tuple<int, int>> prereqs) {
 void prereqsPossible_test_00() {
     int numCourses = 6;
     std::vector<std::tuple<int, int>> prereqs {
-      {0, 1},
-      {2, 3},
-      {0, 2},
-      {1, 3},
-      {4, 5}
+        {0, 1},
+        {2, 3},
+        {0, 2},
+        {1, 3},
+        {4, 5}
     };
     bool res = prereqsPossible(numCourses, prereqs); // -> 1 (true)
     cout << res << endl;
@@ -71,12 +73,12 @@ void prereqsPossible_test_00() {
 void prereqsPossible_test_01() {
     int numCourses = 6;
     std::vector<std::tuple<int, int>> prereqs {
-      {0, 1},
-      {2, 3},
-      {0, 2},
-      {1, 3},
-      {4, 5},
-      {3, 0}
+        {0, 1},
+        {2, 3},
+        {0, 2},
+        {1, 3},
+        {4, 5},
+        {3, 0}
     };
     bool res = prereqsPossible(numCourses, prereqs); // -> 0 (false)
     cout << res << endl;
@@ -85,5 +87,4 @@ void prereqsPossible_test_01() {
 int main(int argc, char *argv[]) {
     prereqsPossible_test_01();
 }
-
-
+}

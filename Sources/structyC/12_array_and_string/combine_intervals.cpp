@@ -8,6 +8,8 @@
 #include <iostream>
 using namespace std;
 
+namespace array_n_string_12_combine_intervals {
+
 vector<tuple<int, int>> combineIntervals(vector<tuple<int, int>> intervals) {
     sort(intervals.begin(), intervals.end(), [](tuple<int, int> &a, tuple<int, int> &b) -> bool {
         return get<0>(a) < get<0>(b);
@@ -60,4 +62,4 @@ void test_00() {
 int main(int argc, char* argv[]) {
     test_00();
 }
-
+}

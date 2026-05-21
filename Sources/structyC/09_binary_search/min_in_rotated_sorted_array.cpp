@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+namespace binary_search_09 {
 int minInRotatedSortedArray(vector<int> nums) {
     int lo = 0;
     int hi = nums.size() - 1;
@@ -34,4 +35,5 @@ void test_01() {
 
 int main(int argc, char *argv[]) {
     test_01();
+}
 }

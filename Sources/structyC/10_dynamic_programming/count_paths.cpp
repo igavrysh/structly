@@ -7,6 +7,7 @@
 #include <unordered_map>
 using namespace std;
 
+namespace dp_10_count_paths {
 int count_paths_helper(int i, int j, vector<vector<char>>& grid, unordered_map<string, int>& memo) {
     string id = to_string(i) + ',' + to_string(j);
     if (memo.count(id) > 0) {
@@ -69,4 +70,4 @@ int main(int argc, char *argv[]) {
     };
     countPaths(grid);
 }
-
+}

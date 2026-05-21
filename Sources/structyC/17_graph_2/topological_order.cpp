@@ -10,6 +10,7 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_17_2_topological_order {
 bool postOrderDfs(unordered_map<string, vector<string>>& G, unordered_set<string>& visited, unordered_set<string>& path,
     vector<string>& order, const string& v)
 {
@@ -82,4 +83,5 @@ void test_my_test() {
 int main(int argc, char* argv[]) {
     test_my_test();
     test_00();
+}
 }

@@ -3,11 +3,12 @@
 #include <iostream>
 using namespace std;
 
+namespace stack_11_nesting_score {
 /*
 []
 stck:
 i:0 stck:[0]
-i:1 
+i:1
 */
 int nestingScore(string str) {
     stack<int> stck{};
@@ -94,3 +95,6 @@ int main(int argc, char const *argv[]) {
     test_08();
     return 0;
 }
+}
+
+

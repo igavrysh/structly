@@ -8,15 +8,16 @@
 #include <iostream>
 using namespace std;
 
+namespace dp_10_array_stepper {
 bool array_stepper(int i, vector<int>& numbers, unordered_map<int, bool>& memo) {
     if (memo.count(i) > 0) {
         return memo[i];
     }
-
+    
     if (i >= numbers.size()-1) {
         return true;
     }
-
+    
     bool res = false;
     for (int j = 1; j <= numbers[i]; j++) {
         if (array_stepper(i+j, numbers, memo)) {
@@ -24,7 +25,7 @@ bool array_stepper(int i, vector<int>& numbers, unordered_map<int, bool>& memo) 
             break;
         }
     }
-
+    
     memo[i] = res;
     return res;
 }
@@ -40,10 +41,10 @@ bool arrayStepper_mine(vector<int> numbers) {
         if (maxx < i) {
             return false;
         }
-
+        
         maxx = max(maxx, i + numbers[i]);
     }
-
+    
     return true;
 }
 
@@ -55,4 +56,5 @@ void test_00() {
 
 int main(int argc, char *argv[]) {
     test_00();
+}
 }

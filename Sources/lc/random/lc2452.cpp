@@ -6,10 +6,11 @@
 #include <iostream>
 using namespace std;
 
+namespace lc2452 {
 struct TrieNode {
     TrieNode* children[26];
     bool isLeaf;
-
+    
     TrieNode() : children{}, isLeaf(false) {}
 };
 
@@ -26,19 +27,19 @@ public:
                 res.push_back(query);
             }
         }
-
+        
         return res;
     }
-
+    
     bool dfs(int i, int skips_used, TrieNode* node, string query) {
         if (skips_used > 2) {
             return false;
         }
-
+        
         if (i == query.size()) {
             return node->isLeaf;
         }
-
+        
         char ch = query[i];
         bool res = false;
         if (node->children[ch - 'a'] != nullptr) {
@@ -56,10 +57,10 @@ public:
                 return res;
             }
         }
-
+        
         return false;
     }
-
+    
     void add_word(const string& word, TrieNode* root) {
         TrieNode* node = root;
         for (int i = 0; i < word.length(); i++) {
@@ -86,4 +87,6 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+    return 0;
+}
 }

@@ -5,6 +5,7 @@
 #include <unordered_map>
 using namespace std;
 
+namespace dp_10_quickest_concat {
 bool match_word(const int st, const string& s, const string& word) {
     if (st + word.length() > s.length()) {
         return false;
@@ -108,4 +109,5 @@ void test_00() {
 
 int main(int argc, char *argv[]) {
     test_00();
+}
 }

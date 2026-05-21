@@ -12,13 +12,14 @@
 
 using namespace std;
 
+namespace graph_17_2_weigt_graph_min_path {
 int dfs(unordered_map<string, unordered_map<string, int>>& G, unordered_set<string>& visited, const string& src,
-    const string& dst)
+        const string& dst)
 {
     if (src == dst) {
         return 0;
     }
-
+    
     visited.insert(src);
     int minn = -1;
     for (pair<string, int> neigh : G[src]) {
@@ -36,7 +37,7 @@ int dfs(unordered_map<string, unordered_map<string, int>>& G, unordered_set<stri
         }
     }
     visited.erase(src);
-
+    
     return minn;
 }
 
@@ -53,13 +54,13 @@ int weightedGraphMinPath_dijkstra(unordered_map<string, unordered_map<string, in
     while (!pq.empty()) {
         tuple<int, string> t_v = pq.top();
         pq.pop();
-
+        
         string v = get<1>(t_v);
         int v_cost = get<0>(t_v);
         if (dist.count(dst) > 0 && v_cost > dist[dst]) {
             break;
         }
-
+        
         for (pair<string, int> neigh_info : G[v]) {
             string neigh_v = get<0>(neigh_info);
             int neigh_cost = get<1>(neigh_info);
@@ -70,17 +71,17 @@ int weightedGraphMinPath_dijkstra(unordered_map<string, unordered_map<string, in
             pq.push(tuple<int, string>(dist[neigh_v], neigh_v));
         }
     }
-
+    
     return dist.count(dst) > 0 ? dist[dst] : -1;
 }
 
 void test_00() {
     const unordered_map<string, unordered_map<string, int>> graph {
-      {"a", { {"b", 2}, {"d", 9}, {"c", 5} }},
-      {"b", { {"a", 2}, {"d", 4}, {"e", 6} }},
-      {"c", { {"a", 5}, {"e", 4} }},
-      {"d", { {"a", 9}, {"b", 4}, {"e", 1} }},
-      {"e", { {"b", 6}, {"c", 4}, {"d", 1} }}
+        {"a", { {"b", 2}, {"d", 9}, {"c", 5} }},
+        {"b", { {"a", 2}, {"d", 4}, {"e", 6} }},
+        {"c", { {"a", 5}, {"e", 4} }},
+        {"d", { {"a", 9}, {"b", 4}, {"e", 1} }},
+        {"e", { {"b", 6}, {"c", 4}, {"d", 1} }}
     };
     const int res = weightedGraphMinPath(graph, "a", "e"); // -> 7
     const bool passed = res == 7;
@@ -89,10 +90,10 @@ void test_00() {
 
 void test_01() {
     const unordered_map<string, unordered_map<string, int>> graph {
-      {"a", { {"b", 1}, {"c", 1} }},
-      {"b", { {"c", 3}, {"a", 1} }},
-      {"c", { {"b", 3}, {"d", 1}, {"a", 1} }},
-      {"d", { {"c", 1}, {"b", 2} }}
+        {"a", { {"b", 1}, {"c", 1} }},
+        {"b", { {"c", 3}, {"a", 1} }},
+        {"c", { {"b", 3}, {"d", 1}, {"a", 1} }},
+        {"d", { {"c", 1}, {"b", 2} }}
     };
     const int res = weightedGraphMinPath(graph, "a", "d"); // -> 2
     const bool passed = res == 2;
@@ -101,12 +102,12 @@ void test_01() {
 
 void test_02() {
     const unordered_map<string, unordered_map<string, int>> graph {
-      {"q", { {"r", 5}, {"s", 10} }},
-      {"r", { {"q", 5}, {"s", 9}, {"u", 2} }},
-      {"s", { {"q", 10}, {"r", 9}, {"t", 1}, {"v", 8} }},
-      {"t", { {"s", 1 } }},
-      {"u", { {"r", 2}, {"s", 1} }},
-      {"v", {}}
+        {"q", { {"r", 5}, {"s", 10} }},
+        {"r", { {"q", 5}, {"s", 9}, {"u", 2} }},
+        {"s", { {"q", 10}, {"r", 9}, {"t", 1}, {"v", 8} }},
+        {"t", { {"s", 1 } }},
+        {"u", { {"r", 2}, {"s", 1} }},
+        {"v", {}}
     };
     const int res = weightedGraphMinPath(graph, "q", "v"); // -> 16
     const bool passed = res == 16;
@@ -115,12 +116,12 @@ void test_02() {
 
 void test_03() {
     const unordered_map<string, unordered_map<string, int>> graph {
-      {"q", { {"r", 5}, {"s", 10} }},
-      {"r", { {"q", 5}, {"s", 9}, {"u", 2} }},
-      {"s", { {"q", 10}, {"r", 9}, {"t", 1}, {"v", 8} }},
-      {"t", { {"s", 1} }},
-      {"u", { {"r", 2}, {"s", 1} }},
-      {"v", {}}
+        {"q", { {"r", 5}, {"s", 10} }},
+        {"r", { {"q", 5}, {"s", 9}, {"u", 2} }},
+        {"s", { {"q", 10}, {"r", 9}, {"t", 1}, {"v", 8} }},
+        {"t", { {"s", 1} }},
+        {"u", { {"r", 2}, {"s", 1} }},
+        {"v", {}}
     };
     const int res = weightedGraphMinPath(graph, "r", "v"); // -> 11
     const bool passed = res == 11;
@@ -129,10 +130,10 @@ void test_03() {
 
 void test_04() {
     const unordered_map<string, unordered_map<string, int>> graph {
-      {"x", {{"q", 1}, {"e", 10} }},
-      {"b", {{"e", 7}, {"q", 8} }},
-      {"q", {{"x", 1}, {"b", 8} }},
-      {"e", {{"b", 7}, {"x", 10} }}
+        {"x", {{"q", 1}, {"e", 10} }},
+        {"b", {{"e", 7}, {"q", 8} }},
+        {"q", {{"x", 1}, {"b", 8} }},
+        {"e", {{"b", 7}, {"x", 10} }}
     };
     const int res = weightedGraphMinPath(graph, "b", "x"); // -> 9
     const bool passed = res == 9;
@@ -145,4 +146,5 @@ int main() {
     test_02();
     test_03();
     test_04();
+}
 }

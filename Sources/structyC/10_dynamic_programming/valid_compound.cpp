@@ -7,15 +7,17 @@
 
 using namespace std;
 
+namespace dp_10_valid_compund {
+
 bool valid_compound(int i, string& compound, vector<string>& elements, unordered_map<int, bool>& memo) {
     if (compound.size() == 0) {
         return true;
     }
-
+    
     if (memo.count(i) > 0) {
         return memo[i];
     }
-
+    
     for (string el : elements) {
         if (compound.find(el) != 0) {
             continue;
@@ -27,7 +29,7 @@ bool valid_compound(int i, string& compound, vector<string>& elements, unordered
             return res;
         }
     }
-
+    
     memo[i] = false;
     return false;
 }
@@ -83,4 +85,5 @@ void test_01() {
 int main(int argc, char const *argv[]) {
     test_01();
     return 0;
+}
 }

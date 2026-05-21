@@ -5,6 +5,7 @@
 #include <iostream>
 using namespace std;
 
+namespace stack_11_decompress_braces {
 string decompressBraces(string str) {
     stack<int> nums;
     stack<vector<char>> strs{};
@@ -52,4 +53,5 @@ int main(int argc, char const *argv[]) {
     test_00();
     test_04();
     return 0;
+}
 }

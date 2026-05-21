@@ -6,6 +6,8 @@
 
 using namespace std;
 
+namespace dp_10_longest_path {
+
 int dfs(char v, unordered_map<char, int>& depth, unordered_map<char, vector<char>>& G) {
     int max_depth = -1;
     for (char next_v : G[v]) {
@@ -15,7 +17,7 @@ int dfs(char v, unordered_map<char, int>& depth, unordered_map<char, vector<char
             max_depth = max(max_depth, dfs(next_v, depth, G));
         }
     }
-   
+    
     depth[v] = 1 + max_depth;
     
     return depth[v];
@@ -31,7 +33,7 @@ int longestPath(unordered_map<char, vector<char>> G) {
         char v = get<0>(tuple);
         longest = max(longest, dfs(v, depth, G));
     }
-
+    
     return longest;
 }
 
@@ -82,4 +84,5 @@ int main(int argc, char const *argv[]) {
     test_01();
     test_02();
     return 0;
+}
 }

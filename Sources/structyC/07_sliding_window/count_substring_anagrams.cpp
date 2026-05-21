@@ -10,6 +10,7 @@
 #include <iostream>
 using namespace std;
 
+namespace sliding_window_7_count_substr_anag {
 int countSubstringAnagrams(std::string s, std::string anagram) {
     unordered_map<char, int> anagram_fq;
     for (int i = 0; i < anagram.length(); i++) {
@@ -73,4 +74,5 @@ void test_00() {
 
 int main(int argc, char *argv[]) {
     test_00();
+}
 }

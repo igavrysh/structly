@@ -7,6 +7,7 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_recall_18 {
 class Node {
 public:
     string val;
@@ -76,4 +77,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

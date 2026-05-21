@@ -7,6 +7,7 @@
 #include <unordered_set>
 using namespace std;
 
+namespace graph_17_2_union_find_code_1 {
 int uf_find(int i, vector<int>& p) {
     int id = i;
     while (p[id] != id) {
@@ -47,3 +48,6 @@ int countComponents(int n, vector<tuple<int, int>> edges) {
 
     return roots.size();
 }
+}
+
+

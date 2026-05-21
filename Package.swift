@@ -1,71 +1,60 @@
-// swift-tools-version: 6.0.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version: 6.0
 
 import PackageDescription
 
+let swift6Settings: [SwiftSetting] = [
+    .interoperabilityMode(.Cxx),
+    .enableUpcomingFeature("StrictConcurrency"),
+    .swiftLanguageMode(.v6),
+]
+
 let package = Package(
-    name: "MyCLI",
-    platforms: [.macOS(.v14)],
+    name: "structy",
+    platforms: [
+        .macOS(.v14),
+    ],
     products: [
         .library(name: "structy", targets: ["structy"]),
         .library(name: "structyC", targets: ["structyC"]),
-        .executable(name: "structyCLI", targets: ["structyCLI"])
+        .library(name: "lc", targets: ["lc"]),
+        .executable(name: "structyCLI", targets: ["structyCLI"]),
     ],
     targets: [
         .target(
             name: "structy",
             dependencies: ["structyC"],
             path: "Sources/structy",
-            swiftSettings: [
-                .interoperabilityMode(.Cxx),
-                .enableUpcomingFeature("StrictConcurrency"),
-                .swiftLanguageMode(.v6)
-            ]
-        ),
-        .target(
-            name: "lc",
-            dependencies: [],
-            path: "Sources/lc",
-            swiftSettings: [
-                .interoperabilityMode(.Cxx),
-                .enableUpcomingFeature("StrictConcurrency"),
-                .swiftLanguageMode(.v6)
-            ]
+            swiftSettings: swift6Settings
         ),
         .target(
             name: "structyC",
-            dependencies: [],
             path: "Sources/structyC",
-            publicHeadersPath: "include",
-            swiftSettings: [.interoperabilityMode(.Cxx)]
+            publicHeadersPath: "include"
         ),
-
+        .target(
+            name: "lc",
+            path: "Sources/lc",
+            exclude: ["random/lc2452.cpp"]
+        ),
         .executableTarget(
             name: "structyCLI",
-            dependencies: ["structy"],
-            swiftSettings: [
-                .interoperabilityMode(.Cxx),
-                .enableUpcomingFeature("StrictConcurrency"),
-                .swiftLanguageMode(.v6)
-            ],
+            dependencies: ["structy", "structyC"],
+            path: "Sources/structyCLI",
+            swiftSettings: swift6Settings,
             linkerSettings: [
-                .linkedLibrary("m", .when(platforms: [.linux])) 
+                .linkedLibrary("m", .when(platforms: [.linux])),
             ]
         ),
         .testTarget(
             name: "structyTests",
             dependencies: ["structy"],
-            path: "Tests/structyTests",
-            swiftSettings: [.interoperabilityMode(.Cxx)]
-
+            path: "Tests/structyTests"
         ),
         .testTarget(
             name: "lcTests",
             dependencies: ["lc"],
-            path: "Tests/lcTests",
-            swiftSettings: [.interoperabilityMode(.Cxx)]
-
-        )
+            path: "Tests/lcTests"
+        ),
     ],
-    cxxLanguageStandard: .cxx17 // Explicitly set the C++ version
+    cxxLanguageStandard: .cxx17
 )

@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+namespace array_n_string_12_running_sum {
 vector<int> runningSum(vector<int> numbers) {
     int n = numbers.size();
     std::vector<int> res(n, 0);
@@ -21,4 +22,5 @@ void test_00() {
 int main(int argc, char const *argv[]) {
     test_00();
     return 0;
+}
 }

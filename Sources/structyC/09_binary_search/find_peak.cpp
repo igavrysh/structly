@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+namespace bin_search_9_find_peak {
 int findPeak(vector<int> nums) {
     const int n = nums.size();
     int lo = 0;
@@ -33,4 +34,5 @@ void test_02() {
 
 int main(int argc, char *argv[]) {
     test_02();
+}
 }

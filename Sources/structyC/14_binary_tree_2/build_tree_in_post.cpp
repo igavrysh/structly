@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace binary_tree_14_2_bitree_in_post {
 class Node {
 public:
     string val;
@@ -30,7 +31,7 @@ Node* buildTreeInPost(vector<string> inorder, vector<string> postorder) {
     string val = postorder[postorder.size()-1];
     Node* node = new Node(val);
     auto p = find(inorder.begin(), inorder.end(), val);
-    int size_left = p - inorder.begin();
+    size_t size_left = p - inorder.begin();
     vector<string> left_in(inorder.begin(), p);
     vector<string> right_in(p+1, inorder.end());
     vector<string> left_post(postorder.begin(), postorder.begin()+size_left);
@@ -64,11 +65,11 @@ Node* build_tree_in_post(int l_in, int r_in, int l_post, int r_post,
 
 Node* buildTreeInPost_o_n_time_space(vector<string> inorder, vector<string> postorder) {
     unordered_map<string, int> inorder_m{};
-    int n = inorder.size();
-    for (int i = 0; i < n; i++) {
-        inorder_m[inorder[i]] = i;
+    size_t n = inorder.size();  // Changed from 'int n' to 'size_t n'
+    for (size_t i = 0; i < n; i++) {  // Changed from 'int i' to 'size_t i'
+        inorder_m[inorder[i]] = (int)i;
     }
-    return build_tree_in_post(0, n-1, 0, n-1,
+    return build_tree_in_post(0, (int)n-1, 0, (int)n-1,
         inorder, postorder, inorder_m);
 }
 
@@ -82,4 +83,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

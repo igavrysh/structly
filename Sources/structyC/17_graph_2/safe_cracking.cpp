@@ -9,6 +9,7 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_17_2_safe_cracking {
 string topologicalOrder(unordered_map<int, vector<int>>& G) {
     unordered_map<int, int> incoming{};
     for (tuple<int, vector<int>> tpl : G) {
@@ -70,4 +71,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

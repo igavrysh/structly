@@ -9,6 +9,8 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_17_2_province_sizes {
+
 int uf_find(int i, vector<int>& p) {
     int id = i;
     while (p[id] != id) {
@@ -89,4 +91,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

@@ -7,6 +7,8 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_17_2_string_search {
+
 vector<vector<int>> dirs = {{-1,0},{0,-1},{1,0},{0,1}};
 
 bool scan(int i, int j, int k, vector<vector<char>>& grid, string& target, vector<vector<bool>>& visited) {
@@ -75,4 +77,6 @@ void test_07() {
 int main(int argc, char* argv[]) {
     test_00();
     test_07();
+    return 0;
+}
 }

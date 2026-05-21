@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+namespace array_n_string_12_merge_sort {
+
 vector<int> merge(int l, int r, vector<int>& numbers) {
     if (l >= r) {
         vector<int> res{numbers[l]};
@@ -48,4 +50,5 @@ void test_00() {
 int main(int argc, char const *argv[]) {
     test_00();
     return 0;
+}
 }

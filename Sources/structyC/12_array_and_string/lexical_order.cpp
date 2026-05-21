@@ -40,8 +40,6 @@ void test_03() {
     cout << "test_03: " << (passed ? "passed" : "failed") << endl;
 }
 
-int main(int argc, char* argv[]) {
-    test_03();
-}
-
-
+//int main(int argc, char* argv[]) {
+//    test_03();
+//}

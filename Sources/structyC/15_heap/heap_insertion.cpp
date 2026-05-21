@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace heap_15_heap_insertion {
 class MinHeap {
 public:
     vector<int> vec;
@@ -108,4 +109,4 @@ int main(int argc, char* argv[]) {
     test_00();
     test_01();
 }
-
+}

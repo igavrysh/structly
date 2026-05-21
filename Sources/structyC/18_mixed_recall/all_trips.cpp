@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_recall_18_all_trips {
 vector<vector<string>> dfs(unordered_map<string, vector<string>>& G, string& startStation, string& endStation) {
     if (startStation == endStation) {
         return {{ startStation }};
@@ -43,11 +44,11 @@ vector<vector<string>> allTrips(vector<tuple<string, string>> routes, string sta
 
 void test_00() {
     vector<tuple<string, string>> routes {
-      {"brookdale", "denton junction"},
-      {"astor place", "brookdale"},
-      {"astor place", "cony island"},
-      {"astor place", "denton junction"},
-      {"cony island", "denton junction"}
+        {"brookdale", "denton junction"},
+        {"astor place", "brookdale"},
+        {"astor place", "cony island"},
+        {"astor place", "denton junction"},
+        {"cony island", "denton junction"}
     };
     // [
     //   ["astor place", "brookdale", "denton junction"],
@@ -68,4 +69,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

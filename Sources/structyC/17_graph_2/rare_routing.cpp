@@ -7,13 +7,14 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_17_2_rare_routing {
 bool dfs_no_cycles(unordered_map<int, vector<int>> &G, vector<bool> &visited, int v, int parent_v) {
     if (visited[v]) {
         return false;
     }
-
+    
     visited[v] = true;
-
+    
     for (int neigh : G[v]) {
         if (neigh == parent_v) {
             continue;
@@ -34,7 +35,7 @@ bool rareRouting(int n, vector<vector<int>> roads) {
         G[from].push_back(to);
         G[to].push_back(from);
     }
-
+    
     vector<bool> visited(n, false);
     for (int i = 0; i < n; i++) {
         if (visited[i]) {
@@ -53,9 +54,9 @@ bool rareRouting(int n, vector<vector<int>> roads) {
 
 void test_00() {
     bool res = rareRouting(4, std::vector<std::vector<int>> {
-      {0, 1},
-      {0, 2},
-      {0, 3}
+        {0, 1},
+        {0, 2},
+        {0, 3}
     }); // -> 1 (true)
     bool passed = res == true;
     cout << "test_00: " << (passed ? "passed" : "failed") << endl;
@@ -63,10 +64,10 @@ void test_00() {
 
 void test_01() {
     bool res = rareRouting(4, std::vector<std::vector<int>> {
-      {0, 1},
-      {0, 2},
-      {0, 3},
-      {3, 2}
+        {0, 1},
+        {0, 2},
+        {0, 3},
+        {3, 2}
     }); // -> 0 (false)
     bool passed = res == false;
     cout << "test_01: " << (passed ? "passed" : "failed") << endl;
@@ -75,4 +76,5 @@ void test_01() {
 int main(int argc, char* argv[]) {
     test_00();
     test_01();
+}
 }

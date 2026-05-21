@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_recall_18_breaking_boundaries {
 int breakingBoundaries(int m, int n, int k, int r, int c) {
     vector<vector<vector<int>>> dp(k, vector<vector<int>>(m, vector<int>(n, 0)));
     dp[0][r][c] = 1;
@@ -20,12 +21,12 @@ int breakingBoundaries(int m, int n, int k, int r, int c) {
                     if (next_i < 0 || next_i >= m || next_j < 0 || next_j >= n) {
                         continue;
                     }
-
+                    
                     dp[l][i][j] += (l-1>=0 ? dp[l-1][next_i][next_j] : 0);
                 }
             }
         }
-
+        
         for (int i = 0; i < m; i++) {
             res += dp[l][i][0];
             res += dp[l][i][n-1];
@@ -35,7 +36,7 @@ int breakingBoundaries(int m, int n, int k, int r, int c) {
             res += dp[l][m-1][j];
         }
     }
-
+    
     return res;
 }
 
@@ -96,4 +97,5 @@ int main(int argc, char* argv[]) {
     test_05();
     test_06();
     test_07();
+}
 }

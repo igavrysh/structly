@@ -5,6 +5,7 @@
 #include <iostream>
 using namespace std;
 
+namespace stack_11_rev_some_chars {
 string reverseSomeChars(string str, vector<char> chars) {
     unordered_set<char> chars_to_rev(chars.begin(), chars.end());
     stack<char> stack{};
@@ -37,4 +38,4 @@ int main(int argc, char const *argv[]) {
     test_00();
     return 0;
 }
-
+}

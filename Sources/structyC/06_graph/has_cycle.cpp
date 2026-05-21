@@ -11,8 +11,9 @@
 #include <iostream>
 using namespace std;
 
+namespace graph_06_has_cycle {
 bool dfs_has_cycle(unordered_map<char, vector<char>>& graph, unordered_set<char>& visited,
-    unordered_set<char>& visiting, char v) {
+                   unordered_set<char>& visiting, char v) {
 
     if (visiting.count(v) > 0) {
         return true;
@@ -48,9 +49,9 @@ bool hasCycle(unordered_map<char, vector<char>> graph) {
 
 void run_hasCycle_test_00() {
     std::unordered_map<char, std::vector<char>> graph {
-      { 'a', {'b'} },
-      { 'b', {'c'} },
-      { 'c', {'a'} }
+        { 'a', {'b'} },
+        { 'b', {'c'} },
+        { 'c', {'a'} }
     };
     bool res = hasCycle(graph); // -> 1 (true)
     cout << "res: " << res << endl;
@@ -58,10 +59,10 @@ void run_hasCycle_test_00() {
 
 void run_hasCycle_test_01() {
     std::unordered_map<char, std::vector<char>> graph {
-      { 'a', {'b', 'c'} },
-      { 'b', {'c'} },
-      { 'c', {'d'} },
-      { 'd', {} }
+        { 'a', {'b', 'c'} },
+        { 'b', {'c'} },
+        { 'c', {'d'} },
+        { 'd', {} }
     };
     bool res = hasCycle(graph); // -> 1 (true)
     cout << "res: " << res << endl;
@@ -72,3 +73,5 @@ void run_hasCycle_test_01() {
 //
 //}
 //
+
+}

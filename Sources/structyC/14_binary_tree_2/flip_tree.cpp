@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace binary_tree_14_2_flip_tree {
 class Node {
 public:
     std::string val;
@@ -59,16 +60,6 @@ Node* sampleTree() {
     //    g  h
     return a;
 }
-
-void test_00() {
-    Node* root = sampleTree();
-    string val1 = "d";
-    string val2 = "h";
-    const string res = lowestCommonAncestor(root, val1, val2);
-    bool passed = res == "b";
-    cout << "test_00: " << (passed ? "passed" : "failed" ) << endl;
 }
 
-int main(int argc, char* argv[]) {
-    test_00();
-}
+//int main(int argc, char* argv[]) {}

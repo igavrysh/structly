@@ -9,16 +9,17 @@
 
 using namespace std;
 
+namespace bt_16_lining_up {
 vector<vector<string>> liningUp(vector<string> people, int capacity)
 {
     if (capacity > people.size()) {
         return {};
     }
-
+    
     if (capacity == 0) {
         return {{}};
     }
-
+    
     string person = people[0];
     vector<string> people_wo(people.begin() + 1, people.end());
     vector<vector<string>> comb_1 = liningUp(people_wo, capacity);
@@ -35,13 +36,13 @@ vector<vector<string>> liningUp(vector<string> people, int capacity)
 }
 
 void bt(vector<string> acc,
-    vector<string> people, vector<vector<string>>& res, int capacity)
+        vector<string> people, vector<vector<string>>& res, int capacity)
 {
     if (acc.size() == capacity) {
         res.push_back(acc);
         return;
     }
-
+    
     for (int i = 0; i < people.size(); i++) {
         vector<string> people_wo(people.begin(), people.end());
         people_wo.erase(people_wo.begin() + i);
@@ -82,4 +83,5 @@ void test_01() {
 
 int main(int argc, char* argv[]) {
     test_01();
+}
 }

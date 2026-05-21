@@ -12,6 +12,7 @@
 #include <iostream>
 using namespace std;
 
+namespace bt_16_perm {
 vector<vector<string>> permutations(vector<string> elements) {
     if (elements.empty()) {
         return {{}};
@@ -77,4 +78,4 @@ int main(int argc, char const *argv[]) {
     test_00();
     return 0;
 }
-
+}

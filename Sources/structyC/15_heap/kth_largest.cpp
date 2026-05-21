@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+namespace heap_15_kth_largest {
 int kthLargest_sort_based(vector<int> numbers, int k) {
     vector<int> sorted = numbers;
     sort(sorted.begin(), sorted.end(), [](int a, int b) { return a > b; });
@@ -41,7 +42,7 @@ void test_01() {
 void test_05() {
     std::vector<int> numbers = {
         4,5,85,77,47,80,37,42,3,6,62,33,69,68,16,20,83,39,14,58,75,35,72,36,19,18,66,61,41,79,28,43,7,24,40,53,32,12
-      };
+    };
     bool passed = kthLargest(numbers, 5) == 77; // -> 77
     cout << "test_05: " << (passed ? "passed" : "failed") << endl;
 }
@@ -50,4 +51,5 @@ int main(int argc, char* argv[]) {
     test_00();
     test_01();
     test_05();
+}
 }

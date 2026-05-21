@@ -6,13 +6,14 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_recall_18_flatten_tree {
 class Node {
 public:
     std::string val;
     Node* left;
     Node* right;
-
-
+    
+    
     Node(string initialVal) {
         val = initialVal;
         left = nullptr;
@@ -24,14 +25,14 @@ Node* dfs(Node *node) {
     if (node == nullptr) {
         return nullptr;
     }
-
+    
     if (node->left == nullptr && node->right == nullptr) {
         return node;
     }
-
+    
     Node *l_res = dfs(node->left);
     Node *r_res = dfs(node->right);
-
+    
     Node *res = nullptr;
     if (l_res == nullptr ) {
         res = r_res;
@@ -61,20 +62,20 @@ void test_00() {
     Node d("d");
     Node e("e");
     Node f("f");
-
+    
     a.left = &b;
     a.right = &c;
     b.left = &d;
     b.right = &e;
     c.right = &f;
-
+    
     //      a
     //    /   \
     //   b     c
     //  / \     \
     // d   e     f
-
-   Node *res = flattenTree(&a); // ->
+    
+    Node *res = flattenTree(&a); // ->
     //      a
     //       \
     //        b
@@ -91,4 +92,5 @@ void test_00() {
 
 int main(int argc, char* argv[]) {
     test_00();
+}
 }

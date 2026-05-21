@@ -12,6 +12,7 @@
 #include <queue>
 using namespace std;
 
+namespace graph_06_ccc {
 void conn_comps_i_bfs(unordered_map<int, vector<int>> G, int v, unordered_set<int>& visited) {
     std::queue<int> q{};
     q.push(v);
@@ -95,4 +96,4 @@ void run_connectedComponentsCount_test_01() {
     int res = connectedComponentsCount(graph); // -> 2
     cout << "count: " << res << endl;
 }
-
+}

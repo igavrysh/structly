@@ -9,6 +9,7 @@
 #include <iostream>
 using namespace std;
 
+namespace mixed_recall_18_best_house_build {
 int bestHouseBuild(vector<vector<int>> grid)
 {
     int rows = grid.size();
@@ -100,4 +101,5 @@ void test_06() {
 int main(int argc, char* argv[]) {
     test_00();
     test_06();
+}
 }
