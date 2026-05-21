@@ -7,10 +7,10 @@
 
 import Testing
 @testable import structy
+@Suite
+final class MaxRootToLeafPathSumTests {
 
-@Suite("05_MaxRootToLeafPathSumTests")
-struct MaxRootToLeafPathSumTests {
-    @Test("test_00")
+    @Test
     func test00() async throws {
         let a = TreeNode(3)
         let b = TreeNode(11)
@@ -31,7 +31,7 @@ struct MaxRootToLeafPathSumTests {
         #expect(result == 18)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = TreeNode(5)
         let b = TreeNode(11)
@@ -54,7 +54,7 @@ struct MaxRootToLeafPathSumTests {
         #expect(result == 59)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let a = TreeNode(-1)
         let b = TreeNode(-6)
@@ -79,7 +79,7 @@ struct MaxRootToLeafPathSumTests {
         #expect(result == -8)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let a = TreeNode(42)
 

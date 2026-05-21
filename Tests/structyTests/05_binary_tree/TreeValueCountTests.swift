@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("05 TreeValueCountTests")
-struct TreeValueCountTests {
-    @Test("test_00")
+@Suite
+final class TreeValueCountTests {
+    @Test
     func test00() async throws {
         let a = TreeNode(12)
         let b = TreeNode(6)
@@ -31,7 +30,7 @@ struct TreeValueCountTests {
         #expect(result == 3)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = TreeNode(12)
         let b = TreeNode(6)
@@ -52,7 +51,7 @@ struct TreeValueCountTests {
         #expect(result == 2)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let a = TreeNode(7)
         let b = TreeNode(5)
@@ -77,7 +76,7 @@ struct TreeValueCountTests {
         #expect(result == 4)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let a = TreeNode(7)
         let b = TreeNode(5)
@@ -102,7 +101,7 @@ struct TreeValueCountTests {
         #expect(result == 0)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             treeValueCount(nil, 42)
@@ -110,7 +109,7 @@ struct TreeValueCountTests {
         #expect(result == 0)
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let root = TreeNode(0)
         var current = root

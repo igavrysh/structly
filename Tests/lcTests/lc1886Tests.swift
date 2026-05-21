@@ -1,11 +1,9 @@
 import Testing
 @testable import lc
-
-@Suite("lc1886_Tests")
+@Suite
 final class lc1886Tests {
-
     @Test
-    func lc1886_test1() {
+    func test_lc1886_test1() {
         let mat = [
             [0,1],
             [1,0]]
@@ -14,8 +12,8 @@ final class lc1886Tests {
         let res = sol.findRotation(mat, target)
         #expect(res == true)
     }
-
-    @Test func lc1886_test2() async throws {
+    @Test
+    func test_lc1886_test2() async throws {
         let mat = [
             [0,0,0],
             [0,1,0],

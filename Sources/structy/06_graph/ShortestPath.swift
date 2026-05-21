@@ -27,7 +27,6 @@ func shortestPath(_ edges: [[String]], _ nodeA: String, _ nodeB: String) -> Int 
             return d
         }
 
-
         for next_v in G[v, default: Set<String>()] {
             if visited.contains(next_v) {
                 continue

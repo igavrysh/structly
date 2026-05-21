@@ -7,12 +7,10 @@
 
 import Testing
 @testable import lc
-
-@Suite("lc3477Tests")
+@Suite
 final class lc3477Tests {
-
     @Test
-    func lc3477_test1() {
+    func test_lc3477_test1() {
         let fruits = [4,2,5]
         let baskets = [3,5,4]
         let sol = lc3477()

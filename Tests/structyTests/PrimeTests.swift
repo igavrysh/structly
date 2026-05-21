@@ -5,28 +5,32 @@
 //  Created by new on 3/3/26.
 //
 
-import XCTest
+import Testing
 @testable import structy
 
-final class PrimeTests: XCTestCase {
+@Suite
+final class PrimeTests {
+    @Test
     func testIsPrime() {
-        XCTAssertTrue(isPrime(2))
-        XCTAssertTrue(isPrime(3))
-        XCTAssertFalse(isPrime(4))
-        XCTAssertTrue(isPrime(5))
-        XCTAssertFalse(isPrime(6))
-        XCTAssertTrue(isPrime(7))
-        XCTAssertFalse(isPrime(8))
-        XCTAssertFalse(isPrime(25))
-        XCTAssertTrue(isPrime(31))
-        XCTAssertTrue(isPrime(2017))
-        XCTAssertFalse(isPrime(2048))
-        XCTAssertFalse(isPrime(1))
-        XCTAssertFalse(isPrime(713))
+        #expect(isPrime(2))
+        #expect(isPrime(3))
+        #expect(!(isPrime(4)))
+        #expect(isPrime(5))
+        #expect(!(isPrime(6)))
+        #expect(isPrime(7))
+        #expect(!(isPrime(8)))
+        #expect(!(isPrime(25)))
+        #expect(isPrime(31))
+        #expect(isPrime(2017))
+        #expect(!(isPrime(2048)))
+        #expect(!(isPrime(1)))
+        #expect(!(isPrime(713)))
     }
 
+    @Test
+
     func testLargeNumbers() {
-        XCTAssertTrue(isPrime(1000000007))
-        XCTAssertTrue(isPrime(7919))
+        #expect(isPrime(1000000007))
+        #expect(isPrime(7919))
     }
 }

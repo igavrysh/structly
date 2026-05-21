@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("02_PairSumTests")
-struct PairSumTests {
-    @Test("test_00")
+@Suite
+final class PairSumTests {
+    @Test
     func test00() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairSum([3, 2, 5, 4, 1], 8)
@@ -19,7 +18,7 @@ struct PairSumTests {
         #expect(result.1 == 2)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairSum([4, 7, 9, 2, 5, 1], 5)
@@ -28,7 +27,7 @@ struct PairSumTests {
         #expect(result.1 == 5)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairSum([4, 7, 9, 2, 5, 1], 3)
@@ -37,7 +36,7 @@ struct PairSumTests {
         #expect(result.1 == 5)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairSum([1, 6, 7, 2], 13)
@@ -46,7 +45,7 @@ struct PairSumTests {
         #expect(result.1 == 2)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairSum([9, 9], 18)
@@ -55,7 +54,7 @@ struct PairSumTests {
         #expect(result.1 == 1)
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairSum([6, 4, 2, 8], 12)
@@ -64,7 +63,7 @@ struct PairSumTests {
         #expect(result.1 == 3)
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairSum([5, 4, 1, 4], 8)
@@ -73,7 +72,7 @@ struct PairSumTests {
         #expect(result.1 == 3)
     }
 
-    @Test("test_07")
+    @Test
     func test07() async throws {
         let numbers = Array(1...6000)
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {

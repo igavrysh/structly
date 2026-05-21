@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("04_MergeListsTests")
-struct MergeListsTests {
-    @Test("test_00")
+@Suite
+final class MergeListsTests {
+    @Test
     func test00() async throws {
         let a = Node(5)
         let b = Node(7)
@@ -39,7 +38,7 @@ struct MergeListsTests {
         #expect(values == [5, 6, 7, 8, 9, 10, 12, 20, 25, 28])
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = Node(5)
         let b = Node(7)
@@ -68,7 +67,7 @@ struct MergeListsTests {
         #expect(values == [1, 5, 7, 8, 9, 10, 10, 12, 20, 28])
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let h = Node(30)
 
@@ -83,7 +82,7 @@ struct MergeListsTests {
         #expect(values == [15, 30, 67])
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let p = Node(15)
         let q = Node(67)
@@ -96,7 +95,7 @@ struct MergeListsTests {
         #expect(values == [15, 67])
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let p = Node(15)
         let q = Node(67)
@@ -109,7 +108,7 @@ struct MergeListsTests {
         #expect(values == [15, 67])
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let one: Node<Int>? = nil
         let two = Node(2)
@@ -121,7 +120,7 @@ struct MergeListsTests {
         #expect(values == [2])
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let one = Node(1)
         let two: Node<Int>? = nil
@@ -133,7 +132,7 @@ struct MergeListsTests {
         #expect(values == [1])
     }
 
-    @Test("test_07")
+    @Test
     func test07() async throws {
         let one: Node<Int>? = nil
         let two: Node<Int>? = nil

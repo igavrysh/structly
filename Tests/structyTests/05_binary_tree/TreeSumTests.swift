@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("05 TreeSumTests")
-struct TreeSumTests {
-    @Test("test_00")
+@Suite
+final class TreeSumTests {
+    @Test
     func test00() async throws {
         let a = TreeNode(3)
         let b = TreeNode(11)
@@ -31,7 +30,7 @@ struct TreeSumTests {
         #expect(result == 21)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = TreeNode(1)
         let b = TreeNode(6)
@@ -56,7 +55,7 @@ struct TreeSumTests {
         #expect(result == 10)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             treeSum(nil)

@@ -7,17 +7,17 @@
 
 import Testing
 @testable import structy
-
-@Suite("01_FizzBuzzTests")
+@Suite
 final class FizzBuzzTests {
     @Test
-    func test1() async throws {
+    func test1() {
         let res = fizzBuzz(11)
         #expect(res == ["1","2","fizz","4","buzz","fizz","7","8","fizz","buzz","11"])
     }
 
     @Test
-    func test2() async throws {
+
+    func test2() {
         let res = fizzBuzz(2)
         #expect(res == ["1","2"])
     }

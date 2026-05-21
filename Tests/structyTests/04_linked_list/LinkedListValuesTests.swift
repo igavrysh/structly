@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("04_LinkedListValuesTests")
-struct LinkedListValuesTests {
-    @Test("test_00")
+@Suite
+final class LinkedListValuesTests {
+    @Test
     func test00() async throws {
         let a = Node("a")
         let b = Node("b")
@@ -27,7 +26,7 @@ struct LinkedListValuesTests {
         #expect(result == ["a", "b", "c", "d"])
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let x = Node("x")
         let y = Node("y")
@@ -40,7 +39,7 @@ struct LinkedListValuesTests {
         #expect(result == ["x", "y"])
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let q = Node("q")
 
@@ -50,7 +49,7 @@ struct LinkedListValuesTests {
         #expect(result == ["q"])
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result: [String] = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             linkedListValues(nil)

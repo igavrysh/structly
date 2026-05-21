@@ -7,54 +7,35 @@
 
 import Testing
 @testable import structy
-
-@Suite("03_FactorialTests")
-struct FactorialTests {
-    @Test("test_00")
-    func test00() async throws {
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            factorial(3)
-        }
+@Suite
+final class FactorialTests {
+    @Test
+    func test00() {        let result = factorial(3)
         #expect(result == 6)
     }
 
-    @Test("test_01")
-    func test01() async throws {
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            factorial(6)
-        }
+    @Test
+    func test01() {        let result = factorial(6)
         #expect(result == 720)
     }
 
-    @Test("test_02")
-    func test02() async throws {
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            factorial(18)
-        }
+    @Test
+    func test02() {        let result = factorial(18)
         #expect(result == 6402373705728000)
     }
 
-    @Test("test_03")
-    func test03() async throws {
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            factorial(1)
-        }
+    @Test
+    func test03() {        let result = factorial(1)
         #expect(result == 1)
     }
 
-    @Test("test_04")
-    func test04() async throws {
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            factorial(13)
-        }
+    @Test
+    func test04() {        let result = factorial(13)
         #expect(result == 6227020800)
     }
 
-    @Test("test_05")
-    func test05() async throws {
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            factorial(0)
-        }
+    @Test
+    func test05() {        let result = factorial(0)
         #expect(result == 1)
     }
 }

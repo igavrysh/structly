@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("05 BreadthFirstValuesTests")
-struct BreadthFirstValuesTests {
-    @Test("test_00")
+@Suite
+final class BreadthFirstValuesTests {
+    @Test
     func test00() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -31,7 +30,8 @@ struct BreadthFirstValuesTests {
         #expect(result == ["a", "b", "c", "d", "e", "f"])
     }
 
-    @Test("test_01")
+    @Test
+
     func test01() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -56,7 +56,8 @@ struct BreadthFirstValuesTests {
         #expect(result == ["a", "b", "c", "d", "e", "f", "g", "h"])
     }
 
-    @Test("test_02")
+    @Test
+
     func test02() async throws {
         let a = TreeNode("a")
 
@@ -66,7 +67,8 @@ struct BreadthFirstValuesTests {
         #expect(result == ["a"])
     }
 
-    @Test("test_03")
+    @Test
+
     func test03() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -87,7 +89,8 @@ struct BreadthFirstValuesTests {
         #expect(result == ["a", "b", "c", "x", "d", "e"])
     }
 
-    @Test("test_04")
+    @Test
+
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             breadthFirstValues(nil)

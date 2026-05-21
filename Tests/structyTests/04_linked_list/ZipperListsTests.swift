@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("04_ZipperListsTests")
-struct ZipperListsTests {
-    @Test("test_00")
+@Suite
+final class ZipperListsTests {
+    @Test
     func test00() async throws {
         let a = Node("a")
         let b = Node("b")
@@ -31,7 +30,7 @@ struct ZipperListsTests {
         #expect(values == ["a", "x", "b", "y", "c", "z"])
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = Node("a")
         let b = Node("b")
@@ -58,7 +57,7 @@ struct ZipperListsTests {
         #expect(values == ["a", "x", "b", "y", "c", "z", "d", "e", "f"])
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let s = Node("s")
         let t = Node("t")
@@ -79,7 +78,7 @@ struct ZipperListsTests {
         #expect(values == ["s", "1", "t", "2", "3", "4"])
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let w = Node("w")
 
@@ -96,7 +95,7 @@ struct ZipperListsTests {
         #expect(values == ["w", "1", "2", "3"])
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let one = Node("1")
         let two = Node("2")
@@ -113,7 +112,7 @@ struct ZipperListsTests {
         #expect(values == ["1", "w", "2", "3"])
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let one: Node<String>? = nil
         let two = Node("2")
@@ -125,7 +124,7 @@ struct ZipperListsTests {
         #expect(values == ["2"])
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let one = Node("1")
         let two: Node<String>? = nil
@@ -137,7 +136,7 @@ struct ZipperListsTests {
         #expect(values == ["1"])
     }
 
-    @Test("test_07")
+    @Test
     func test07() async throws {
         let one: Node<String>? = nil
         let two: Node<String>? = nil

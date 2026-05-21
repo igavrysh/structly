@@ -7,11 +7,10 @@
 
 import Testing
 @testable import structy
-
-@Suite("05 ShortestPathTests")
-struct ShortestPathTests {
-    @Test("test_00")
-    func test00() async throws {
+@Suite
+final class ShortestPathTests {
+    @Test
+    func test00() {
         let edges = [
             ["w", "x"],
             ["x", "y"],
@@ -19,15 +18,12 @@ struct ShortestPathTests {
             ["z", "v"],
             ["w", "v"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "w", "z")
-        }
+        let result = shortestPath(edges, "w", "z")
         #expect(result == 2)
     }
 
-    @Test("test_01")
-    func test01() async throws {
+    @Test
+    func test01() {
         let edges = [
             ["w", "x"],
             ["x", "y"],
@@ -35,15 +31,12 @@ struct ShortestPathTests {
             ["z", "v"],
             ["w", "v"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "y", "x")
-        }
+        let result = shortestPath(edges, "y", "x")
         #expect(result == 1)
     }
 
-    @Test("test_02")
-    func test02() async throws {
+    @Test
+    func test02() {
         let edges = [
             ["a", "c"],
             ["a", "b"],
@@ -53,15 +46,12 @@ struct ShortestPathTests {
             ["e", "d"],
             ["g", "f"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "a", "e")
-        }
+        let result = shortestPath(edges, "a", "e")
         #expect(result == 3)
     }
 
-    @Test("test_03")
-    func test03() async throws {
+    @Test
+    func test03() {
         let edges = [
             ["a", "c"],
             ["a", "b"],
@@ -71,15 +61,12 @@ struct ShortestPathTests {
             ["e", "d"],
             ["g", "f"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "e", "c")
-        }
+        let result = shortestPath(edges, "e", "c")
         #expect(result == 2)
     }
 
-    //@Test("test_04")
-    func test04() async throws {
+    @Test
+    func test04() {
         let edges = [
             ["a", "c"],
             ["a", "b"],
@@ -89,15 +76,12 @@ struct ShortestPathTests {
             ["e", "d"],
             ["g", "f"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "b", "g")
-        }
+        let result = shortestPath(edges, "b", "g")
         #expect(result == -1)
     }
 
-    @Test("test_05")
-    func test05() async throws {
+    @Test
+    func test05() {
         let edges = [
             ["c", "n"],
             ["c", "e"],
@@ -105,15 +89,13 @@ struct ShortestPathTests {
             ["c", "w"],
             ["w", "e"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "w", "e")
-        }
+        let result = shortestPath(edges, "w", "e")
         #expect(result == 1)
     }
 
-    @Test("test_06")
-    func test06() async throws {
+    @Test
+
+    func test06() {
         let edges = [
             ["c", "n"],
             ["c", "e"],
@@ -121,15 +103,13 @@ struct ShortestPathTests {
             ["c", "w"],
             ["w", "e"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "n", "e")
-        }
+        let result = shortestPath(edges, "n", "e")
         #expect(result == 2)
     }
 
-    @Test("test_07")
-    func test07() async throws {
+    @Test
+
+    func test07() {
         let edges = [
             ["m", "n"],
             ["n", "o"],
@@ -139,10 +119,7 @@ struct ShortestPathTests {
             ["r", "q"],
             ["r", "s"]
         ]
-
-        let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
-            shortestPath(edges, "m", "s")
-        }
+        let result = shortestPath(edges, "m", "s")
         #expect(result == 6)
     }
 }

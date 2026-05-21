@@ -43,7 +43,13 @@ class lc1784 {
     }
 
     static func checkOnesSegment(_ s: String) -> Bool {
-        return !s.contains("01")
+        let chars = Array(s)
+        for i in 1..<chars.count {
+            if chars[i - 1] == "0" && chars[i] == "1" {
+                return false
+            }
+        }
+        return true
     }
 //
 //    @Test 

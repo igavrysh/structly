@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("05_TreeIncludesTests")
-struct TreeIncludesTests {
-    @Test("test_00")
+@Suite
+final class TreeIncludesTests {
+    @Test
     func test00() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -31,7 +30,7 @@ struct TreeIncludesTests {
         #expect(result == true)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -52,7 +51,7 @@ struct TreeIncludesTests {
         #expect(result == true)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -73,7 +72,7 @@ struct TreeIncludesTests {
         #expect(result == false)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -98,7 +97,7 @@ struct TreeIncludesTests {
         #expect(result == true)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -123,7 +122,7 @@ struct TreeIncludesTests {
         #expect(result == false)
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             treeIncludes(nil, "b")

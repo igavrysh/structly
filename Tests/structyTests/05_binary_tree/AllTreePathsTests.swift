@@ -7,14 +7,14 @@
 
 import Testing
 @testable import structy
-
-@Suite("05 AllTreePathsTests")
-struct AllTreePathsTests {
+@Suite
+final class AllTreePathsTests {
     private func normalized(_ paths: [[String]]) -> [[String]] {
         return paths.sorted { $0.joined(separator: "/") < $1.joined(separator: "/") }
     }
 
-    @Test("test_00")
+    @Test
+
     func test00() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -40,7 +40,8 @@ struct AllTreePathsTests {
         #expect(normalized(result) == normalized(expected))
     }
 
-    @Test("test_01")
+    @Test
+
     func test01() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -73,7 +74,8 @@ struct AllTreePathsTests {
         #expect(normalized(result) == normalized(expected))
     }
 
-    @Test("test_02")
+    @Test
+
     func test02() async throws {
         let q = TreeNode("q")
         let r = TreeNode("r")
@@ -98,7 +100,8 @@ struct AllTreePathsTests {
         #expect(normalized(result) == normalized(expected))
     }
 
-    @Test("test_03")
+    @Test
+
     func test03() async throws {
         let z = TreeNode("z")
 

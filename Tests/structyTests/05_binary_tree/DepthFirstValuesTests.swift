@@ -6,10 +6,9 @@
 //
 import Testing
 @testable import structy
-
-@Suite("05 DepthFirstValuesTests")
-struct DepthFirstValuesTests {
-    @Test("test_00")
+@Suite
+final class DepthFirstValuesTests {
+    @Test
     func test00() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -30,7 +29,8 @@ struct DepthFirstValuesTests {
         #expect(result == ["a", "b", "d", "e", "c", "f"])
     }
 
-    @Test("test_01")
+    @Test
+
     func test01() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -53,7 +53,8 @@ struct DepthFirstValuesTests {
         #expect(result == ["a", "b", "d", "e", "g", "c", "f"])
     }
 
-    @Test("test_02")
+    @Test
+
     func test02() async throws {
         let a = TreeNode("a")
 
@@ -63,7 +64,8 @@ struct DepthFirstValuesTests {
         #expect(result == ["a"])
     }
 
-    @Test("test_03")
+    @Test
+
     func test03() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -82,7 +84,8 @@ struct DepthFirstValuesTests {
         #expect(result == ["a", "b", "c", "d", "e"])
     }
 
-    @Test("test_04")
+    @Test
+
     func test04() async throws {
         let a: TreeNode<String>? = nil
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {

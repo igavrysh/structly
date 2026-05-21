@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("05 BottomRightValueTests")
-struct BottomRightValueTests {
-    @Test("test_00")
+@Suite
+final class BottomRightValueTests {
+    @Test
     func test00() async throws {
         let a = TreeNode(3)
         let b = TreeNode(11)
@@ -38,7 +37,8 @@ struct BottomRightValueTests {
         #expect(result == 1)
     }
 
-    @Test("test_01")
+    @Test
+
     func test01() async throws {
         let a = TreeNode(-1)
         let b = TreeNode(-6)
@@ -72,7 +72,8 @@ struct BottomRightValueTests {
         #expect(result == 6)
     }
 
-    @Test("test_02")
+    @Test
+
     func test02() async throws {
         let a = TreeNode(-1)
         let b = TreeNode(-6)
@@ -108,7 +109,8 @@ struct BottomRightValueTests {
         #expect(result == 7)
     }
 
-    @Test("test_03")
+    @Test
+
     func test03() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -140,7 +142,8 @@ struct BottomRightValueTests {
         #expect(result == "f")
     }
 
-    @Test("test_04")
+    @Test
+
     func test04() async throws {
         let a = TreeNode(42)
 

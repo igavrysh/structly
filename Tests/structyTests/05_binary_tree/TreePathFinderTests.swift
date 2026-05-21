@@ -8,10 +8,9 @@
 import Testing
 
 @testable import structy
-
-@Suite("05 PathFinderTests")
-struct PathFinderTests {
-    @Test("test_00")
+@Suite
+final class PathFinderTests {
+    @Test
     func test00() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -41,7 +40,7 @@ struct PathFinderTests {
         #expect(result == ["a", "b", "e"])
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -69,7 +68,7 @@ struct PathFinderTests {
         #expect(result == [])
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -103,7 +102,7 @@ struct PathFinderTests {
         #expect(result == ["a", "c"])
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -137,7 +136,7 @@ struct PathFinderTests {
         #expect(result == ["a", "c", "f", "h"])
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let x = TreeNode("x")
 
@@ -150,7 +149,7 @@ struct PathFinderTests {
         #expect(result == ["x"])
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pathFinder(nil, "x")
@@ -158,7 +157,7 @@ struct PathFinderTests {
         #expect(result == [])
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let root = TreeNode(0)
         var current = root

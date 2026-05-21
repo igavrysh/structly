@@ -6,7 +6,6 @@
 //
 
 import structy
-import structyC
 
 print("Starting the program...")
 callCpp()

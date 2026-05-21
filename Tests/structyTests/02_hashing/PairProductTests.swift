@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("02_PairProductTests")
-struct PairProductTests {
-    @Test("test_00")
+@Suite
+final class PairProductTests {
+    @Test
     func test00() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairProduct([3, 2, 5, 4, 1], 8)
@@ -19,7 +18,7 @@ struct PairProductTests {
         #expect(result.1 == 3)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairProduct([3, 2, 5, 4, 1], 10)
@@ -28,7 +27,7 @@ struct PairProductTests {
         #expect(result.1 == 2)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairProduct([4, 7, 9, 2, 5, 1], 5)
@@ -37,7 +36,7 @@ struct PairProductTests {
         #expect(result.1 == 5)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairProduct([4, 7, 9, 2, 5, 1], 35)
@@ -46,7 +45,7 @@ struct PairProductTests {
         #expect(result.1 == 4)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairProduct([3, 2, 5, 4, 1], 10)
@@ -55,7 +54,7 @@ struct PairProductTests {
         #expect(result.1 == 2)
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             pairProduct([4, 6, 8, 2], 16)
@@ -64,7 +63,7 @@ struct PairProductTests {
         #expect(result.1 == 3)
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let numbers = Array(0...21000)
         let result = try await TimeoutSupport.runWithTimeout(seconds: 4) {

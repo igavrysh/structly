@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("02_AnagramsTests")
+@Suite
 final class AnagramsTests {
-    @Test("test_00")
+    @Test
     func test00() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("restful", "fluster")
@@ -18,7 +17,7 @@ final class AnagramsTests {
         #expect(result == true)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("cats", "tocs")
@@ -26,7 +25,7 @@ final class AnagramsTests {
         #expect(result == false)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("monkeyswrite", "newyorktimes")
@@ -34,7 +33,7 @@ final class AnagramsTests {
         #expect(result == true)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("paper", "reapa")
@@ -42,7 +41,7 @@ final class AnagramsTests {
         #expect(result == false)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("elbow", "below")
@@ -50,7 +49,7 @@ final class AnagramsTests {
         #expect(result == true)
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("tax", "taxi")
@@ -58,7 +57,7 @@ final class AnagramsTests {
         #expect(result == false)
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("taxi", "tax")
@@ -66,7 +65,7 @@ final class AnagramsTests {
         #expect(result == false)
     }
 
-    @Test("test_07")
+    @Test
     func test07() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("night", "thing")
@@ -74,7 +73,7 @@ final class AnagramsTests {
         #expect(result == true)
     }
 
-    @Test("test_08")
+    @Test
     func test08() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("abbc", "aabc")
@@ -82,7 +81,7 @@ final class AnagramsTests {
         #expect(result == false)
     }
 
-    @Test("test_09")
+    @Test
     func test09() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("po", "popp")
@@ -90,7 +89,7 @@ final class AnagramsTests {
         #expect(result == false)
     }
 
-    @Test("test_10")
+    @Test
     func test10() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             anagrams("pp", "oo")

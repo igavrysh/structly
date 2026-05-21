@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("02_IntersectionWithDupesTests")
-struct IntersectionWithDupesTests {
-    @Test("test_00")
+@Suite
+final class IntersectionWithDupesTests {
+    @Test
     func test00() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersectionWithDupes(["a", "b", "c", "b"], ["x", "y", "b", "b"])
@@ -18,7 +17,7 @@ struct IntersectionWithDupesTests {
         #expect(result.sorted() == ["b", "b"].sorted())
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersectionWithDupes(["q", "b", "m", "s", "s", "s"], ["s", "m", "s"])
@@ -26,7 +25,7 @@ struct IntersectionWithDupesTests {
         #expect(result.sorted() == ["m", "s", "s"].sorted())
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersectionWithDupes(["p", "r", "r", "r"], ["r"])
@@ -34,7 +33,7 @@ struct IntersectionWithDupesTests {
         #expect(result.sorted() == ["r"].sorted())
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersectionWithDupes(["r"], ["p", "r", "r", "r"])
@@ -42,7 +41,7 @@ struct IntersectionWithDupesTests {
         #expect(result.sorted() == ["r"].sorted())
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersectionWithDupes(["t", "v", "u"], ["g", "e", "d", "f"])
@@ -50,7 +49,7 @@ struct IntersectionWithDupesTests {
         #expect(result.sorted() == [])
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersectionWithDupes(["a", "a", "a", "a", "a", "a"], ["a", "a", "a", "a"])
@@ -58,7 +57,7 @@ struct IntersectionWithDupesTests {
         #expect(result.sorted() == ["a", "a", "a", "a"].sorted())
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let a = Array(0..<150000).map { String($0) }
         let b = Array(0..<150000).map { String($0) }

@@ -2,16 +2,14 @@
 
 import PackageDescription
 
-let swift6Settings: [SwiftSetting] = [
+let cxxInteropSettings: [SwiftSetting] = [
     .interoperabilityMode(.Cxx),
-    .enableUpcomingFeature("StrictConcurrency"),
-    .swiftLanguageMode(.v6),
 ]
 
 let package = Package(
     name: "structy",
     platforms: [
-        .macOS(.v14),
+        .macOS(.v10_15),
     ],
     products: [
         .library(name: "structy", targets: ["structy"]),
@@ -19,12 +17,14 @@ let package = Package(
         .library(name: "lc", targets: ["lc"]),
         .executable(name: "structyCLI", targets: ["structyCLI"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/swiftlang/swift-testing.git", from: "6.3.2"),
+    ],
     targets: [
         .target(
             name: "structy",
-            dependencies: ["structyC"],
             path: "Sources/structy",
-            swiftSettings: swift6Settings
+            exclude: ["01_big_o/callCpp.swift"]
         ),
         .target(
             name: "structyC",
@@ -40,19 +40,25 @@ let package = Package(
             name: "structyCLI",
             dependencies: ["structy", "structyC"],
             path: "Sources/structyCLI",
-            swiftSettings: swift6Settings,
+            swiftSettings: cxxInteropSettings,
             linkerSettings: [
                 .linkedLibrary("m", .when(platforms: [.linux])),
             ]
         ),
         .testTarget(
             name: "structyTests",
-            dependencies: ["structy"],
+            dependencies: [
+                "structy",
+                .product(name: "Testing", package: "swift-testing"),
+            ],
             path: "Tests/structyTests"
         ),
         .testTarget(
             name: "lcTests",
-            dependencies: ["lc"],
+            dependencies: [
+                "lc",
+                .product(name: "Testing", package: "swift-testing"),
+            ],
             path: "Tests/lcTests"
         ),
     ],

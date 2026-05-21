@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("02_IntersectionTests")
-struct IntersectionTests {
-    @Test("test_00")
+@Suite
+final class IntersectionTests {
+    @Test
     func test00() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersection([4, 2, 1, 6], [3, 6, 9, 2, 10])
@@ -18,7 +17,7 @@ struct IntersectionTests {
         #expect(Set<Int>(result) == Set<Int>([2, 6]))
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersection([2, 4, 6], [4, 2])
@@ -26,7 +25,7 @@ struct IntersectionTests {
         #expect(Set<Int>(result) == Set<Int>([2, 4]))
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersection([4, 2, 1], [1, 2, 4, 6])
@@ -34,7 +33,7 @@ struct IntersectionTests {
         #expect(Set<Int>(result) == Set<Int>([1, 2, 4]))
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             intersection([0, 1, 2], [10, 11])
@@ -42,7 +41,7 @@ struct IntersectionTests {
         #expect(Set<Int>(result) == Set<Int>())
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let a = Array(0..<50000)
         let b = Array(0..<50000)

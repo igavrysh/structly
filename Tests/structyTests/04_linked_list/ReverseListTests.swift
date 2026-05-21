@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("04_ReverseListTests")
-struct ReverseListTests {
-    @Test("test_00")
+@Suite
+final class ReverseListTests {
+    @Test
     func test00() async throws {
         let a = Node("a")
         let b = Node("b")
@@ -32,7 +31,7 @@ struct ReverseListTests {
         #expect(values == ["f", "e", "d", "c", "b", "a"])
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let x = Node("x")
         let y = Node("y")
@@ -46,7 +45,7 @@ struct ReverseListTests {
         #expect(values == ["y", "x"])
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let p = Node("p")
 
@@ -57,7 +56,7 @@ struct ReverseListTests {
         #expect(values == ["p"])
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let p: Node<String>? = nil
 

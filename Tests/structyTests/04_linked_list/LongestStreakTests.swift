@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("04_LongestStreakTests")
-struct LongestStreakTests {
-    @Test("test_00")
+@Suite
+final class LongestStreakTests {
+    @Test
     func test00() async throws {
         let a = Node(5)
         let b = Node(5)
@@ -31,7 +30,7 @@ struct LongestStreakTests {
         #expect(result == 3)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = Node(3)
         let b = Node(3)
@@ -52,7 +51,7 @@ struct LongestStreakTests {
         #expect(result == 4)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let a = Node(9)
         let b = Node(9)
@@ -73,7 +72,7 @@ struct LongestStreakTests {
         #expect(result == 3)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let a = Node(5)
         let b = Node(5)
@@ -86,7 +85,7 @@ struct LongestStreakTests {
         #expect(result == 2)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let a = Node(4)
 
@@ -96,7 +95,7 @@ struct LongestStreakTests {
         #expect(result == 1)
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result: Int = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             longestStreak(nil as Node<Int>?)

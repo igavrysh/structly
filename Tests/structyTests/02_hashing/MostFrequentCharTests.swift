@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("02_MostFrequentCharTests")
+@Suite
 final class MostFrequentCharTests {
-    @Test("test_00")
+    @Test
     func test00() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             mostFrequentChar("bookeeper")
@@ -18,7 +17,7 @@ final class MostFrequentCharTests {
         #expect(result == "e")
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             mostFrequentChar("david")
@@ -26,7 +25,7 @@ final class MostFrequentCharTests {
         #expect(result == "d")
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             mostFrequentChar("abby")
@@ -34,7 +33,7 @@ final class MostFrequentCharTests {
         #expect(result == "b")
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             mostFrequentChar("mississippi")
@@ -42,7 +41,7 @@ final class MostFrequentCharTests {
         #expect(result == "i")
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             mostFrequentChar("potato")
@@ -50,7 +49,7 @@ final class MostFrequentCharTests {
         #expect(result == "o")
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             mostFrequentChar("eleventennine")
@@ -58,7 +57,7 @@ final class MostFrequentCharTests {
         #expect(result == "e")
     }
 
-    @Test("test_06")
+    @Test
     func test06() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             mostFrequentChar("riverbed")

@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("05 HowHighTests")
-struct HowHighTests {
-    @Test("test_00")
+@Suite
+final class HowHighTests {
+    @Test
     func test00() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -38,7 +37,7 @@ struct HowHighTests {
         #expect(result == 2)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let a = TreeNode("a")
         let b = TreeNode("b")
@@ -70,7 +69,7 @@ struct HowHighTests {
         #expect(result == 3)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let a = TreeNode("a")
         let c = TreeNode("c")
@@ -88,7 +87,7 @@ struct HowHighTests {
         #expect(result == 1)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let a = TreeNode("a")
 
@@ -101,7 +100,7 @@ struct HowHighTests {
         #expect(result == 0)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             howHigh(nil)
@@ -109,7 +108,7 @@ struct HowHighTests {
         #expect(result == -1)
     }
 
-    @Test("test_05")
+    @Test
     func test05() async throws {
         let height_nodes = 32000
         let root = TreeNode(String(0))

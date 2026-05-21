@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("02_AllUniqueTests")
-struct AllUniqueTests {
-    @Test("test_00")
+@Suite
+final class AllUniqueTests {
+    @Test
     func test00() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             allUnique(["q", "r", "s", "a"])
@@ -18,7 +17,7 @@ struct AllUniqueTests {
         #expect(result == true)
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             allUnique(["q", "r", "s", "a", "r", "z"])
@@ -26,7 +25,7 @@ struct AllUniqueTests {
         #expect(result == false)
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             allUnique(["red", "blue", "yellow", "green", "orange"])
@@ -34,7 +33,7 @@ struct AllUniqueTests {
         #expect(result == true)
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             allUnique(["cat", "cat", "dog"])
@@ -42,7 +41,7 @@ struct AllUniqueTests {
         #expect(result == false)
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let result = try await TimeoutSupport.runWithTimeout(seconds: 2) {
             allUnique(["a", "u", "t", "u", "m", "n"])

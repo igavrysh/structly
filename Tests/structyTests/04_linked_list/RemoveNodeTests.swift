@@ -7,10 +7,9 @@
 
 import Testing
 @testable import structy
-
-@Suite("04_RemoveNodeTests")
-struct RemoveNodeTests {
-    @Test("test_00")
+@Suite
+final class RemoveNodeTests {
+    @Test
     func test00() async throws {
         let a = Node("a")
         let b = Node("b")
@@ -32,7 +31,7 @@ struct RemoveNodeTests {
         #expect(values == ["a", "b", "d", "e", "f"])
     }
 
-    @Test("test_01")
+    @Test
     func test01() async throws {
         let x = Node("x")
         let y = Node("y")
@@ -48,7 +47,7 @@ struct RemoveNodeTests {
         #expect(values == ["x", "y"])
     }
 
-    @Test("test_02")
+    @Test
     func test02() async throws {
         let q = Node("q")
         let r = Node("r")
@@ -64,7 +63,7 @@ struct RemoveNodeTests {
         #expect(values == ["r", "s"])
     }
 
-    @Test("test_03")
+    @Test
     func test03() async throws {
         let node1 = Node("h")
         let node2 = Node("i")
@@ -82,7 +81,7 @@ struct RemoveNodeTests {
         #expect(values == ["h", "j", "i"])
     }
 
-    @Test("test_04")
+    @Test
     func test04() async throws {
         let node1 = Node("h")
 
