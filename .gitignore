@@ -1,5 +1,7 @@
 # ... (your other rules) ...
 
+
+
 # 1. Ignore everything
 *
 
@@ -35,3 +37,6 @@ Packages/
 # 3. OS Files
 .DS_Store
 
+# Xcode user-specific settings
+.swiftpm/xcode/
+.swiftpm/configuration/
