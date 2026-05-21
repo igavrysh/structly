@@ -31,7 +31,7 @@ func shortestPath(_ edges: [[String]], _ nodeA: String, _ nodeB: String) -> Int 
             if visited.contains(next_v) {
                 continue
             }
-
+            visited.insert(next_v)
             q.enqueue((next_v, d + 1))
         }
     }
